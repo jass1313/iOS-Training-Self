@@ -29,7 +29,7 @@ let accountNumber : Int = 073101000196
 var bankBalance : Float = 1000.80
 var depositAmount : Int = 2000
 var newBankBalance = Int(bankBalance) + depositAmount
-
+var accountActive : Bool = true
 print(newBankBalance)
 
 
