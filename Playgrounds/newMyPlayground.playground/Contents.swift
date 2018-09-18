@@ -73,7 +73,9 @@ booksName = []
 dictionaries = [:]
 
 
-//Control follows
+
+
+//Control follows Loops
 let individualscore = [100, 20, 30, 40, 50, 60, 10]
 var teamScore = 0
 for score in individualscore {
@@ -84,22 +86,78 @@ for score in individualscore {
     }
     print(teamScore)
 }
+print(teamScore)
+
+
 
 //Optional String
 var optionalString: String? = "Hello"
 print(optionalString == nil)
 
-var optionalName: String? = "Jasbeer Singh"
+var optionalName: String? = nil
 var greetings = "Hello!"
 
-if let name = optionalString {
+if let name = optionalName {
     greetings = "Hello \(name)"
+} else {
+    let name = optionalName
+}
+
+//
+let nicName :String? = "jass"
+let fullName = "Jass Singh"
+let information = "HI \(nicName ?? fullName)"
+
+
+//Swithes
+let fruitJuice = "Apple Juice"
+switch fruitJuice {
+case "orange":
+    print("add some suger and make the juice")
+case "bananna", "papaya":
+    print("add some suger and make the shake")
+//    atleast last name of fruit
+case let x where x.hasSuffix("pineapple"):
+    print("Is it a good \(x)?")
+default:
+    print("Taste Eveything")
 }
 
 
 
 
+//Loops
+let intrestingNumbers = [
+    "Prime": [2, 3, 4, 9, 10, 13, 16, 108, 20],
+    "Fibonacci": [1, 1, 3, 5, 9, 3],
+    "Square": [1, 4, 9, 10, 16, 18, 30, 50],
+]
+var largest = 0
+for (kind, numbers) in intrestingNumbers {
+    for number in numbers {
+        if number > largest {
+            largest = number
+        }
+    }
+}
+print(largest)
 
+
+
+let typesOfNumbers = [
+    "First": [5, 6, 5, 6, 3, 6, 2, 6, 36, 6],
+    "2nd" : [6, 86, 56, 2, 69, 2, 6, 2, 6, 58],
+    "Third": [15, 16, 16, 30, 40, 90, 90, 50],
+]
+var largestNumber = 0
+for (large, numberss) in typesOfNumbers {
+    for number in numberss {
+        if number > largestNumber {
+            largestNumber = number
+        }
+    }
+    }
+print(largestNumber)
 
 
 
