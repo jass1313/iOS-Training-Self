@@ -14,16 +14,6 @@ let Qualifications = "B.Tech"
 let University = "Bundelkhand University"
 print("My name is \(myFullName) age \(age) and i have done \(Qualifications) from \(University)")
 
-//Data Types
-let boolean : Bool = true
-var double : Double = 12.4849392
-let float : Float = 3.50
-double = 40.0000
-var tuples = (501, "jass")
-
-//Literals
-let stringL = "Hello\tWorld\n\nHello\'Swift 4\'"
-print(stringL)
 
 //include values in strings
 let apple = 3
@@ -50,32 +40,148 @@ print("My bank name is \(bankName) ifsc code of my branch \(ifscCode) name is \(
 
 
 
-//Arrays and Dictionaries
-var booksName = ["English", "Maths", "Eco", "Science"]
-booksName[0] = "i need the English Book"
+//Syntax
+/* My first program in Swift 4 */
+var myString1 = "Hello, World!"
+print(myString1)
 
-var dictionaries = ["Brewery" : "a palace where beer is made"]
-dictionaries["jasbeer"] = "iOS Trainee"
+//Tokens in Swift 4
+print("test!")
+//The individual tokens are:
+print("test!")
 
-var dict = ["Icici bank" : 073101000196,
-           "Hdfc Bank" : 07331010212214]
+//Comments
+/*bjbsjbjksbcx */
 
-var dict2 : [String : Any] = [
-            "Jasbeer" : 7777077731,
-            "jay" : 9971431313,
-            "Bakery" : "a palce where bread is made"
-]
 
-var dict3 = ["Car" : "Elite i20",
-             "Brewery" : "a palace where beer is made",
-             "phone number" : "9971431313"
-]
 
-let emptyArray = [String]()
-let emptyDict = [String : String]()
+//Built-in Data Types
+let integer : Int = 10
+let boolean : Bool = true
+var double : Double = 12.4849392
+let float : Float = 3.50
+let string : String = "jass"
+let character : Character = "C"
+var optionalStrings : String? = nil
+var tuples = (501, "jass")
 
-booksName = []
-dictionaries = [:]
+//Type Aliases Data Types
+typealias Feet = Int
+var distance: Feet = 100
+print(distance)
+
+//Type Safety
+//var varE = 42
+//varE = "This is hello"
+//print(varE)
+
+//Type Inference
+// varA is inferred to be of type Int
+var varGG = 42
+print(varGG)
+
+// varJJ is inferred to be of type Double
+var varJJ = 3.14159
+print(varJJ)
+
+// varII is also inferred to be of type Double
+var varII = 3 + 0.14159
+print(varII)
+
+
+
+
+
+
+
+
+//Swift - Variables
+//Variable Declaration
+var varZ = 42
+print(varZ)
+
+//Type Annotations
+var varZZ = 40
+print(varZZ)
+
+var varY:Float
+varY = 3.14529
+print(varY)
+
+//Naming Variables
+var _var = "Hello, Swift 4!"
+print(_var)
+
+//Printing Variables
+var varK = "Godzilla"
+var varL = 1000.00
+
+print("Value of \(varK) is more than \(varL) millions")
+
+
+//Swift - Optionals
+//optional String
+var optionalString: String? = "Hello"
+print(optionalString == nil)
+
+var optionalName: String? = nil
+var greetings = "Hello!"
+
+if let name = optionalName {
+    greetings = "Hello \(name)"
+} else {
+    let name = optionalName
+}
+
+let nicName :String? = "jass"
+let fullName = "Jass Singh"
+let information = "HI \(nicName ?? fullName)"
+
+var myString:String? = nil
+if myString != nil {
+    print(myString)
+} else {
+    print("my String is has nil value")
+}
+
+//Forced Unwrapping String
+var myString2:String? = nil
+myString2 = "Hello Jasbeer"
+if myString2 != nil {
+print(myString2)
+} else {
+    print("my string is has nil value")
+}
+
+//let's apply unwrapping to get the correct value of the variable
+var myString3:String?
+myString3 = "Hello, Swift 4!"
+if myString3 != nil {
+    print( myString3! )
+} else {
+    print("myString has nil value")
+}
+
+//Automatic Unwrapping
+var myString4:String!
+myString4 = "hello jass"
+if myString4 != nil {
+    print(myString4)
+} else {
+    print("myString has nil value")
+}
+
+//Optional Binding
+var myString5:String?
+myString5 = "hello world"
+
+if let yourString1 = myString5 {
+    print("your String has - \(yourString1)")
+} else {
+    print("yout string does not have a value")
+}
+
+
 
 //Tuples
 
@@ -100,9 +206,10 @@ print("Value of \(constAw) is more than \(constBw) millions")
 
 
 
-//Swift - Literals
+//Literals
 let stringL = "Hello\tWorld\n\nHello\'Swift 4\'"
 print(stringL)
+
 
 //Swift Operators
 //(a)Arithnetic Operators
@@ -268,26 +375,6 @@ print(m)
 
 
 
-//optional String
-var optionalString: String? = "Hello"
-print(optionalString == nil)
-
-var optionalName: String? = nil
-var greetings = "Hello!"
-
-if let name = optionalName {
-    greetings = "Hello \(name)"
-} else {
-    let name = optionalName
-}
-
-//String?
-let nicName :String? = "jass"
-let fullName = "Jass Singh"
-let information = "HI \(nicName ?? fullName)"
-
-
-
 
 //Strings
 // String creation using String literal
@@ -338,9 +425,9 @@ print(stringS)
 
 //String Concatenation
 let constA = "Hello"
-let constB = "world"
+let constV = "world"
 
-var stringTT = constA + constB
+var stringTT = constA + constV
 print(stringTT)
 
 //String Length
@@ -377,3 +464,94 @@ print("UTF-16 Codes: ")
 for code in unicodeString.utf16 {
     print("\(code) ")
 }
+
+
+//Swift - Characters
+let char1: Character = "A"
+let char2: Character =  "B"
+
+print("value of char1 \(char1)")
+print("value of char2 \(char2)")
+
+//Accessing Characters from Strings
+for ch in "hello" {
+print(ch)
+}
+
+//Concatenating Strings with Characters
+var varQ:String = "Hello"
+let varQL:Character = "G"
+
+varQ.append(varQL)
+
+print("Value of var = \(varQ)")
+
+
+
+
+//Arrays
+//Creating Arrays
+var booksName = ["English", "Maths", "Eco", "Science"]
+
+var someArray = [String]()
+var someArray =
+var someInt
+//Accessing Arrays
+booksName[0] = "i need the English Book"
+
+
+
+
+
+
+
+
+
+//Dictionaries
+var dictionaries = ["Brewery" : "a palace where beer is made"]
+dictionaries["jasbeer"] = "iOS Trainee"
+
+var dict = ["Icici bank" : 073101000196,
+            "Hdfc Bank" : 07331010212214]
+
+var dict2 : [String : Any] = [
+    "Jasbeer" : 7777077731,
+    "jay" : 9971431313,
+    "Bakery" : "a palce where bread is made"
+]
+
+var dict3 = ["Car" : "Elite i20",
+             "Brewery" : "a palace where beer is made",
+             "phone number" : "9971431313"
+]
+
+let emptyArray = [String]()
+let emptyDict = [String : String]()
+
+booksName = []
+dictionaries = [:]
+
+
+
+//Fabonnaci Series
+func printFebonnaci (until n : Int) {
+   
+var n1 = 0
+var n2 = 1
+for _ in 0...n {
+    let num = n1 + n2
+    
+//    Logic swipe the value 
+    n1 = n2
+    n2 = num
+    print(num)
+}
+}
+printFebonnaci(until: 10)
+
+
+
+
+
+
+
