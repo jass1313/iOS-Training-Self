@@ -494,15 +494,139 @@ print("Value of var = \(varQ)")
 var booksName = ["English", "Maths", "Eco", "Science"]
 
 var someArray = [String]()
-var someArray =
-var someInt
+var someArray1 = [Int](repeating: 40, count: 30)
+print(someArray1)
+
 //Accessing Arrays
-booksName[0] = "i need the English Book"
+var carName = ["i20", "Verna", "i10", "Xent", "Creta"]
+carName[4] = "my fav car is Creta"
+print(carName)
+
+var someInt = [Int](repeating: 40, count: 3)
+var someVar = someInt[0]
+print("Value of First element is \(someInt[0])")
+print("Value of First element is \(someInt[1])")
+print("Value of First element is \(someInt[2])")
+
+//Modifying Arrays
+var someInt1 = [Int]()
+someInt1.append(10)
+someInt1.append(20)
+someInt1 += [30]
+var someVar1 = someInt1[0]
+print("Value of First element is \(someVar1)")
+print("Value of First element is \(someInt1[1])")
+print("Value of First element is \(someInt1[2])")
+
+var someInt2 = [Int]()
+someInt2.append(20)
+someInt2.append(30)
+someInt2 += [40]
+
+someInt[2] = 50
+print("Value of First element is \(someInt2[0])")
+print("Value of First element is \(someInt2[1])")
+print("Value of First element is \(someInt2[2])")
+
+//Iterating Over an Array
+var someStrs = [String]()
+someStrs.append("Apple")
+someStrs.append("Orange")
+someStrs += ["Banana"]
+
+for item in someStrs {
+    print(item)
+}
+
+var someStrs1 = [String]()
+someStrs1.append("Apple")
+someStrs1.append("Orange")
+someStrs1.append("Banana")
+
+for (index , item) in someStrs1.enumerated() {
+     print("Value at index = \(index) is \(item)")
+}
+
+//Adding two arrays in same type
+var intsA = [Int](repeating: 2, count:2)
+var intsB = [Int](repeating: 1, count:3)
+
+var intsC = intsA + intsB
+for item in intsC {
+    print(item)
+}
+
+var intsAA = [10, 11, 20, 10]
+var intsBB = [13, 10, 20, 11]
+var intCC = intsAA + intsBB
+for item in intCC {
+print(item)
+}
+//The Count Property
+var intsAB = [Int](repeating: 2, count: 2)
+var intsBA = [Int](repeating: 3, count: 1)
+
+var intsCB = intsAB + intsBA
+
+print("Total items in intsA = \(intsAB.count)" )
+print("Total items in intsB = \(intsBA.count)")
+print("Total items in intsC = \(intsCB.count)")
+
+//The empty Property
+var instAC = [Int](repeating: 2, count: 2)
+var intsAD = [Int](repeating: 2, count: 1)
+var intsAE = [Int]()
+
+print(instAC.isEmpty)
+print(intsAD.isEmpty)
+print(intsAE.isEmpty)
+
+//Swift - Sets
+var someSet : Set = [10,11,11,23,45]
+
+//Accessing and modifying Sets
+someSet.count
+someSet.insert(20)
+someSet.isEmpty
+someSet.remove(10)
+someSet.removeAll()
+someSet.contains(50)
+
+//Iterating over a Set
+var someSet1 : Set = [10,11,15,23,48]
+for _ in someSet1 {
+    print(someSet1)
+}
+
+var someSet2 : Set = [10,12,35,33]
+for _ in someSet2.sorted() {
+    print(someSet2)
+}
+
+let evens: Set = [10,12,14,16,18]
+let odds: Set = [5,7,9,11,13]
+let primes = [2,3,5,7]
+
+odds.union(evens).sorted()
+odds.intersection(evens).sorted()
+odds.subtracting(primes).sorted()
 
 
-
-
-
+//Fabonnaci Series
+func printFebonnaci (until n : Int) {
+    
+    var n1 = 0
+    var n2 = 1
+    for _ in 0...n {
+        let num = n1 + n2
+        
+        //    Logic swipe the value
+        n1 = n2
+        n2 = num
+        print(num)
+    }
+}
+printFebonnaci(until: 10)
 
 
 
@@ -531,23 +655,19 @@ let emptyDict = [String : String]()
 booksName = []
 dictionaries = [:]
 
+var someDict = [Int: String]()
+someDict = [20 : "Jasbeer Singh"]
+
+var someDict1:[Int : String] = [1: "One", 2: "Two", 3: "Three", 4: "Four"]
+
+//Sequence Based Initialization
+//
+var cities = ["Delhi", "Mumbai", "Kolkata"]
+var Distance = [50, 2000, 3000]
+let cityDistanceDict = Dictionary(uniqueKeysWithValues: zip(cities, Distance))
 
 
-//Fabonnaci Series
-func printFebonnaci (until n : Int) {
-   
-var n1 = 0
-var n2 = 1
-for _ in 0...n {
-    let num = n1 + n2
-    
-//    Logic swipe the value 
-    n1 = n2
-    n2 = num
-    print(num)
-}
-}
-printFebonnaci(until: 10)
+
 
 
 
