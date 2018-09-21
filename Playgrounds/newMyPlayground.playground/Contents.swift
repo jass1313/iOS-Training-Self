@@ -661,10 +661,159 @@ someDict = [20 : "Jasbeer Singh"]
 var someDict1:[Int : String] = [1: "One", 2: "Two", 3: "Three", 4: "Four"]
 
 //Sequence Based Initialization
-//
+//create Dictionary from arrays
 var cities = ["Delhi", "Mumbai", "Kolkata"]
-var Distance = [50, 2000, 3000]
+var Distance = [2000, 600, 300]
 let cityDistanceDict = Dictionary(uniqueKeysWithValues: zip(cities, Distance))
+print(cityDistanceDict)
+
+//Filtering
+var closeCities = cityDistanceDict.filter{$0 .value < 1000}
+print(closeCities)
+
+//Dictionary Grouping
+var cities2 = ["Delhi", "Banglore", "Hyndrabad", "Dehradun", "Mumbai"]
+var groupCities = Dictionary(grouping: cities2) {$0.first!}
+print(groupCities)
+
+//Accessing Dictionaries
+var someDict2:[Int: String] = [1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"]
+var someVar11 = [1]
+print("\(someVar11)")
+print("\(String(describing: someDict2[2])))")
+print("\(String(describing: someDict2[3])))")
+
+
+//Modifying Dictionaries
+var someDict12:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var oldVal = someDict12.updateValue("New Value", forKey: 1)
+var someVar13 = someDict12[1]
+print("\(String(describing: oldVal))")
+print("\(String(describing: someVar13))")
+print("\(String(describing: someDict12[2]))")
+print("\(String(describing: someDict12[3]))")
+
+var someDict13:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var oldVal1 = someDict12[1]
+someDict12[1] = "new vale of one"
+var someVar14 = someDict13[1]
+print("\(String(describing: oldVal1))")
+print("\(String(describing: someVar14))")
+print("\(String(describing: someDict13[2]))")
+print("\(String(describing: someDict13[3]))")
+
+//Remove Key-Value Pairs
+var someDict14:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var removeTheValue = someDict14.removeValue(forKey: 2)
+print("\(String(describing: someDict14[1]))")
+print("\(String(describing: someDict14[2]))")
+print("\(String(describing: someDict14[3]))")
+
+var someDict15:[Int: String] = [1: "one", 2: "two", 3: "three"]
+someDict15[2] = nil
+print("\(String(describing: someDict15[1]))")
+print("\(String(describing: someDict15[2]))")
+print("\(String(describing: someDict15[3]))")
+
+//Iterating Over a Dictionary
+var someDict16:[Int: String] = [1: "one", 2: "two", 3: "three"]
+for (index, keyValue) in someDict16.enumerated() {
+    print("\(index) - \(keyValue)")
+}
+
+var someDict17:[Int: String] = [1: "one", 2: "two", 3: "three"]
+for (key, value) in someDict17.enumerated() {
+print("\(key) - \(value)")
+}
+
+//Convert to Arrays
+var someDict18:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var dictKeys = [Int](someDict18.keys)
+var dictValue = [String](someDict18.values)
+
+print("Print Dict Keys")
+for (key) in dictKeys {
+    print(key)
+}
+print("print dict valus")
+for (value) in dictValue {
+    print(value)
+}
+
+//The count Property
+var someDict19:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var someDict20:[Int: String] = [1: "one", 2: "two", 3: "three"]
+
+print(someDict19.count)
+print(someDict20.count)
+
+
+///The empty Property
+var someDict21:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var someDict22:[Int: String] = [1: "one", 2: "two", 3: "three"]
+var someDict23:[Int: String] = [Int: String]()
+print(someDict21.isEmpty)
+print(someDict22.isEmpty)
+print(someDict23.isEmpty)
+
+//Functions
+func student(name : String) -> String {
+    return name
+}
+print(student(name: "jasbeer singh"))
+print(student(name: "jass"))
+print(student(name: "james"))
+
+func display (no1: Int) -> Int {
+let a = no1
+return a
+}
+print(display(no1: 100))
+print(display(no1: 200))
+print(display(no1: 300))
+
+//Parameters and Return Values
+func mult (no1: Int, no2: Int) -> Int {
+    return no1*no2
+}
+print(mult(no1: 10, no2: 30))
+print(mult(no1: 30, no2: 34))
+
+//Functions without Parameters
+func votersname() -> String {
+    return "jasbeer"
+}
+print(votersname())
+
+//Functions with Return Values
+func ls(array: [Int]) -> (large: Int, small: Int) {
+    var lar = array[0]
+    var sma = array[0]
+
+for i in array [0..<array.count] {
+    if i < sma {
+        sma = i
+    } else if i > lar {
+        lar = i
+    }
+    }
+    return (lar, sma)
+    
+}
+let num = ls(array: [50,410,12,1,21])
+
+//Functions without Return Values
+func sum(a:Int, b:Int) {
+    let a = a+b
+    let b = a-b
+    print(a, b)
+}
+sum(a: 30, b: 10)
+sum(a: 40, b: 20)
+sum(a: 20, b: 30)
+
+//Functions with Optional Return Types
+
 
 
 
