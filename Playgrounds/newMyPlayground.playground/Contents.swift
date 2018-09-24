@@ -912,6 +912,8 @@ print(total)
 armstrong(a: 1, b: 5, c: 3)
 
 
+
+
 //Magic Number 145
 func magicNumber (aa: Int, bb: Int, cc: Int) {
     var ma = aa
@@ -932,6 +934,44 @@ func magicNumber (aa: Int, bb: Int, cc: Int) {
     
 }
 magicNumber(aa: 1, bb: 4, cc: 5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Armstrong Number 153
+func armstrong1 (a: Int) {
+    var bz = a / 10 / 10
+    var bk = a / 10 % 10
+    var bt = a % 10
+
+   
+    
+    
+
+}
+armstrong1(a: 153)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
