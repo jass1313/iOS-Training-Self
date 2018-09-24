@@ -612,21 +612,6 @@ odds.intersection(evens).sorted()
 odds.subtracting(primes).sorted()
 
 
-//Fabonnaci Series
-func printFebonnaci (until n : Int) {
-    
-    var n1 = 0
-    var n2 = 1
-    for _ in 0...n {
-        let num = n1 + n2
-        
-        //    Logic swipe the value
-        n1 = n2
-        n2 = num
-        print(num)
-    }
-}
-printFebonnaci(until: 10)
 
 
 
@@ -812,10 +797,141 @@ sum(a: 30, b: 10)
 sum(a: 40, b: 20)
 sum(a: 20, b: 30)
 
+
+
 //Functions with Optional Return Types
+func minMax(array:[Int]) -> (min : Int, Max : Int)? {
+    if array.isEmpty {return nil}
+    var currentMin = array[0]
+    var currentMax = array[0]
+
+    for value in array[1..<array.count] {
+        if value < currentMin {
+            currentMin = value
+        } else if value > currentMax {
+        currentMax =  value
+    }
+    }
+        return (currentMin, currentMax )
+}
+    if let numbers = minMax(array: [10,20,10,25,60,90,-6,-10]) {
+    print(numbers.min, numbers.Max)
+    }
+
+//Functions Local Vs External Parameter Names
+func sample(number: Int) {
+    print(number)
+}
+sample(number: 1)
+sample(number: 2)
+sample(number: 3)
+
+
+//External Parameter Names
+func pow(firstArg a: Int, secondArg b: Int) -> Int {
+    var res = a
+    for _ in 1..<b {
+        res = res * a
+    }
+    print(res)
+    return res
+}
+
+pow(firstArg:5, secondArg:4)
+
+
+//Variadic Parameters
+func vari<N>(members: N...){
+    for i in members {
+        print(i)
+    }
+}
+vari(members: 4,3,5)
+vari(members: 4.5, 3.1, 5.6)
+vari(members: "Swift 4", "Enumerations", "Closures")
 
 
 
+
+//Fabonnaci Series
+func printFebonnaci (until n : Int) {
+    
+    var n1 = 0
+    var n2 = 1
+    for _ in 0...n {
+        let num = n1 + n2
+        
+        //    Logic swipe the value
+        n1 = n2
+        n2 = num
+        print(num)
+    }
+}
+printFebonnaci(until: 10)
+
+//Factorial
+var number: Int = 4 // Change the number here
+
+var fact: Int = 1
+
+var n: Int = number + 1
+
+for i in 1..<n{
+    
+    fact = fact * i
+    
+}
+print("Factorial of ",number," is: ", fact)
+
+
+//Calculation of simple interest
+let p = 1000
+let y = 3
+let i = 8.5
+
+let result = Double(p) * Double(y) * i/100
+let convert = Int(result)
+print(result)
+
+
+
+//Armstrong Number 153
+func armstrong (a: Int, b: Int, c: Int) {
+var ab = a
+var ba = b
+var ca = c
+
+    for _ in 1...2 {
+        ab = ab * a
+        ba = ba * b
+        ca = ca * c
+        }
+    let total = ab + ba + ca
+print(total)
+}
+armstrong(a: 1, b: 5, c: 3)
+
+
+//Magic Number 145
+func magicNumber (aa: Int, bb: Int, cc: Int) {
+    var ma = aa
+    var gi = bb
+    var cs = cc
+    
+       for jk in 1..<aa {
+        ma = jk * ma
+    }; for jt in 1..<bb {
+        gi = jt * gi
+    }; for ja in 1..<cc {
+        cs = ja * cs
+        
+            let total1 = (cs + ma + gi)
+        
+    print(total1)
+}
+    
+}
+magicNumber(aa: 1, bb: 4, cc: 5)
 
 
 
