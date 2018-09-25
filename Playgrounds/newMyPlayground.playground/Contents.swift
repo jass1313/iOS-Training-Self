@@ -900,7 +900,7 @@ func armstrong (a: Int, b: Int, c: Int) {
 var ab = a
 var ba = b
 var ca = c
-
+ab = ab * a * a
     for _ in 1...2 {
         ab = ab * a
         ba = ba * b
@@ -935,6 +935,29 @@ func magicNumber (aa: Int, bb: Int, cc: Int) {
 }
 magicNumber(aa: 1, bb: 4, cc: 5)
 
+//func amstrongNumber(num:Int) -> String {
+//    var sum = 0
+//    var tempNum = num
+//    var ks = 0
+//
+//    while tempNum != 0  {
+//
+//        ks = tempNum % 10
+//        tempNum /= 10
+//        sum = sum + ks * ks * ks
+//
+//
+//        if sum > num {break}
+//    }
+//    if sum == num {
+//        return "Yes"
+//    } else {
+//    return "No"
+//}
+//}
+//let numAm = 153
+//let resultAm = amstrongNumber(num:numAm)
+//print(resultAm)
 
 
 
@@ -948,44 +971,18 @@ magicNumber(aa: 1, bb: 4, cc: 5)
 
 
 
-//Armstrong Number 153
-func armstrong1 (a: Int) {
-    var bz = a / 10 / 10
-    var bk = a % 10
-    var bt = a % 10
-
-   
-    
-    
-
-}
-armstrong1(a: 153)
 
 
 
 
-func AmstrongNumber(num:Int) -> String {
-    var sum = 0
-    var tempNum = num
-    var reminder = 0
-    while tempNum != 0  {
-        
-        reminder = tempNum % 10
-        tempNum /= 10
-        sum = sum + reminder * reminder * reminder
-        
-        
-        if sum > num {break}
-    }
-    if sum == num {
-        return "Yes"
-    } else {
-    return "No"
-}
-}
-let numAm = 153
-let resultAm = AmstrongNumber(num:numAm)
-print(resultAm)
+
+
+
+
+
+
+
+
 
 
 
