@@ -869,6 +869,8 @@ func printFebonnaci (until n : Int) {
 }
 printFebonnaci(until: 10)
 
+
+
 //Factorial
 var number: Int = 4 // Change the number here
 
@@ -882,6 +884,7 @@ for i in 1..<n{
     
 }
 print("Factorial of ",number," is: ", fact)
+
 
 
 //Calculation of simple interest

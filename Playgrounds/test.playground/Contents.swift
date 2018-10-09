@@ -27,13 +27,13 @@ func amstrongNumber(num:Int) {
             print("no its not a armstrong number")
         }
     }
-amstrongNumber(num: 153)
+amstrongNumber(num: 1
+)
 
 
 
-/*
 
-Magic Number 145
+//Magic Number 145
 func magicNumber (num : Int) {
     let magiNum = num
     var ma = magiNum % 10
@@ -60,10 +60,29 @@ magicNumber(num: 145)
 
 
 
+//swap value
+var a = 10
+var b = 20
+let temp = a
+a = b
+b = temp
 
 
 
 
 
+//Factorial
+var number: Int = 4 // Change the number here
 
-*/
+var fact: Int = 1
+
+var n: Int = number + 1
+
+for i in 1..<n{
+    
+    fact = fact * i
+    
+}
+print("Factorial of ",number," is: ", fact)
+
+
