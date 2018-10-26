@@ -14,10 +14,15 @@ int main() {
     
     for (n=0; n<5; ++n) {
         if (n%2==0) {
-            break;
+            //break;
+          //  continue;
+            //goto soso;
         }
-        
+        printf("\n%d ",n);
     }
-    printf("\n%d ",n);
+    
+    
+soso:
+    printf("n");
     
 }
