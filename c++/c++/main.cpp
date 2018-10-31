@@ -167,7 +167,7 @@ int main()
     }
 }
  */
-
+/*
 
 int main()
  {
@@ -191,8 +191,31 @@ int main()
      int a = sizeof(int);
      printf("\n%d\n", a);
  
+}  */
+int f(int);
+int g(int);
+int main( )
+{
+    int x, y, s = 2 ;
+    s *= 3 ;
+    y = f ( s ) ;
+    x = g ( s ) ;
+    printf ( "\n%d %d %d", s, y, x ) ;
 }
-
+int t = 8 ;
+int f ( int a )
+{
+    a += -5 ;
+    t -= 4 ;
     
+    return ( a + t ) ;
+}
+int g ( int a )
+{
+    a = 1 ;
+    t += a ;
+    printf("%d %d", a, t);
+    return ( a + t ) ;
+}
     
 
