@@ -217,12 +217,4 @@ int g ( int a )
     return ( a + t ) ;
 }
  */
-int main( )
-{
-    float a = 25.345 ;
-    float *b ;
-    b = &a ;
-    printf ( "\n%f %f", a, b ) ;
-}
-
 
