@@ -216,5 +216,107 @@ int g ( int a )
     t += a ;
     return ( a + t ) ;
 }
- */
+*/ /*
+void fun1( ) ;
+void fun2( ) ;
+#pragma startup fun1
+#pragma exit fun2
+int main( )
+{
+    printf ( "\nInside maim" ) ;
+}
+void fun1( )
+{
+    printf ( "\nInside fun1" ) ;
+}
+void fun2( )
+{
+    printf ( "\nInside fun2" ) ;
+} */
 
+/*
+
+#define ADAPTER 'z'
+#define VGA 97
+int main( )
+{
+#if ADAPTER < VGA
+    printf("its not a small");
+#else
+    printf("its a small" );
+#endif
+                
+} *//*
+
+int main( )
+{
+    int avg, sum = 0 ;
+    int i ;
+    int marks[5];
+    
+     for ( i = 0 ; i <= 4 ; i++ )
+    {
+        printf ( "\nEnter marks " ) ;
+        scanf ( "%d", &marks[i] ) ;
+    //}
+    //for ( i = 0 ; i <= 29 ; i++ )
+        sum = sum + marks[i] ;
+    avg = sum / 30 ;
+    }
+    printf ( "\nAverage marks = %d", avg ) ;
+} */ /*
+int disp(int *n);
+int show(int *k);
+int main( )
+{
+    int i ;
+    int marks[ ] = { 55, 65, 75, 56, 78, 78, 90 } ;
+    for ( i = 0 ; i <= 6 ; i++ )
+        disp ( &marks[i] ) ;
+}
+
+int disp ( int *n )
+{
+     printf ( "n %d ", *n ) ;
+    show(*(&n));
+    return (0);
+}
+int show(int *k)
+{
+    printf("k %u", *k);
+
+    return (0);
+}
+int main( )
+{
+    int i = 3, *x ;
+    float j = 1.5, *y ;
+    char k = 'c', *z ;
+    printf ( "\nValue of i = %d", i ) ;
+    printf ( "\nValue of j = %f", j ) ;
+    printf ( "\nValue of k = %c", k ) ;
+    x = &i ;
+    y = &j ;
+    z = &k ;
+    printf ( "\nOriginal address in x = %u", x ) ;
+    printf ( "\nOriginal address in y = %u", y ) ;
+    printf ( "\nOriginal address in z = %u", z ) ;
+    x-- ;
+    y-- ;
+    z-- ;
+    printf ( "\nNew address in x = %u", x ) ;
+    printf ( "\nNew address in y = %u", y ) ;
+    printf ( "\nNew address in z = %u ", z ) ;
+}*/
+int main( )
+{
+    int arr[ ] = { 10, 20, 36, 72, 45, 36 } ;
+    int *j, *k ;
+    j = &arr [ 4 ] ;
+    k = ( arr + 2 ) ;
+    printf("%u",*k);
+    if ( j == k )
+        printf ( "The two pointers point to the same location" ) ;
+    else
+        printf ( "The two pointers do not point to the same location" ) ;
+}
