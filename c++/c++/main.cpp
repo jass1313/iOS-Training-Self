@@ -307,16 +307,26 @@ int main( )
     printf ( "\nNew address in x = %u", x ) ;
     printf ( "\nNew address in y = %u", y ) ;
     printf ( "\nNew address in z = %u ", z ) ;
-}*/
+}*//*
+int display(int *j, int n);
 int main( )
 {
-    int arr[ ] = { 10, 20, 36, 72, 45, 36 } ;
-    int *j, *k ;
-    j = &arr [ 4 ] ;
-    k = ( arr + 2 ) ;
-    printf("%u",*k);
-    if ( j == k )
-        printf ( "The two pointers point to the same location" ) ;
-    else
-        printf ( "The two pointers do not point to the same location" ) ;
+    int num[ ] = { 24, 34, 12, 44, 56, 17 } ;
+    display ( num, 6 ) ;
+}
+int display ( int *j, int n )
+{ int i ;
+    for ( i = 0 ; i <= n - 1 ; i++ )
+    {
+        printf ( "\nelement = %d", *j ) ;
+        j++ ;
+    }
+    return (0);
+}
+*/
+int main( )
+{
+    static int b[ ] = { 1, 1, 2, 3, 4 } ;
+    int *p[ ] = { b + 0, b + 1, b + 2, b + 3, b + 4 } ;
+    printf ( "\n%u %u %d ", p, *p, * ( *p ) ) ;
 }
