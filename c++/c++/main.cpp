@@ -324,9 +324,80 @@ int display ( int *j, int n )
     return (0);
 }
 */
+/*
 int main( )
 {
-    static int b[ ] = { 1, 1, 2, 3, 4 } ;
-    int *p[ ] = { b + 0, b + 1, b + 2, b + 3, b + 4 } ;
-    printf ( "\n%u %u %d ", p, *p, * ( *p ) ) ;
+    int a[ ] = {5,1,2,3,4};
+    int *p[] = { a + 3, a + 1, a + 2, a + 3, a + 4 };
+    printf ( "\n%u %u %d ",p,*p,*(*p));
+}*//*
+int main( )
+{
+int arr[3][4][2] = {
+    {
+        { 2, 4 },
+        { 7, 8 },
+        { 3, 4 },
+        { 5, 6 }
+    },
+    {
+        { 7, 6 },
+        { 3, 4 },
+        { 5, 3 },
+        { 2, 3 }
+    },
+    {
+        { 8, 9 },
+        { 7, 2 },
+        { 3, 4 },
+        { 5, 1 },
+    }
+    } ;
+    int t;
+    t=arr[2][3][1] ;
+    printf("%d", t);
+    
+    printf(" %d ", *( *( *( arr + 2 ) + 3 ) + 1 ) );
+}*//*
+int f(int *x, int *y);
+int main( )
+{
+    int a[5], i, b = 16 ;
+    for ( i = 0 ; i < 5 ; i++ )
+        a[i] = 2 * i ;
+    f ( a, &b ) ;
+    for ( i = 0 ; i < 5 ; i++ )
+        printf ( "\n%d", a[i] ) ;
+    printf( "\n %d ", b ) ;
+}
+int f (int *x, int *y)
+{
+    int i ;
+    for ( i = 0 ; i < 5 ; i++ )
+    {
+    *( x + i ) += 2 ;
+    *y += 2 ;
+}
+    return (0);
+}*/ /*
+int main( )
+{
+    int a[5] = { 5, 1, 15, 20, 25 } ;
+    int i, j, k = 1, m ;
+    i = ++a[1] ;
+    j = a[1]++ ;
+    m = a[i++] ;
+    printf ( "\n%d %d %d", i, j, m ) ;
+} */
+int main( )
+{
+    int n[3][3] = {
+        2, 4, 3,
+        6, 8, 5,
+        3, 5, 1
+    } ;
+    int i, *ptr ;
+    ptr = n[3][3] ;
+    for ( i = 0 ; i <= 8 ; i++ )
+        printf ( "\n%d", *( ptr + i ) ) ;
 }
