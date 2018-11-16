@@ -424,63 +424,137 @@
                        printf("%d", k);
                        
                        }*//*
+                           int main()
+                           {
+                           int a[10][10], r, c, i, j;
+                           printf("Enter rows and columns of matrix: ");
+                           scanf("%d %d", &r, &c);
+                           
+                           printf("\nEnter elements of matrix:\n");
+                           for(i=0; i<r; ++i)
+                           for(j=0; j<c; ++j)
+                           {
+                           printf("Enter element a %d %d: ",i, j);
+                           scanf("%d", &a[i][j]);
+                           }
+                           printf("\nEntered Matrix: \n");
+                           for(i=0; i<r; ++i)
+                           for(j=0; j<c; ++j)
+                           {
+                           printf("%d  ", a[i][j]);
+                           if (j == c-1)
+                           printf("\n\n");
+                           }
+                           printf("\nTranspose of Matrix:\n");
+                           for(i=0; i<c; ++i)
+                           for(j=0; j<r; ++j)
+                           {
+                           printf("%d  ",a[j][i]);
+                           if(j==r-1)
+                           printf("\n\n");
+                           }
+                           return 0;
+                           }*//*
+                               
+                               int main()
+                               {
+                               int add[6][6] {
+                               5,3,3,2,5,3,
+                               4,6,3,5,3,6,
+                               7,7,6,9,8,2,
+                               2,9,5,4,6,4,
+                               8,9,6,4,5,7,
+                               1,5,3,6,8,5
+                               };
+                               int adds[6][6] {
+                               5,9,8,7,4,5,
+                               9,7,6,8,5,3,
+                               2,5,6,7,9,5,
+                               4,2,3,5,4,6,
+                               3,5,4,8,9,6,
+                               8,6,5,4,8,2
+                               };
+                               
+                               for(int i=0;i<6;i++)
+                               for(int j=0;j<6;j++)
+                               {
+                               int k=add[i][j]+adds[i][j];
+                               printf(" %d", k);
+                               if(j==6-1)
+                               printf("\n");
+                               }
+                               }*/
 int main()
 {
-    int a[10][10], r, c, i, j;
-    printf("Enter rows and columns of matrix: ");
-    scanf("%d %d", &r, &c);
+    static int array1[10][10], array2[10][10];
+    int i, j, k, a, m, n;
     
-    printf("\nEnter elements of matrix:\n");
-    for(i=0; i<r; ++i)
-        for(j=0; j<c; ++j)
+    printf("Enter the order of the matrix \n");
+    scanf("%d %d", &m, &n);
+    printf("Enter co-efficients of the matrix \n");
+    for (i = 0; i < m; ++i)
+    {
+        for (j = 0; j < n; ++j)
         {
-            printf("Enter element a %d %d: ",i, j);
-            scanf("%d", &a[i][j]);
+            scanf("%d", &array1[i][j]);
+            array2[i][j] = array1[i][j];
         }
-    printf("\nEntered Matrix: \n");
-    for(i=0; i<r; ++i)
-        for(j=0; j<c; ++j)
+    }
+    printf("The given matrix is \n");
+    for (i = 0; i < m; ++i)
+    {
+        for (j = 0; j < n; ++j)
         {
-            printf("%d  ", a[i][j]);
-            if (j == c-1)
-                printf("\n\n");
+            printf(" %d", array1[i][j]);
         }
-    printf("\nTranspose of Matrix:\n");
-    for(i=0; i<c; ++i)
-        for(j=0; j<r; ++j)
+        printf("\n");
+    }
+    printf("After arranging rows in ascending order\n");
+    for (i = 0; i < m; ++i)
+    {
+        for (j = 0; j < n; ++j)
         {
-            printf("%d  ",a[j][i]);
-            if(j==r-1)
-                printf("\n\n");
+            for (k =(j + 1); k < n; ++k)
+            {
+                if (array1[i][j] > array1[i][k])
+                {
+                    a = array1[i][j];
+                    array1[i][j] = array1[i][k];
+                    array1[i][k] = a;
+                }
+            }
         }
-    return 0;
-}*/
-
-int main()
-{
-    int add[6][6] {
-                    5,3,3,2,5,3,
-                    4,6,3,5,3,6,
-                    7,7,6,9,8,2,
-                    2,9,5,4,6,4,
-                    8,9,6,4,5,7,
-                    1,5,3,6,8,5
-                };
-    int adds[6][6] {
-                    5,9,8,7,4,5,
-                    9,7,6,8,5,3,
-                    2,5,6,7,9,5,
-                    4,2,3,5,4,6,
-                    3,5,4,8,9,6,
-                    8,6,5,4,8,2
-                    };
-    
-    for(int i=0;i<6;i++)
-        for(int j=0;j<6;j++)
+    }
+    for (i = 0; i < m; ++i)
+    {
+        for (j = 0; j < n; ++j)
         {
-            int k=add[i][j]+adds[i][j];
-            printf(" %d", k);
-            if(j==6-1)
-                printf("\n");
+            printf(" %d", array1[i][j]);
         }
+        printf("\n");
+    }
+    printf("After arranging the columns in descending order \n");
+    for (j = 0; j < n; ++j)
+    {
+        for (i = 0; i < m; ++i)
+        {
+            for (k = i + 1; k < m; ++k)
+            {
+                if (array2[i][j] < array2[k][j])
+                {
+                    a = array2[i][j];
+                    array2[i][j] = array2[k][j];
+                    array2[k][j] = a;
+                }
+            }
+        }
+    }
+    for (i = 0; i < m; ++i)
+    {
+        for (j = 0; j < n; ++j)
+        {
+            printf(" %d", array2[i][j]);
+        }
+        printf("\n");
+    }
 }
