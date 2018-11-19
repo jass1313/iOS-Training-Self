@@ -483,7 +483,7 @@
                                if(j==6-1)
                                printf("\n");
                                }
-                               }*/
+                               }*//*
 int main()
 {
     static int array1[10][10], array2[10][10];
@@ -516,6 +516,7 @@ int main()
         {
             for (k =(j + 1); k < n; ++k)
             {
+                printf(" %d", k);
                 if (array1[i][j] > array1[i][k])
                 {
                     a = array1[i][j];
@@ -557,4 +558,58 @@ int main()
         }
         printf("\n");
     }
+}*//*
+int main()
+{
+    
+    char name[25] ;
+    printf ( "Enter your full name " ) ;
+    gets ( name ) ;
+    puts ( "Hello!" ) ;
+    printf("%s",name) ;
+    
+    char name[25];
+    printf("enter ur name");
+    scanf("%[^\n]s", name);
+    
+    printf("%s\n",name);
+    
+    char name2[]= "HAESLER";
+    char *ptr;
+    ptr=name2;
+    while (*ptr!='\0') {
+        printf("%c",*ptr);
+        ptr++;
+    }*//*
+    
+    char name2[]= "HAESLER";
+    char name[10];
+    
+    char *s = "Good Morning";
+    char *q;
+    
+    //name = name2;
+    q=s;
+    printf("%s ",q);*/
+#include <string.h>
+int xstrlen ( char *s );
+int main()
+{
+    char arr[ ] = "Bamboozled" ;
+    int len1, len2 ;
+    len1 = xstrlen ( arr ) ;
+    len2 = xstrlen ( "Humpty Dumpty" ) ;
+    printf ( "\nstring = %s length = %d", arr, len1 ) ;
+    printf ( "\nstring = %s length = %d", "Humpty Dumpty", len2 ) ;
+}
+int xstrlen ( char *s )
+{
+    int length = 0 ;
+    while ( *s != '\0' )
+    {
+        length++ ;
+        s++ ;
+        printf("%d ",length);
+    }
+    return ( length ) ;
 }
