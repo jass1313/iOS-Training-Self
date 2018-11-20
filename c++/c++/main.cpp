@@ -592,6 +592,7 @@ int main()
     q=s;
     printf("%s ",q);*/
 #include <string.h>
+/*
 int xstrlen ( char *s );
 int main()
 {
@@ -612,4 +613,39 @@ int xstrlen ( char *s )
         printf("%d ",length);
     }
     return ( length ) ;
+}*/
+
+int xstrcat ( char *t,   char *s );
+int main( )
+{
+    char source[ ] = "Sayonara" ;
+    char target[30] = "hello " ;
+    xstrcat ( target, source ) ;
+    printf ( "\nsource string = %s", source ) ;
+    printf ( "\ntarget string = %s \n", target ) ;
 }
+int xstrcat (  char *t,   char *s )
+{
+    while ( *s != '\0' )
+         /* {
+                *t++;
+            }
+    while (*s != '\0')
+            {
+                *t++=*s++;
+            } */
+    {
+        if (*t != '\0')
+        {
+            *t++=*t;
+        } else
+        {
+            *t++=*s++;
+        }
+    }
+     return ('\0');
+}
+
+
+ 
+
