@@ -6,6 +6,7 @@
 //  Copyright © 2018 KiwiTech. All rights reserved.
 //
 #include <stdio.h>
+#include <string.h>
 //#include <iostream>
 /*
  int fun(int);
@@ -591,7 +592,7 @@ int main()
     //name = name2;
     q=s;
     printf("%s ",q);*/
-#include <string.h>
+
 /*
 int xstrlen ( char *s );
 int main()
@@ -613,7 +614,7 @@ int xstrlen ( char *s )
         printf("%d ",length);
     }
     return ( length ) ;
-}*/
+}*//*
 
 int xstrcat ( char *t,   char *s );
 int main( )
@@ -627,13 +628,13 @@ int main( )
 int xstrcat (  char *t,   char *s )
 {
     while ( *s != '\0' )
-         /* {
+         / {
                 *t++;
             }
     while (*s != '\0')
             {
                 *t++=*s++;
-            } */
+            } /
     {
         if (*t != '\0')
         {
@@ -644,8 +645,74 @@ int xstrcat (  char *t,   char *s )
         }
     }
      return ('\0');
+}*//*
+int main( )
+{
+    char string1[ ] = "Jerry" ;
+    char string2[ ] = "Ferry" ;
+    int i, j, k ;
+    i = strcmp ( string1, "Jerry" ) ;
+    j = strcmp ( string1, string2 ) ;
+    k = strcmp ( string1, "Jerry boy" ) ;
+    printf ( "\n%d %d %d", i, j, k ) ;
+} *//*
+
+//#define FOUND 1
+//#define NOTFOUND 0
+int main() {
+    char masterlist[6][10] ={
+                        "akash",
+                        "jasbeer",
+                        "jass",
+                        "james",
+                        "neha",
+                        "god"
+                            };
+    int i,flag,a;
+    
+    char yourname[10];
+    printf("enter your name");
+    scanf("%s",yourname);
+   // flag = NOTFOUND;
+    for(i=0;i<=5;i++)
+    {
+         a = strcmp ( &masterlist[i][0] , yourname ) ;
+        printf("%s", masterlist);
+        if (a==0)
+        {
+            printf("Welcome you can enter");
+           // flag=FOUND;
+            break;
+        }
+    }
+    if(a != 0)
+        printf("Sorry you are a trespasser %d",a);
+}*/
+/*
+#include "alloc.h"
+int main( )
+{
+    char *names[6];
+    char n[50];
+    int len,i;
+    char *p;
+    for ( i = 0 ; i < 6 ; i++ )
+    {
+        printf ( "\nEnter name " ) ;
+        scanf ( "%s", n ) ;
+        len = strlen(n);
+        p = malloc(len+1);
+        strcpy(p, n );
+        names[i]=p;
+    }
+    for (i=0; i<6;i++)
+        printf("\n%s",names[i]);
+}*/
+int main( )
+{
+    char str1[] =  "United"  ;
+    char str2[13] =  "Front"  ;
+  
+    strcat(str1, str2);
+    printf("%s",str1);
 }
-
-
- 
-
