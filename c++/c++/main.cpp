@@ -707,12 +707,76 @@ int main( )
     }
     for (i=0; i<6;i++)
         printf("\n%s",names[i]);
-}*/
+}*//*
 int main( )
 {
-    char str1[] =  "United"  ;
-    char str2[13] =  "Front"  ;
+    char str[20] , news[20];
+    char *s, *t;
+    int pos,n,i;
+    
+    printf ( "\n enter the string:") ;
+    scanf("%s",str);
+    
+    printf("\n enter the position and number of characters to exract:");
+    scanf("%d %d",&pos,&n);
+    
+    s=str;
+    t=news;
+    
+    if(n==0)
+        n = strlen(str);
+    
+    s=s+pos-1;
+    
+    for (i=0; i<n; i++) {
+        *t=*s;
+        s++;
+        t++;
+        
+    }
+    *t='\0';
+    printf("\n The substring is %s\n", news);
+    
+}*//*
+int main()
+{
+    char str[6];
+    int num=0,i;
+    
+    printf("Enter a string containing a number:");
+    scanf("%s",str);
+    
+    for (i=0; str[i] != '\0'; i++) {
+        if(str[i]>=48&&str[i]<=57)
+        
+            num=num*10+(str[i]-48);
+    
+        else
+        {
+            printf("Not a valid string\n");
+            return 1;
+        }
+    }
+    printf("\n The number is:%d\n",num);
+    return 0;
+}*/
+int main()
+{
+    char input[100],output[100];
+    int i=0,j=0;
   
-    strcat(str1, str2);
-    printf("%s",str1);
+    printf("Enter the string\n");
+    gets(input);
+    for(i=0;i<strlen(input);i++)
+    {
+        if(input[i]==' '&&input[i+1]!=' ')
+            output[j++]=input[i];
+        else if(input[i]!=' ')
+            output[j++]=input[i];
+    }
+    printf("\noutput string is\n");
+    puts(output);
+    
 }
+
+
