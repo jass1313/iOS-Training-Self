@@ -759,24 +759,69 @@ int main()
     }
     printf("\n The number is:%d\n",num);
     return 0;
-}*/
-int main()
+}*//*
+int main( )
 {
-    char input[100],output[100];
-    int i=0,j=0;
-  
-    printf("Enter the string\n");
-    gets(input);
-    for(i=0;i<strlen(input);i++)
+    int i,a,x;
+    char *str[ ] = {
+        "We will teach you how to...",
+        "Move a mountain",
+        "Level a building",
+        "Erase the past",
+        "Make a million",
+        "...all through C!"
+    } ;
+    char str1[30],str2[30];
+    printf("Enter str1 :");
+    scanf("\n%[^\n]s",str1);
+    printf("Enter str2 :");
+    scanf("\n%[^\n]s",str2);
+    for(i=0;i<6;i++)
     {
-        if(input[i]==' '&&input[i+1]!=' ')
-            output[j++]=input[i];
-        else if(input[i]!=' ')
-            output[j++]=input[i];
+        a=strcmp(str[i],str1);
+        printf("%d",a);
+        if(a==0)
+        {
+            str[i]=str2;
+        }
     }
-    printf("\noutput string is\n");
-    puts(output);
+    for(x=0;x<6;x++)
+        printf("\n%s",str[x]);
+}*//*
+
+int main(){
+    int i,j,count;
+    char str[25][25],temp[25];
+    puts("How many strings u are going to enter?: ");
+    scanf("%d",&count);
     
+    puts("Enter Strings one by one: ");
+    for(i=0;i<=count;i++)
+        gets(str[i]);
+    for(i=0;i<=count;i++)
+        for(j=i+1;j<=count;j++){
+            if(int a=strcmp(str[i],str[j])>0){
+                printf("%d \n", a);
+                strcpy(temp,str[i]);
+                strcpy(str[i],str[j]);
+                strcpy(str[j],temp);
+            }
+        }
+    printf("Order of Sorted Strings:");
+    for(i=0;i<=count;i++)
+        puts(str[i]);
+    
+    return 0;
+}*/
+int main() {
+    char *s[] = {
+        "To err is human...",
+        "But to relly mess things up...",
+        "One needs to know C!!"
+    };
+    int i;
+    for (i=0; i<3; i++) {
+        strrev(s[i]);
+    }
+    printf(<#const char *, ...#>)
 }
-
-
