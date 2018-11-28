@@ -812,16 +812,71 @@ int main(){
         puts(str[i]);
     
     return 0;
-}*/
-int main() {
-    char *s[] = {
-        "To err is human...",
-        "But to relly mess things up...",
-        "One needs to know C!!"
-    };
-    int i;
-    for (i=0; i<3; i++) {
-        strrev(s[i]);
+}*//*
+#define m 5
+int main()
+{
+    int i,j,k,t;
+    int arr[m];
+    printf("Enter 5 numbers\n");
+    for(i=0;i<m;i++)
+        scanf("%d",&arr[i]);
+    for(j=0;j<m;j++)
+    {
+        for(k=j+1;k<m;k++)
+        {
+            if(arr[j]>arr[k])
+            {
+                t=arr[k];
+                arr[k]=arr[j];
+                arr[j]=t;
+                printf("%d",t);
+            }
+        }
+        
     }
-    printf(<#const char *, ...#>)
+    for(i=0;i<m;i+=1)
+        printf("%d ",arr[i]);
+    return 0;
+}*//*
+int main()
+{
+    int i,j,m=0;
+    int array[3][4];
+    
+        printf("Enter the Numbers\n");
+    for (i=0; i<3; i++)
+        for ( j=0; j<4; j++){
+            scanf("%d", &array[i][j]);
+        }
+    for (i=0; i<3; i++)
+        for (j=0; j<4; j++) {
+            m=m+array[i][j];
+      }
+    printf("Total %d",m);
+}*/
+
+int main()
+{
+    int array[2][2][2]={
+                        {
+                          {3,2},
+                          {5,6}
+                        },
+                        {
+                            {6,7},
+                            {8,9},
+                        }
+                    };
+    int i,j,k,s=0;
+    for (i=0;i<2;i++)
+        for (j=0; j<2; j++) {
+            for (k=0; k<2; k++) {
+                s=s+array[i][j][k];
+               
+            }
+            
+        }
+    printf("%d ",s);
 }
+
