@@ -919,27 +919,31 @@ int main() {
     }
     printf("Searched Number %d is Present %d Times in the array", n, m);
 }*/
-int reverse(int *j, int k);
+
  int main() {
      int arr[2];
-    int i;
-    printf("Enters the numbers");
+     int i,*p,j,w;
+     
+    printf("Enters the numbers\n");
     for (i=0; i<2; i++) {
         scanf("%d",&arr[i]);
     }
-     reverse(&arr[0],2);
+    p=&arr[0];
      
- }
-int reverse(int j, int k){
-    int m,l,t=0;
-        for (l=0; l<k;l++) {
+     for (w=0; w<2; w++) {
+         j=*p;
+    int t=0,m;
+        while (j>0) {
             m=j%10;
             t=t*10+m;
             j=j/10;
         }
-    printf("%d",t);
+         p++;
+        printf("%d \n", t);
+     }
     return (0);
 }
      
+
 
 
