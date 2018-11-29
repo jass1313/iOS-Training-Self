@@ -854,7 +854,7 @@ int main()
             m=m+array[i][j];
       }
     printf("Total %d",m);
-}*/
+}*//*
 
 int main()
 {
@@ -878,5 +878,68 @@ int main()
             
         }
     printf("%d ",s);
+}*//*
+
+int main() {
+    int arr[10];
+    int i,j,k=0,l=0,m=0,n=0;
+    printf("Enters the numbers");
+    for (i=0; i<10; i++) {
+    scanf("%d",&arr[i]);
+    }
+    for(j=0;j<10;j++){
+        if (arr[j]>0) {
+            m=m+1;
+            } else {
+                n=n+1;
+            }
+            if (arr[j]%2==0) {
+                k=k+1;
+            } else {
+                l=l+1;
+            }
+        
+        }
+    printf("Postive Numbers %d Nagtive Numbers %d even Numbers %d Odd Numbers %d", m,n,k,l );  }*/
+  /*
+int main() {
+    int arr[10];
+    int i,j,n,m=0;
+    printf("Enters the numbers \n");
+    for (i=0; i<10; i++) {
+        scanf("%d",&arr[i]);
+    }
+    printf("Enter any number for search in array \n");
+    scanf("%d",&n);
+    
+    for(j=0;j<10;j++){
+        if(arr[j]==n){
+            m=m+1;
+        }
+    }
+    printf("Searched Number %d is Present %d Times in the array", n, m);
+}*/
+int reverse(int *j, int k);
+ int main() {
+     int arr[2];
+    int i;
+    printf("Enters the numbers");
+    for (i=0; i<2; i++) {
+        scanf("%d",&arr[i]);
+    }
+     reverse(&arr[0],2);
+     
+ }
+int reverse(int j, int k){
+    int m,l,t=0;
+        for (l=0; l<k;l++) {
+            m=j%10;
+            t=t*10+m;
+            j=j/10;
+        }
+    printf("%d",t);
+    return (0);
 }
+     
+
 
