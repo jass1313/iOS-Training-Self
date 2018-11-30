@@ -918,32 +918,64 @@ int main() {
         }
     }
     printf("Searched Number %d is Present %d Times in the array", n, m);
-}*/
+}*//*
 
  int main() {
      int arr[2];
-     int i,*p,j,w;
+     int i,j,w;
      
-    printf("Enters the numbers\n");
+    printf("Enters the numbers \n");
     for (i=0; i<2; i++) {
         scanf("%d",&arr[i]);
     }
-    p=&arr[0];
      
      for (w=0; w<2; w++) {
-         j=*p;
-    int t=0,m;
+         j=arr[w];
+     int t=0,m;
         while (j>0) {
             m=j%10;
             t=t*10+m;
             j=j/10;
         }
-         p++;
-        printf("%d \n", t);
+         printf("%d \n", t);
      }
     return (0);
-}
+}*//*
      
+int main()
+{
+    char arr[]="RAM";
+    int i;
+    for (i=2; i>=0; i--) {
+        printf("%c",arr[i]);
+    }
+}*//*
+int main()
+{
+    char arr[4],arr1[4];
+    printf("enter the name");
+       scanf("%s",arr);
+    int i,j;
+    for (i=0,j=2;i<=3;i++,j--) {
+        arr1[i]=arr[j];
+        }
+    for (i=0; i<3; i++) {
+        arr[i]=arr1[i];
+        printf("%c",arr[i]);
+    }
+}*/
 
-
+int main()
+{
+    char arr[25];
+    printf("enter the name");
+    scanf("%s",arr);
+    int i,j,t;
+  for (i=0,j=5;i<=5/2;i++,j--) {
+        t=arr[j];
+        arr[j]=arr[i];
+        arr[i]=t;
+        }
+     printf("%s",arr);
+}
 
