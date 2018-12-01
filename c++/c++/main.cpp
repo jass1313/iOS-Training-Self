@@ -963,19 +963,77 @@ int main()
         arr[i]=arr1[i];
         printf("%c",arr[i]);
     }
-}*/
+}*//*
 
 int main()
 {
     char arr[25];
-    printf("enter the name");
+    printf("enter the name\n");
     scanf("%s",arr);
-    int i,j,t;
-  for (i=0,j=5;i<=5/2;i++,j--) {
+    int i,j,len=0,t;
+    
+        while(arr[len]!='\0'){
+            len++;
+         }
+    for (i=0,j=len-1;i<len/2;i++,j--) {
         t=arr[j];
         arr[j]=arr[i];
         arr[i]=t;
         }
      printf("%s",arr);
 }
+*//*
+int oddeven(int *p, int k);
+int main()
+{
+    int num[50];
+    int i;
+    printf("Enter any Numbers for count of even numbers\n");
+    for (i=0; i<10; i++) {
+        scanf("%d", &num[i]);
+    }
+    oddeven(&num[0],10);
+   
+}
+int oddeven(int *p, int k)
+{
+    int i,even=0;
+    for (i=0; i<k; i++) {
+        if (*p%2==0)
+        even=even+1;
+        p++;
+    }
+    printf("even numbers %d", even);
+    return (even);
+}*/
 
+int oddeven(int p);
+int main()
+{
+    extern int t;
+    int num[10];
+    int i,oden,even=0;
+    printf("Enter any Numbers for count of even numbers\n");
+    for (i=0; i<10; i++) {
+        scanf("%d", &num[i]);
+    }
+    for (i=0; i<10; i++) {
+        oden=oddeven(num[i]);
+        even=even+oden;
+    }
+    t = 0;
+     printf("even numbers %d ",even);
+}
+
+int t;
+
+int oddeven(int p)
+{
+    
+    if (p%2==0){
+        return (1);
+    }
+    else
+        return (0);
+}
+    
