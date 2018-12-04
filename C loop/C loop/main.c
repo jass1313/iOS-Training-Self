@@ -103,16 +103,16 @@ int main()
     }
     
     for (i=0; i<n; i++)
-        for (j=i+1; j<n; j++) {
+        for(j=i+1;j<n;j++){
             if(num[i]>num[j]){
-                t=num[j];
-                num[j]=num[i];
-                num[i]=t;
-               }
+                t=num[i];
+                num[i]=num[j];
+                num[j]=t;
         }
-        for (i=0; i<n; i++) {
+    }
+        for (i=0; i<n; i++)
             printf("%d ",num[i]);
-        }
+    
 }
 
 
