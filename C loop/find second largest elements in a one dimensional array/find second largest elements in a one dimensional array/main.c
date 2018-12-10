@@ -10,22 +10,22 @@
 //find second largest elements in a one dimensional array
 int main() {
     int arr[4];
-    int i,t=0;
+    int i,s=0,m=0;
     
     printf("Enter array elements\n");
     for (i=0; i<4; i++) {
         scanf("%d",&arr[i]);
     }
-    int m=0;
+
     for (i=0; i<4;i++ ) {
         if (arr[i]>m){
-            t=m;
+            s=m;
             m=arr[i];
         }
-        else if(arr[i]>t && arr[i]<m) {
-            t=arr[i];
+        else if(arr[i]>s && arr[i]<m) {
+            s=arr[i];
         }
     }
-     printf("second largest element %d\nLargest element %d",t,m);
+     printf("second largest element %d\nLargest element %d",s,m);
     return 0;
 }

@@ -43,8 +43,8 @@ int main() {
     }
     
     for (i=1; i<n; i++)
-        for (j=i; j>=0; j--) {
-            if(num[j]>num[j-1]){
+        for (j=i; j>0; j--) {
+            if(num[j]<num[j-1]){
                 t=num[j];
                 num[j]=num[j-1];
                 num[j-1]=t;

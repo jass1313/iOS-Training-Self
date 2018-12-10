@@ -36,7 +36,7 @@ int main(){
         scanf("%d",&num[i]);
     }
     for (i=0; i<n-1; i++) {
-            for(j=0;j<n-1;j++){
+            for(j=i;j<n;j++){
                 if(num[j]>num[j+1]){
                     t=num[j+1];
                     num[j+1]=num[j];
