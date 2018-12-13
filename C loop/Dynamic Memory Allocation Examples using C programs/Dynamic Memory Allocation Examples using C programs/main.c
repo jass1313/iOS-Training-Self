@@ -35,12 +35,13 @@
     
     printf("%d %d %d", len1,len2,len3);
     return 0;
-}*/
+}*//*
 int main(){
     int i=10;
-    char *c;
+    char *c=NULL;
     
     c=malloc(i*sizeof(int));
+    
     
     printf("Enter the text");
     scanf("%[^\n]s", c);
@@ -48,8 +49,39 @@ int main(){
     printf("%s",c);
     
     free(c);
-    
-    
 }
+    */
+//read a one dimensional array, print sum of all elements along with inputted array elements using Dynamic Memory Allocation.
+int main() {
+    int *num=NULL;
+    int lim,i;
+    int sum=0;
+    
+    printf("Enter Number of elements\n");
+    scanf("%d", &lim);
+    
+    num= malloc(lim*sizeof(int));
+    
+    if (num==NULL){
+        printf("No spcace in num\n");
+    } else {
+        
+    printf("Enter %d elments\n",lim);
+    for (i=0; i<lim; i++) {
+        scanf("%d",&num[i]);
+        sum=sum+num[i];
+    }
+    
+    for (i=0; i<lim; i++) {
+        printf("%d ", num[i]);
+    }
+    
+    printf("\nSum of all elements %d\n", sum);
+    
+    free(num);
+    }
+}
+
+
 
 
