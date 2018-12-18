@@ -34,10 +34,10 @@ int main() {
 void balance(struct Bank b[0]) {
     int i;
 
-    printf("Account number and name of each customer with balance below Rs. 100\n");
+    printf("Account numbers with name of each customer whom balance below Rs. 100\n");
     for (i=0; i<5; i++) {
         if(b[i].Bal<100)
-            printf("%d %s %f\n", b[i].AcNo,b[i].Name,b[i].Bal);
+        printf("Account No.: %d \nName: %s \nBal: %f\n\n", b[i].AcNo,b[i].Name,b[i].Bal);
     }
 }
 
@@ -46,25 +46,30 @@ void deposit(struct Bank d[0]){
     int i,a,c;
     float m;
     
-    printf("Dear Customer Enter ur Account no.,How much money, withraw 0 or Deposit 1 \n");
-    scanf(" %d %f %d", &a,&m,&c);
+    printf("Dear Customer Enter your Account Number For Deposit or withdrawal : ");
+    scanf("%d",&a);
+    printf("\nHow much money you want to deposit or withdraw : ");
+    scanf("%f",&m);
+    printf("\nFor withdraw Enter 0 or For Deposit Enter 1 : ");
+    scanf("%d",&c);
+    
     for (i=0; i<5; i++) {
         if(d[i].AcNo==a){
             if(c==1){
                 d[i].Bal=d[i].Bal+m;
-                printf("Dear %s %f Rupees is deposit in ur account and current balance is %f:\n",d[i].Name, m, d[i].Bal);
+                printf("\nDear %s %f Rupees is deposit in your account and current balance is %f : ",d[i].Name, m, d[i].Bal);
                 break;
             } else if (c==0 && d[i].Bal>=m){
                 d[i].Bal=d[i].Bal-m;
-                 printf("Dear %s %f Rupees is withraw from ur account and current balance is %f:\n",d[i].Name, m, d[i].Bal);
+                 printf("\nDear %s %f Rupees is withraw from your account and current balance is %f : ",d[i].Name, m, d[i].Bal);
                 break;
             } else {
-                printf("Dear %s ur balance is insufficient for the specified withdrawal Balance is %f\n",d[i].Name, d[i].Bal);
+                printf("\nDear %s ur balance is insufficient for the specified withdrawal Balance is %f : ",d[i].Name, d[i].Bal);
                 break;
             }
         }
     }
      if (d[i].AcNo!=a){
-        printf("%d This Account Number do not match with records" , a);
+        printf("\n%d This Account Number dont match with records" , a);
     }
 }
