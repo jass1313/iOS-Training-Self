@@ -10,34 +10,50 @@
 //a structure to specify data of customers in a bank. The data to be stored is: Account number, Name, Balance in account.
 //(a) a function to print the Account number and name of each customer with balance below Rs. 100.
 //(b) If a customer request for withdrawal or deposit,
-    struct Bank
-    {
-        int AcNo;
-        char Name[10];
-        float Bal;
-    };
+struct Bank
+{
+    int AcNo;
+    char Name[10];
+    float Bal;
+};
 
 void balance(struct Bank bal[0]);
 void deposit(struct Bank d[0]);
 int main() {
+    int choice;
     struct Bank cust[5]={73101,"Jass",300,
-                         73102,"Aman",50,
-                         73103,"Ram",500,
-                         73104,"Raju",20,
-                         73105,"Raman",300
+        73102,"Aman",50,
+        73103,"Ram",500,
+        73104,"Raju",20,
+        73105,"Raman",300
     };
-    balance(cust);
-    deposit(cust);
+    printf("\n");
+    printf("Hello Thank you for chosing our bank ! \n");
+    printf("\nHow Can we help you ? \n");
+    printf("Enter 1 for Customers List whoes balance is less than 100 : \n");
+    printf("Enter 2 for Transaction :\n");
+    scanf("%d",&choice);
+    switch (choice) {
+        case 1:
+            balance(cust);
+            break;
+        case 2:
+            deposit(cust);
+            break;
+        default:
+            printf("Entered choice is invalid");
+            break;
+    }
 }
 
 // a function to print the Account number and name of each customer with balance below Rs. 100.
 void balance(struct Bank b[0]) {
     int i;
-
-    printf("Account numbers with name of each customer whom balance below Rs. 100\n");
+    
+    printf("\nCustomer whom balance below Rs. 100\n\n");
     for (i=0; i<5; i++) {
         if(b[i].Bal<100)
-        printf("Account No.: %d \nName: %s \nBal: %f\n\n", b[i].AcNo,b[i].Name,b[i].Bal);
+            printf("Account No.: %d \nName: %s \nBal: %f\n\n", b[i].AcNo,b[i].Name,b[i].Bal);
     }
 }
 
@@ -46,30 +62,60 @@ void deposit(struct Bank d[0]){
     int i,a,c;
     float m;
     
-    printf("Dear Customer Enter your Account Number For Deposit or withdrawal : ");
-    scanf("%d",&a);
-    printf("\nHow much money you want to deposit or withdraw : ");
-    scanf("%f",&m);
-    printf("\nFor withdraw Enter 0 or For Deposit Enter 1 : ");
+    printf("\n\nWhat would u like to do : \n\n");
+    printf("Enter 1 for Deposite : \n");
+    printf("Enter 2 for Withdraw : \n");
     scanf("%d",&c);
     
-    for (i=0; i<5; i++) {
-        if(d[i].AcNo==a){
-            if(c==1){
-                d[i].Bal=d[i].Bal+m;
-                printf("\nDear %s %f Rupees is deposit in your account and current balance is %f : ",d[i].Name, m, d[i].Bal);
-                break;
-            } else if (c==0 && d[i].Bal>=m){
-                d[i].Bal=d[i].Bal-m;
-                 printf("\nDear %s %f Rupees is withraw from your account and current balance is %f : ",d[i].Name, m, d[i].Bal);
-                break;
-            } else {
-                printf("\nDear %s ur balance is insufficient for the specified withdrawal Balance is %f : ",d[i].Name, d[i].Bal);
-                break;
+    switch (c) {
+        case 1:
+            printf("\nDear customer please input your Account Number : ");
+            scanf("%d",&a);
+            for (i=0; i<5; i++) {
+                if(d[i].AcNo==a) {
+                    printf("\nHello : %s ! \nEnter amount to be deposite : ",d[i].Name);
+                    scanf("%f",&m);
+                    d[i].Bal=d[i].Bal+m;
+                    printf("\n\nSuccessfully Deposited in your account \n");
+                    printf("\nAccount Number     : %d",d[i].AcNo);
+                    printf("\nName               : %s",d[i].Name);
+                    printf("\nUpdated Balance is : %f\n",d[i].Bal);
+                    break;
+                }
             }
-        }
-    }
-     if (d[i].AcNo!=a){
-        printf("\n%d This Account Number dont match with records" , a);
+            if (d[i].AcNo!=a) {
+                printf("\n%d This Account Number dont match with records" , a);
+            }
+            break;
+        case 2:
+            printf("\nDear customer please input your Account Number : ");
+            scanf("%d",&a);
+            for (i=0; i<5; i++) {
+                if(d[i].AcNo==a) {
+                    printf("\nHello : %s !\nEnter amount to be withdraw: ",d[i].Name);
+                    scanf("%f",&m);
+                    if (d[i].Bal>=m){
+                        d[i].Bal=d[i].Bal-m;
+                        printf("\nSuccessfully Withdraw in your account \n");
+                        printf("\nAccount Number     : %d",d[i].AcNo);
+                        printf("\nName               : %s",d[i].Name);
+                        printf("\nUpdated Balance is : %f\n",d[i].Bal);
+                        break;
+                    } else {
+                        printf("\nDear %s balance is insufficient for the specified withdrawal. your balance is : %f",d[i].Name, d[i].Bal);
+                        break;
+                    }
+                }
+            }
+            if (d[i].AcNo!=a) {
+                printf("\n%d This Account Number dont match with records" , a);
+            }
+            break;
+        default:
+            printf("Entered choice is invalid");
+            break;
     }
 }
+
+
+
