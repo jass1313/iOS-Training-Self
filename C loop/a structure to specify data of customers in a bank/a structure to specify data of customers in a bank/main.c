@@ -113,7 +113,7 @@ void deposit(struct Bank d[0]){
             break;
         default:
             printf("Entered choice is invalid");
-            break;
+            break;  
     }
 }
 

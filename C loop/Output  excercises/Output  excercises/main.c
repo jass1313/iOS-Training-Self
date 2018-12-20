@@ -7,32 +7,42 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 /*
-
-int getch(void);
-int getche(void);
-int getchar(void);
-int fgetchar(void);
 int main( )
 {
     char ch ;
     printf ( "\nPress any key to continue" ) ;
-    getch( ) ; // will not echo the character
+   // getch( ) ; // will not echo the character
     printf ( "\nType any character" ) ;
-    ch = getche( ) ; // will echo the character typed
+    //ch = getche( ) ; // will echo the character typed
     printf ( "\nType any character" ) ;
-    getchar( ) ; // will echo character, must be followed by enter key
+    ch = getchar() ; // will echo character, must be followed by enter key
+    putchar(ch);
     printf ( "\nContinue Y/N" ) ;
-    fgetchar( ) ; // will echo character, must be followed by enter key
-}*//*
+    //fgetchar( ) ; // will echo character, must be followed by enter key
+}*/
+/*
 
 int main()
 {
     char ch = 'A' ;
-    putch ( ch ) ;
+  //  putch ( ch ) ;
     putchar ( ch ) ;
-    fputchar ( ch ) ;
-    putch ( 'Z' ) ;
+   // fputchar ( ch ) ;
+   // putch ( 'Z' ) ;
     putchar ( 'Z' ) ;
-    fputchar ( 'Z' ) ;
+  //  fputchar ( 'Z' ) ;
 }*/
+
+char p[ ] = "The sixth sick sheikh's sixth ship is sick" ;
+int main( )
+{
+    int i = 0 ;
+    while ( p[i] != '\0' )
+    {
+        putchar( p[i] ) ;
+        i++ ;
+    }
+}
+
