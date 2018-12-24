@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D66D738F21CCD03100B0C79E /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D66D738E21CCD03100B0C79E /* main.c */; };
+		D637964F21D0CB9F00768C81 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D637964E21D0CB9F00768C81 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D66D738921CCD03100B0C79E /* CopyFiles */ = {
+		D637964921D0CB9F00768C81 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D66D738B21CCD03100B0C79E /* excercise Data Management */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "excercise Data Management"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D66D738E21CCD03100B0C79E /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D637964B21D0CB9F00768C81 /* Exercercises File inputOutput */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Exercercises File inputOutput"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D637964E21D0CB9F00768C81 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D66D738821CCD03100B0C79E /* Frameworks */ = {
+		D637964821D0CB9F00768C81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D66D738221CCD03100B0C79E = {
+		D637964221D0CB9F00768C81 = {
 			isa = PBXGroup;
 			children = (
-				D66D738D21CCD03100B0C79E /* excercise Data Management */,
-				D66D738C21CCD03100B0C79E /* Products */,
+				D637964D21D0CB9F00768C81 /* Exercercises File inputOutput */,
+				D637964C21D0CB9F00768C81 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D66D738C21CCD03100B0C79E /* Products */ = {
+		D637964C21D0CB9F00768C81 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D66D738B21CCD03100B0C79E /* excercise Data Management */,
+				D637964B21D0CB9F00768C81 /* Exercercises File inputOutput */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D66D738D21CCD03100B0C79E /* excercise Data Management */ = {
+		D637964D21D0CB9F00768C81 /* Exercercises File inputOutput */ = {
 			isa = PBXGroup;
 			children = (
-				D66D738E21CCD03100B0C79E /* main.c */,
+				D637964E21D0CB9F00768C81 /* main.c */,
 			);
-			path = "excercise Data Management";
+			path = "Exercercises File inputOutput";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D66D738A21CCD03100B0C79E /* excercise Data Management */ = {
+		D637964A21D0CB9F00768C81 /* Exercercises File inputOutput */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D66D739221CCD03100B0C79E /* Build configuration list for PBXNativeTarget "excercise Data Management" */;
+			buildConfigurationList = D637965221D0CB9F00768C81 /* Build configuration list for PBXNativeTarget "Exercercises File inputOutput" */;
 			buildPhases = (
-				D66D738721CCD03100B0C79E /* Sources */,
-				D66D738821CCD03100B0C79E /* Frameworks */,
-				D66D738921CCD03100B0C79E /* CopyFiles */,
+				D637964721D0CB9F00768C81 /* Sources */,
+				D637964821D0CB9F00768C81 /* Frameworks */,
+				D637964921D0CB9F00768C81 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "excercise Data Management";
-			productName = "excercise Data Management";
-			productReference = D66D738B21CCD03100B0C79E /* excercise Data Management */;
+			name = "Exercercises File inputOutput";
+			productName = "Exercercises File inputOutput";
+			productReference = D637964B21D0CB9F00768C81 /* Exercercises File inputOutput */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D66D738321CCD03100B0C79E /* Project object */ = {
+		D637964321D0CB9F00768C81 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = KiwiTech;
 				TargetAttributes = {
-					D66D738A21CCD03100B0C79E = {
+					D637964A21D0CB9F00768C81 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
-			buildConfigurationList = D66D738621CCD03100B0C79E /* Build configuration list for PBXProject "excercise Data Management" */;
+			buildConfigurationList = D637964621D0CB9F00768C81 /* Build configuration list for PBXProject "Exercercises File inputOutput" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = D66D738221CCD03100B0C79E;
-			productRefGroup = D66D738C21CCD03100B0C79E /* Products */;
+			mainGroup = D637964221D0CB9F00768C81;
+			productRefGroup = D637964C21D0CB9F00768C81 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D66D738A21CCD03100B0C79E /* excercise Data Management */,
+				D637964A21D0CB9F00768C81 /* Exercercises File inputOutput */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D66D738721CCD03100B0C79E /* Sources */ = {
+		D637964721D0CB9F00768C81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D66D738F21CCD03100B0C79E /* main.c in Sources */,
+				D637964F21D0CB9F00768C81 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D66D739021CCD03100B0C79E /* Debug */ = {
+		D637965021D0CB9F00768C81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -184,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		D66D739121CCD03100B0C79E /* Release */ = {
+		D637965121D0CB9F00768C81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,7 +236,7 @@
 			};
 			name = Release;
 		};
-		D66D739321CCD03100B0C79E /* Debug */ = {
+		D637965321D0CB9F00768C81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -244,7 +244,7 @@
 			};
 			name = Debug;
 		};
-		D66D739421CCD03100B0C79E /* Release */ = {
+		D637965421D0CB9F00768C81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -255,25 +255,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D66D738621CCD03100B0C79E /* Build configuration list for PBXProject "excercise Data Management" */ = {
+		D637964621D0CB9F00768C81 /* Build configuration list for PBXProject "Exercercises File inputOutput" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D66D739021CCD03100B0C79E /* Debug */,
-				D66D739121CCD03100B0C79E /* Release */,
+				D637965021D0CB9F00768C81 /* Debug */,
+				D637965121D0CB9F00768C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D66D739221CCD03100B0C79E /* Build configuration list for PBXNativeTarget "excercise Data Management" */ = {
+		D637965221D0CB9F00768C81 /* Build configuration list for PBXNativeTarget "Exercercises File inputOutput" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D66D739321CCD03100B0C79E /* Debug */,
-				D66D739421CCD03100B0C79E /* Release */,
+				D637965321D0CB9F00768C81 /* Debug */,
+				D637965421D0CB9F00768C81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D66D738321CCD03100B0C79E /* Project object */;
+	rootObject = D637964321D0CB9F00768C81 /* Project object */;
 }

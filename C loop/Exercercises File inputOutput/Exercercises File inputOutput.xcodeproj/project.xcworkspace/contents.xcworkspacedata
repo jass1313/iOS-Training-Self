@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:excercise Data Management.xcodeproj">
+      location = "self:Exercercises File inputOutput.xcodeproj">
    </FileRef>
 </Workspace>

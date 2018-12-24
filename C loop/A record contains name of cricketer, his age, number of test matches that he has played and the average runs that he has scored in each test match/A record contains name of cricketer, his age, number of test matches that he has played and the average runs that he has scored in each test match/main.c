@@ -43,6 +43,7 @@ int main() {
 //a program to read these records and arrange them in ascending order by average runs.
 void printRecord(struct cricketers record[0]){
     int i;
+    
     printf("\nRecords in ascending order by average runs. \n\n");
     for (i=0; i<5; i++) {
         qsort(record,5,sizeof(struct cricketers) ,compare);
