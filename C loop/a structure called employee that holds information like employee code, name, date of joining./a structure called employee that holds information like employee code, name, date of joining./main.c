@@ -16,12 +16,14 @@ according to the given current date.*/
 struct employee {
     char empcod[10];
     char name[10];
-    int dd,mm,yyyy;
+    int dd;
+    int mm;
+    int yyyy;
 };
 
 int main() {
     struct employee e[5] = {
-        "KTI0870","JASS",17,10,2015,
+        "KTI0870","JASS",15,11,2015,
         "KTI0871","RAM",12,10,2014,
         "KTI0872","SHAM",15,12,2013,
         "KTI0873","SIMRAN",13,11,2017,
@@ -30,8 +32,12 @@ int main() {
     };
     int i,d,m,y;
     
-    printf("enter current date dd/mm/yy\n");
-    scanf("%d%d%d",&d,&m,&y);
+    printf("enter current date day\n");
+    scanf("%d",&d);
+    printf("enter current date month\n");
+    scanf("%d",&m);
+    printf("enter current date year\n");
+    scanf("%d",&y);
     
     for (i=0; i<5; i++) {
         if (y-e[i].yyyy>3) {
@@ -39,13 +45,13 @@ int main() {
             printf("Name          : %s\n\n",e[i].name);
         }
         if (y-e[i].yyyy==3){
-            if (e[i].mm>m) {
+            if (e[i].mm<m) {
                 printf("employee code : %s\n",e[i].empcod);
                 printf("Name          : %s\n\n",e[i].name);
             }
         }
         if (e[i].mm==m) {
-            if (e[i].dd>=d) {
+            if (e[i].dd<=d) {
                 printf("employee code : %s\n",e[i].empcod);
                 printf("Name          : %s\n\n",e[i].name);
             }

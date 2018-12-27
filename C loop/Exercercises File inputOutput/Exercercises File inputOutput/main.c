@@ -176,7 +176,10 @@ int main()
     fclose(ft);
 }*//*
 //a program to display the contents of a text file on the screen. Make following provisions:
-//Display the name of the file whose contents are being displayed
+    //Display the name of the file whose contents are being displayed and the page numbers in the zeroth row. The moment one screenful of file
+    //has been displayed, flash a message ‘Press any key...’ in 24th row. When a key is hit, the next page’s contents should be
+    //displayed, and so on till the end of file.
+//program not yet completed cuz of qus understanding not cleared yet
 int main()
 {
     FILE *fptr;
@@ -205,8 +208,8 @@ int main()
     
     fclose(fptr);
     return 0;
-}*/
-    //a program to encrypt/decrypt
+}*//*
+    //a Non File program to encrypt/decrypt
 #include <stdio.h>
 
 int main()
@@ -243,4 +246,173 @@ int main()
             printf("\nError\n");
     }
     return 0;
-}
+    }*//*
+        //a program to encrypt/decrypt a FILE to another
+        #include <stdio.h>
+        
+        int main()
+        { FILE *fl,*fp;
+        int x;
+        char str;
+        
+        fl=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c", "r");
+        fp=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c", "w");
+        
+        
+        printf("\nPlease choose following options:\n");
+        printf("1 = Encrypt the string.\n");
+        printf("2 = Decrypt the string.\n");
+        scanf("%d", &x);
+        
+        switch(x)
+        {
+        case 1:
+        while(1){
+        str=fgetc(fl);
+        if (str==EOF)
+        break;
+        str = str + 3;
+        
+        fputc(str, fp);
+        }
+        break;
+        case 2:
+        while(1){
+        str=fgetc(fl);
+        if (str==EOF)
+        break;
+        str = str - 3;
+        
+        fputc(str, fp);
+        }
+        break;
+        default:
+        printf("\nError\n");
+        }
+        fclose(fp);
+        fclose(fl);
+        return 0;
+        }*//*
+//a program to encrypt/decrypt a FILE
+#include <stdio.h>
+
+int main()
+{   FILE *fl,*fp;
+    int x;
+    char str;
+    
+    fl=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c", "r");
+    fp=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c", "w");
+    
+    
+    printf("\nPlease choose following options:\n");
+    printf("1 = Encrypt the string.\n");
+    printf("2 = Decrypt the string.\n");
+    scanf("%d", &x);
+    
+    switch(x)
+    {
+        case 1:
+            while(1){
+                str=fgetc(fl);
+                if (str==EOF)
+                break;
+                str = str + 3;
+                
+                fputc(str, fp);
+            }
+            fclose(fp);
+            fclose(fl);
+            fl=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c", "w");
+            fp=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c", "r");
+            while (1) {
+                 str=fgetc(fp);
+                if (str==EOF)
+                    break;
+                 fputc(str, fl);
+            }
+            fclose(fp);
+            fclose(fl);
+            break;
+        case 2:
+            while(1){
+                str=fgetc(fl);
+                if (str==EOF)
+                    break;
+                str = str - 3;
+                fputc(str, fp);
+            }
+            fclose(fp);
+            fclose(fl);
+            fl=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c", "w");
+            fp=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c", "r");
+            while (1) {
+                str=fgetc(fp);
+                if (str==EOF)
+                    break;
+                fputc(str, fl);
+            }
+            fclose(fp);
+            fclose(fl);
+             break;
+        default:
+            printf("\nError\n");
+   }
+    
+    return 0;
+}*/
+//a program to encrypt/decrypt a FILE to another
+//In the Place of A to !
+//and In the Place of B to 5
+#include <stdio.h>
+
+int main()
+{ FILE *fl,*fp;
+    int x;
+    char str;
+    
+    fl=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c", "r");
+    fp=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c", "w");
+    
+    
+    printf("\nPlease choose following options:\n");
+    printf("1 = Encrypt the string.\n");
+    printf("2 = Decrypt the string.\n");
+    scanf("%d", &x);
+    
+    switch(x)
+    {
+        case 1:
+            while(1){
+                str=fgetc(fl);
+                if (str==EOF)
+                    break;
+                if (str=='A')
+                str = str - 32;
+                if (str=='B')
+                    str=str-13;
+                
+                fputc(str, fp);
+            }
+            break;
+        case 2:
+            while(1){
+                str=fgetc(fl);
+                if (str==EOF)
+                    break;
+                if (str=='!')
+                    str = str + 32;
+                if (str=='5')
+                    str=str + 13;
+                
+                fputc(str, fp);
+            }
+            break;
+        default:
+            printf("\nError\n");
+    }
+    fclose(fp);
+    fclose(fl);
+    return 0;
+    }
+
