@@ -71,7 +71,7 @@ int main(){
     }
     fclose(fp);
     fclose(fl);
-}*/
+}*//*
 //Suppose a file contains student’s records with each record containing name and age of a student. Write a program to read
 //these records and display them in sorted order by name.
 struct student {
@@ -105,4 +105,142 @@ int main(){
     for (i=0; i<=n; i++) {
         printf("%s %d \n",e[i].ch,e[i].age);
     }
+}*//*
+
+//a program to copy one file to another. While doing so replace all lowercase characters to their equivalent uppercase characters.
+#include<ctype.h>
+int main()
+{
+    FILE *fp1, *fp2;
+    char ch;
+    fp1 = fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c", "r");
+    if (fp1 == NULL)
+    {
+        puts("File does not exist..");
+        exit(1);
+    }
+    fp2 = fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c", "w");
+    if (fp2 == NULL)
+    {
+        puts("File does not exist..");
+        fclose(fp1);
+        exit(1);
+    }
+    while((ch=fgetc(fp1))!=EOF)
+    {
+        ch = toupper(ch);
+        fputc(ch,fp2);
+    }
+    printf("\nFile successfully copied..");
+    return 0;
+    }*/
+/*
+//a program to copy one file to another. While doing so replace all lowercase characters to their equivalent uppercase characters.
+//without standard fuction
+int main()
+{
+    FILE *fp,*fo,*ft;
+    char ch;
+    int i=1,j=1,k=1;
+    fp=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c","r");
+    fo=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy.c","r");
+    ft=fopen("/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main copy 2.c","w");
+    
+    while (1) {
+        
+        if (k==1||j==0){
+                ch=fgetc(fp);
+            if(ch==EOF)
+                  i=0;
+            if (ch=='\n')
+                    k=2;
+            if(i!=0)
+             fputc(ch,ft);
+        }
+        if (k==2||i==0){
+                ch=fgetc(fo);
+             if(ch==EOF)
+                 j=0;
+            if (ch=='\n')
+                    k=1;
+            if(j!=0)
+                fputc(ch,ft);
+            
+            if(i==0&&j==0)
+                break;
+    }
+}
+    
+    fclose(fp);
+    fclose(fo);
+    fclose(ft);
+}*//*
+//a program to display the contents of a text file on the screen. Make following provisions:
+//Display the name of the file whose contents are being displayed
+int main()
+{
+    FILE *fptr;
+    
+    char filename[200]="/Users/kiwitech/Desktop/iOS-Training-Self/C loop/try for File Input Output/try for File Input Output/main.c";
+    char c;
+    
+    //printf("Enter the filename to open \n");
+    //scanf("%s", filename);
+
+    fptr = fopen(filename, "r");
+    
+    if (fptr == NULL)
+    {
+        printf("Cannot open file \n");
+        exit(0);
+    }
+    c = fgetc(fptr);
+    
+    printf("File Name: %s\n",filename);
+    while (c != EOF)
+    {
+        printf ("%c", c);
+        c = fgetc(fptr);
+    }
+    
+    fclose(fptr);
+    return 0;
+}*/
+    //a program to encrypt/decrypt
+#include <stdio.h>
+
+int main()
+{
+    int i, x;
+    char str[100];
+    
+    printf("\nPlease enter a string:\t");
+    gets(str);
+    
+    printf("\nPlease choose following options:\n");
+    printf("1 = Encrypt the string.\n");
+    printf("2 = Decrypt the string.\n");
+    scanf("%d", &x);
+    
+    //using switch case statements
+    switch(x)
+    {
+        case 1:
+            for(i = 0; (i < 100 && str[i] != '\0'); i++)
+                str[i] = str[i] + 3; //the key for encryption is 3 that is added to ASCII value
+            
+            printf("\nEncrypted string: %s\n", str);
+            break;
+            
+        case 2:
+            for(i = 0; (i < 100 && str[i] != '\0'); i++)
+                str[i] = str[i] - 3; //the key for encryption is 3 that is subtracted to ASCII value
+            
+            printf("\nDecrypted string: %s\n", str);
+            break;
+            
+        default:
+            printf("\nError\n");
+    }
+    return 0;
 }
