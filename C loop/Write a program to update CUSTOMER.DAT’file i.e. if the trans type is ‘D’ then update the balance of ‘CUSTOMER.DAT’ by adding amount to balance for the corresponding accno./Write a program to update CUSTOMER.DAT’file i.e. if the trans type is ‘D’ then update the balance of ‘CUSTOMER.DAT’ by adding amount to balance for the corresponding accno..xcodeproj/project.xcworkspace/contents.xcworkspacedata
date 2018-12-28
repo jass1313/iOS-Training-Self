@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "self:Write a program to update CUSTOMER.DAT&#x2019;file i.e. if the trans type is &#x2018;D&#x2019; then update the balance of &#x2018;CUSTOMER.DAT&#x2019; by adding amount to balance for the corresponding accno..xcodeproj">
+   </FileRef>
+</Workspace>
