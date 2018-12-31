@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D62531D221CB9DA6007E71A1 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D62531D121CB9DA6007E71A1 /* main.c */; };
+		D69CDC6621DA176A0027D750 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = D69CDC6521DA176A0027D750 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D62531CC21CB9DA6007E71A1 /* CopyFiles */ = {
+		D69CDC6021DA176A0027D750 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D62531CE21CB9DA6007E71A1 /* try for File Input Output */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "try for File Input Output"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D62531D121CB9DA6007E71A1 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		D69CDC6221DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno."; sourceTree = BUILT_PRODUCTS_DIR; };
+		D69CDC6521DA176A0027D750 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D62531CB21CB9DA6007E71A1 /* Frameworks */ = {
+		D69CDC5F21DA176A0027D750 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D62531C521CB9DA6007E71A1 = {
+		D69CDC5921DA176A0027D750 = {
 			isa = PBXGroup;
 			children = (
-				D62531D021CB9DA6007E71A1 /* try for File Input Output */,
-				D62531CF21CB9DA6007E71A1 /* Products */,
+				D69CDC6421DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */,
+				D69CDC6321DA176A0027D750 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		D62531CF21CB9DA6007E71A1 /* Products */ = {
+		D69CDC6321DA176A0027D750 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D62531CE21CB9DA6007E71A1 /* try for File Input Output */,
+				D69CDC6221DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D62531D021CB9DA6007E71A1 /* try for File Input Output */ = {
+		D69CDC6421DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */ = {
 			isa = PBXGroup;
 			children = (
-				D62531D121CB9DA6007E71A1 /* main.c */,
+				D69CDC6521DA176A0027D750 /* main.c */,
 			);
-			path = "try for File Input Output";
+			path = "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno.";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D62531CD21CB9DA6007E71A1 /* try for File Input Output */ = {
+		D69CDC6121DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D62531D521CB9DA6007E71A1 /* Build configuration list for PBXNativeTarget "try for File Input Output" */;
+			buildConfigurationList = D69CDC6921DA176A0027D750 /* Build configuration list for PBXNativeTarget "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno." */;
 			buildPhases = (
-				D62531CA21CB9DA6007E71A1 /* Sources */,
-				D62531CB21CB9DA6007E71A1 /* Frameworks */,
-				D62531CC21CB9DA6007E71A1 /* CopyFiles */,
+				D69CDC5E21DA176A0027D750 /* Sources */,
+				D69CDC5F21DA176A0027D750 /* Frameworks */,
+				D69CDC6021DA176A0027D750 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "try for File Input Output";
-			productName = "try for File Input Output";
-			productReference = D62531CE21CB9DA6007E71A1 /* try for File Input Output */;
+			name = "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno.";
+			productName = "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno.";
+			productReference = D69CDC6221DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D62531C621CB9DA6007E71A1 /* Project object */ = {
+		D69CDC5A21DA176A0027D750 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = KiwiTech;
 				TargetAttributes = {
-					D62531CD21CB9DA6007E71A1 = {
+					D69CDC6121DA176A0027D750 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
 			};
-			buildConfigurationList = D62531C921CB9DA6007E71A1 /* Build configuration list for PBXProject "try for File Input Output" */;
+			buildConfigurationList = D69CDC5D21DA176A0027D750 /* Build configuration list for PBXProject "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno." */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = D62531C521CB9DA6007E71A1;
-			productRefGroup = D62531CF21CB9DA6007E71A1 /* Products */;
+			mainGroup = D69CDC5921DA176A0027D750;
+			productRefGroup = D69CDC6321DA176A0027D750 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D62531CD21CB9DA6007E71A1 /* try for File Input Output */,
+				D69CDC6121DA176A0027D750 /* a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno. */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D62531CA21CB9DA6007E71A1 /* Sources */ = {
+		D69CDC5E21DA176A0027D750 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D62531D221CB9DA6007E71A1 /* main.c in Sources */,
+				D69CDC6621DA176A0027D750 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		D62531D321CB9DA6007E71A1 /* Debug */ = {
+		D69CDC6721DA176A0027D750 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -184,7 +184,7 @@
 			};
 			name = Debug;
 		};
-		D62531D421CB9DA6007E71A1 /* Release */ = {
+		D69CDC6821DA176A0027D750 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -236,7 +236,7 @@
 			};
 			name = Release;
 		};
-		D62531D621CB9DA6007E71A1 /* Debug */ = {
+		D69CDC6A21DA176A0027D750 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -244,7 +244,7 @@
 			};
 			name = Debug;
 		};
-		D62531D721CB9DA6007E71A1 /* Release */ = {
+		D69CDC6B21DA176A0027D750 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -255,25 +255,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D62531C921CB9DA6007E71A1 /* Build configuration list for PBXProject "try for File Input Output" */ = {
+		D69CDC5D21DA176A0027D750 /* Build configuration list for PBXProject "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno." */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D62531D321CB9DA6007E71A1 /* Debug */,
-				D62531D421CB9DA6007E71A1 /* Release */,
+				D69CDC6721DA176A0027D750 /* Debug */,
+				D69CDC6821DA176A0027D750 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D62531D521CB9DA6007E71A1 /* Build configuration list for PBXNativeTarget "try for File Input Output" */ = {
+		D69CDC6921DA176A0027D750 /* Build configuration list for PBXNativeTarget "a program to update CUSTOMER.DAT’file i.e. if the trans type is ‘D’ then update the balance of ‘CUSTOMER.DAT’ by adding amount to balance for the corresponding accno." */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D62531D621CB9DA6007E71A1 /* Debug */,
-				D62531D721CB9DA6007E71A1 /* Release */,
+				D69CDC6A21DA176A0027D750 /* Debug */,
+				D69CDC6B21DA176A0027D750 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D62531C621CB9DA6007E71A1 /* Project object */;
+	rootObject = D69CDC5A21DA176A0027D750 /* Project object */;
 }
