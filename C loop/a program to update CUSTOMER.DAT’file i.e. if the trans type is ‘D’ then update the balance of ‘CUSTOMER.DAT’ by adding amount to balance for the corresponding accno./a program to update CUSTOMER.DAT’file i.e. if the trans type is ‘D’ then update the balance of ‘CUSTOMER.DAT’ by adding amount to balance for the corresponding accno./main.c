@@ -6,7 +6,6 @@
 //  Copyright © 2018 KiwiTech. All rights reserved.
 //
  /*a program to update FILE i.e. if the trans type is ‘D’ then update the balance of FILE by adding amount to balance for the corresponding accno and also add the fuctions for delete and modify the account from account list.*/
-// //program for Modify account still not write
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
@@ -68,10 +67,9 @@ int main() {
                 display("/Users/kiwitech/Desktop/main.c");
                 break;
             case 5:
-                //program for Modify account still not write
                 puts("Enter account no for modify the account");
                 scanf("%d",&addtrans.accno);
-                modify(add.accno);
+                modify(addtrans.accno);
                 puts("\n Account List After modify");
                 display("/Users/kiwitech/Desktop/main.c");
                 break;
@@ -170,14 +168,15 @@ void modify(int accModify) {
     struct customer holder;
     fp=fopen("/Users/kiwitech/Desktop/main.c", "rb+");
     rewind(fp);
-    while (fread(&holder, sizeof(holder), 1, fp)==1)
+    while (fread(&holder, sizeof(holder), 1, fp)==1){
         if(holder.accno==accModify){
             printf("Enter new details Ac name nd balance");
             scanf("%d%s%f",&holder.accno,holder.name,&holder.balance);
             fseek(fp, -sizeof(holder), SEEK_CUR);
             fwrite(&holder, sizeof(holder), 1, fp);
-        break;
+            break;
     }
+}
     fclose(fp);
 }
 

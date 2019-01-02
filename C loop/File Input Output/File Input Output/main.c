@@ -354,7 +354,7 @@
                                      fclose ( fp ) ;
                                      }
                                      */
-
+/*
 // A menu-driven program for elementary database management
 int main( )
 {
@@ -466,7 +466,7 @@ int main( )
                 // exit( ) ;
         }
     }
-}
+}*/
 /*
  
  
@@ -516,3 +516,4 @@ int main( )
  close ( outhandle ) ;
  }
  */
+
