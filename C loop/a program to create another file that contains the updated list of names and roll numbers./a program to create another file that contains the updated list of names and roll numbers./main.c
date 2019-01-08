@@ -32,7 +32,7 @@ int main() {
     };
     struct class student;
     struct classModify modify;
-    int choice,count,join,leave,wrong;
+    int choice,count,join,leave,wrong,dnotj,dnotl;
     char another;
     FILE *fp,*fl,*ft;
     fp =fopen("masterFile.c", "rb+");
@@ -107,24 +107,31 @@ int main() {
                 }
                 break;
             case 5:
-                join=0;
-                leave=0;
-                wrong=0;
-                count=0;
+                join=0;leave=0;wrong=0; dnotl=0;dnotj=0;
                 rewind(fl);
                 while (fread(&modify, sizeof(modify), 1, fl)==1) {
                     switch (modify.join_Leave) {
                         case 'J':
                         case 'j':
+                            dnotj++;
+                            count=0;
+                            rewind(fp);
+                            while (fread(&student, sizeof(student), 1, fp)==1) {
+                                if(modify.roolNum==student.roolNum)
+                                    count++;
+                            }
+                            if(!count){
                                 student.roolNum=modify.roolNum;
                                 strcpy(student.names,modify.names);
                                 fseek(fp, 0, SEEK_END);
                                 fwrite(&student, sizeof(student), 1, fp);
                                 join++;
+                            }
                             break;
                         case 'L':
                         case 'l':
                             ft=fopen("temp.c", "wb+");
+                            dnotl++;
                             rewind(fp);
                             while (fread(&student, sizeof(student), 1, fp)==1) {
                                 if(student.roolNum!=modify.roolNum){
@@ -143,10 +150,13 @@ int main() {
                             break;
                     }
                  }
-                printf("%d Student joind the class\n",join);
-                printf("%d student leave the class\n",leave);
-                printf("%d Wrong type Selection\n",wrong);
-                printf("master Record Updated with new List\n");
+                printf("\n\t\t\tStatus\n");
+                printf("\n\t%d Student joind the class\n",join);
+                printf("\t%d Student already joind the class\n",dnotj-join);
+                printf("\t%d Student leave the class\n",leave);
+                printf("\t%d Student already leave\n",dnotl-leave);
+                printf("\t%d Wrong type Selection\n",wrong);
+                printf("\tmaster Record Updated with new List\n");
                 
                 break;
             case 0:
