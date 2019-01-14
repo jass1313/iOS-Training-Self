@@ -176,21 +176,19 @@ int main()
     return 0;
 }
 */
-
-
- // user input data write to a file
+/*
+// user input data write to a file
 int main(){
     char str_write[30];
-    char filename[]="main.c";
+    char filename[]="main2.c";
     int fp;
-    printf("enter the data");
+    printf("enter the data\n");
     scanf("%[^\n]s",str_write);
-    fp=open(filename, O_WRONLY|O_CREAT|O_TEXT,0);
-    //seek to end in the file
+    fp=open(filename, O_WRONLY|O_CREAT|O_BINARY,S_IRUSR|S_IWUSR);
     lseek(fp,(long) 0,2);
     write(fp, (char*)str_write, 30);
     close(fp);
-}
+}*/
 /*
 int main(){
     char str_read[100];
@@ -201,3 +199,18 @@ int main(){
     printf("%s",str_read);
     close(fp);
 }*/
+
+// user input data write to a file
+int main(){
+    char buffer_read[100];
+    int fp;
+    printf("enter the data");
+    gets(buffer_read);
+    fp=open("main.c",O_CREAT|O_WRONLY|O_BINARY,S_IRUSR|S_IWUSR);
+    lseek(fp, (long)0, 2);
+    write(fp, (char*)buffer_read, 30);
+
+    close(fp);
+}
+
+
