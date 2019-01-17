@@ -567,41 +567,42 @@ void showbits ( int n )
               else {
               printf("\n\n\nCollege %d didn't win the champions trophy\n",name);
               }
-              }*//*
-                  
-                  int main(){
-                  struct animal
-                  {
-                  char name[30] ;
-                  int type ;
-                  };
-                  struct animal a = { "OCELOT", 18 } ;
-                  
-                  int t1,t2,type1,type2;
-                  
-                  t1=a.type>>4;
-                  type1=t1&1;
-                  t2=t1<<1;
-                  type2=t2&16;
-                  
-                  if(type1==1)
-                  printf("\n\nOCELOT is Canine\n");
-                  
-                  if(type1==2)
-                  printf("\n\nOCELOT is Feline\n");
-                  
-                  if(type1==4)
-                  printf("\n\nOCELOT is Cetacean\n");
-                  
-                  if(type1==8)
-                  printf("\n\nOCELOT is Marsupial\n");
-                  
-                  if(type2!=0)
-                  printf("\n\nOCELOT is Carnivore\n");
-                  
-                  if(type2==0)
-                  printf("\n\nOCELOT is Herbivore\n");
-                  }*/
+              }*/
+/*
+int main(){
+    struct animal
+    {
+        char name[30] ;
+        int type ;
+    };
+    struct animal a = { "OCELOT", 18 } ;
+    
+    int t1,t2,type1,type2;
+    
+    t1=a.type>>2;
+    type1=t1&4;
+    t2=t1<<2;
+    type2=t2&16;
+    
+    if(type1==1)
+        printf("\n\nOCELOT is Canine\n");
+    
+    if(type1==2)
+        printf("\n\nOCELOT is Feline\n");
+    
+    if(type1==4)
+        printf("\n\nOCELOT is Cetacean\n");
+    
+    if(type1==8)
+        printf("\n\nOCELOT is Marsupial\n");
+    
+    if(type2==16)
+        printf("\n\nOCELOT is Carnivore\n");
+    
+    if(type2==0)
+        printf("\n\nOCELOT is Herbivore\n");
+}*/
+/*
 int main(){
     unsigned int yr,br,data_yr,data_br;
     int data[ ] = { 273, 548, 786, 1096 } ;
@@ -652,7 +653,6 @@ int main(){
         for (k=0,a=1,b=16; k<4,a<=8,b<=128; k++,a=a*2,b=b*2) {
             data_yr=data[k]&a;
             data_br=data[k]&b;
-            printf("%d %d %d %d\n", data_yr,data_br,yr,br);
             if(yr==data_yr && br==data_br) {
                 flag+=1;
                 break;
@@ -663,4 +663,345 @@ int main(){
         printf("\n\n\ndata doesn't matche with the array.\n");
     else
         printf("\n\n\ndata matches with the array.\n");
+}
+
+*/
+/*
+//C program to find Binary number of a Decimal number.
+void getBinary(int);
+int main(){
+    int num=0;
+    printf("Enter the number: ");
+    scanf("%d",&num);
+    printf("\nBinary numbers of %d\n",num);
+    getBinary(num);
+}
+void getBinary(int n){
+    int i;
+    
+    for (i=31; i>=0; i--) {
+        if (1<<i&n)
+            printf("1");
+        else
+            printf("0");
+    }
+}
+*//*
+//C program to get minimum number of bits to store an integer number.
+int countBits(int);
+int main(){
+    int num;
+    printf("enter the number");
+    scanf("%d",&num);
+    printf("\nBits need for enter: %d",countBits(num));
+}
+int countBits(int n){
+    int i,count=0;
+    if(n==0) return 0;
+    for (i=0; i<32; i++)
+    {
+        if((1<<i)&n)
+            count=i;
+    }
+    return ++count;
+}
+*//*
+// program to swap two bits of a byte.
+
+int main()
+{
+    unsigned char data=0x0A;
+    
+    data=data^(1<<1);
+    data=data^(1<<2);
+    
+    
+    printf("\ndata after swap bits : %02X",data);
+    
+    return 0;
+    }
+*//*
+//18to81 in bits
+int main(){
+    int data =18;
+    
+    data=data>>2;
+    showbits(data);
+    data=data|1;
+    showbits(data);
+    data=data<<4;
+    showbits(data);
+    data=data|1;
+    showbits(data);
+    printf("\n data agter swap bits : %d ",data);
+    return 0;
+}
+*//*
+//function to check whether all bits are
+//UNSET/LOW or not?
+//MY LOGIC
+int main(){
+     int num;
+    int i,count=0;
+    printf("enter the number 0-255 : ");
+    scanf("%d",&num);
+    
+    for (i=0; i<=7; i++) {
+        if ((1<<i)&num)
+            count++;
+    }
+    if(count){
+        printf("%d bit is SET for %d Number\n",count,num);
+    showbits(num);
+    }
+    else
+        printf("All Bit is UNSET");
+}
+   //C program to count number of 1's in a number
+   int count1s(unsigned int num) {
+   unsigned char i;
+   int count=0;
+   
+   unsigned char totalBits=sizeof(num)*8;
+   
+   for(i=0;i< totalBits;i++)
+   {
+   if( num & (1<< i) )
+   count++;
+   }
+   return count;
+   }
+   int main()
+   {
+   unsigned int data=0x58;
+   printf("\nTotal number of 1's are : %d\n",count1s(data));
+   return 0;
+   }
+
+*/
+/*
+ //swap the bits
+int main()
+{
+    unsigned int data=0x12345689;
+    printf("\ndata before swapping : %8X\n",data);
+    showbits(data);
+    data= ((data<<16)&0xffff0000)|((data>>16)&0x0000ffff);
+    showbits(data);
+    printf("\ndata after swapping  : %8X",data);
+    
+    return 0;
+}
+*//*
+//C program to reverse bits of a number
+#include <stdio.h>
+
+int main()
+{
+    unsigned int data = 4;
+    showbits(data);
+    unsigned int revNum = 0, i, temp;
+        
+        for (i = 0; i <=31; i++)
+        {
+            temp = (data & (1 << i));
+            printf("%d",temp);
+            if(temp)
+               revNum=revNum |(1 << (31 - i));
+        }
+    printf("\n");
+    showbits(revNum);
+    printf("\n%u",revNum);
+    return 0;
+}
+*//*
+//C program to swap two nibbles of a byte.
+// function : swapTwoNibbles, to swap two nibbles of a given byte.
+int main()
+{
+    unsigned char number=200;
+    showbits(number);
+        unsigned char num;
+    num=((number&0x0f)<<4 | ((number&0xf0)>>4));
+    showbits(num);
+    printf("\nEntered Number was : %u \nNumber after swapping nibbles : %u",number,num);
+    
+    return 0;
+}
+*/
+/*
+//C program to demonstrate example of left shift (<<) operator.
+int main(){
+    unsigned int num=0xff;
+    showbits(num);
+    num=(num<<2);
+    showbits(num);
+    printf("%4X",num);
+    
+}
+*//*
+//C program to demonstrate example of right shift (>>) operator.
+int main(){
+    unsigned int num=0xff;
+    showbits(num);
+    num=(num>>2);
+    showbits(num);
+    printf("%4X",num);
+}
+*//*
+//C program to set/clear (high/low) bits of a number.
+int main()
+{
+    unsigned int num= 0x0C;
+    showbits(num);
+    //set 0th and 1st bits
+    num = num | (1<<0);//set 0th bit
+    showbits(num);
+    num |= (1<<1);//set 1st bit
+    showbits(num);
+    printf("\nValue of num = %04X after setting 0th and 1st bits.\n",num);
+    
+    //clear 0th and 1st bits
+    num = num & ~(1<<0); //set 0th bit
+    showbits(num);
+    num &= ~(1<<1); //set 1st bit
+    showbits(num);
+    printf("\nValue of num = %04X after clearing 0th and 1st bits.",num);
+    
+    return 0;
+}*//*
+//C program to swap two numbers using bitwise XOR operator.
+int main(){
+    int a=10, b=20;
+    
+    a=a^b;
+    b=a^b;
+    a=a^b;
+    
+    printf("a=%d, b=%d",a,b);
+}
+*//*
+//C program to Count the Number of Trailing Zeroes in an Integer.
+int main(){
+    int n=12,count=0;
+    
+    while (n!=0) {
+        if ((n&1)==1)
+            break;
+        n=n>>1;
+        count++;
+    }
+    printf("%d",count);
+}*/
+//C program to find the Highest Bit Set for any given Integer
+/*int main(){
+    int n=12,count=0,store=-1;
+    
+    while (n!=0) {
+        if ((n&1)==1)
+            store=count;
+        n=n>>1;
+        count++;
+    }
+    if (store == -1) {
+        printf("No bit is set\n");
+        return 0;
+    }
+    printf("%d",store);
+}
+*//*
+//C program to check if all the bits of a given integer is one (1)
+int main(){
+    int n=7,temp;
+    while(n>0){
+        temp=n&1;
+        if(temp==0){
+            printf("all bits are not 1\n");
+            return 0;
+        }
+        n=n>>1;
+    }
+    printf("all bits are 1\n");
+}*//*
+//C program to count number of bits set to 1 in an Integer
+int main(){
+    int n=12,temp,count=0;
+    while(n>0){
+        temp=n&1;
+        if(temp==1){
+            count++;
+        }
+        n=n>>1;
+    }
+    printf("total bits of 1 is: %d\n",count);
+}*//*
+
+int main()
+{
+    unsigned int n;
+    printf("enter the no ( max range 255)\n");
+    scanf("%d",&n);
+    int c[8]={0};
+    int i=7,j,k;
+    printf("binary representation is: \n");
+    
+    //Add Binary Bits to Array
+    while (n!=0) {
+        c[i--]=n&1;
+        n=n>>1;
+    }
+    
+    //print the Bits in Array elements
+    for (j=0; j<8; j++) {
+        printf("%d",c[j]);
+    }
+    printf("\n");
+    
+    //compare the array with self end point for check the elements same or not
+    for (j=0,k=7; j<k; j++,k--) {
+        if (c[j]!=c[k]) {
+            printf("Not palindrome\n");
+            return 0;
+        }
+    }
+    printf("it's palindrome\n");
+}
+*/
+/*
+//C program to find odd or even number using bitmasking
+int main(){
+    int n=7;
+    
+    n=n&1;
+    
+    if(n!=0)
+        printf("Its Odd Number\n");
+    else
+        printf("Its Even Number\n");
+}*/
+
+//C program to replace bit in an integer at a specified position from another integer
+int main()
+{
+    int first,second,pos,flag,temp;
+    
+    printf("enter first & second no:\n");
+    scanf("%d %d",&first,&second);
+    
+    printf("enter specified position(0-indexed)\n");
+    scanf("%d",&pos);
+    
+    temp=(second>>pos)&1;
+    if(temp==1) {
+        temp=temp<<pos;
+        first|=temp;
+    } else {
+        flag=255;
+        temp=1<<pos;
+        flag=flag^temp;
+        first&=flag;
+        showbits(first);
+    }
+    printf("converted no %d\n",first);
+    return 0;
 }
