@@ -68,28 +68,28 @@ int main()
     }
      printf("%lld in binary = %d in decimal", n, decimalNumber);
     return 0;
-}*//*
-
+}*/
+/*
 int main(){
     long long binary = 0;
-    int i=1,remainder,n=13;
+    int i=1,remainder,n=16000;
     
     while (n!=0) {
         remainder=n%2;
         n/=2;
         binary+=remainder*i;
-        i*=10;
+        i*=20;
     }
     printf("%lld",binary);
 }*/
 /*
 int main(){
-    long long n = 1101;
+    long long n = 8401;
     int i=0,remainder,decimal = 0;
     
     while (n!=0) {
         remainder=n%10;
-        n/=10;
+        n/=20;
         decimal+=remainder*pow(2,i);
         i++;
          printf("%d ",remainder);
@@ -101,15 +101,15 @@ int main(){
 void decimal(long long n);
 int main(){
     long long binary = 0;
-    int remainder,n=130,i=1;
-    printf("%d\n",n);
+    long long int remainder,n=1024,i=1;
+    printf("%lld\n",n);
     while (n!=0) {
         remainder=n%2;
         n/=2;
         binary=binary+remainder*i;
         i=i*10;
     }
-    printf("%lld\n",binary);
+    printf("\n%lld\n",binary);
     decimal(binary);
 }
 void decimal(long long n){
@@ -124,3 +124,4 @@ void decimal(long long n){
     }
     printf("%lld\n",decimal);
 }
+

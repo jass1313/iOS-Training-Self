@@ -664,9 +664,10 @@ int main(){
     else
         printf("\n\n\ndata matches with the array.\n");
 }
-
+ 
 */
 /*
+ 
 //C program to find Binary number of a Decimal number.
 void getBinary(int);
 int main(){
@@ -979,7 +980,7 @@ int main(){
     else
         printf("Its Even Number\n");
 }*/
-
+/*
 //C program to replace bit in an integer at a specified position from another integer
 int main()
 {
@@ -1005,3 +1006,30 @@ int main()
     printf("converted no %d\n",first);
     return 0;
 }
+*//*
+//C program to swap two Integers using Bitwise Operators
+int main(){
+    int n1=5,n2=7;
+    
+    n1=n1^n2;
+    n2=n1^n2;
+    n1=n1^n2;
+    
+    printf("%d %d", n1, n2);
+}
+*//*
+//C program to swap two Integers using Bitwise Operators
+int main(){
+    int k=67600,n=10;
+    
+    k=k>>n;
+    
+    if((k&1)==1){
+        printf("%d No. bit is set\n",n);
+    } else
+        printf("%d no. bit not set\n",n);
+    
+    
+}
+*/
+
