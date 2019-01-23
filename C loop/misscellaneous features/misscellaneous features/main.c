@@ -136,7 +136,7 @@ int main(){
     struct employee e;
     
     e.gender = MALE;
-    e.mar_stat = DIVORCED;
+    e.mar_stat = WIDOWED;
     e.hobby = 5;
     e.scheme = 9;
     printf("\nGender = %d",e.gender);
@@ -530,7 +530,7 @@ void type(int point, ...) {
         default:
             printf("A polygon can be drawn.\n");
     }
-}*/
+}*//*
 //(c) //using bit fields
 struct date
 {
@@ -558,6 +558,47 @@ int main(){
     for (i=0; i<3; i++) {
         printf("Emp no. %d ",i+1);
         printf("DoJ %d/%d/%d \n",dt[i].d,dt[i].m,dt[i].y);
+    }
+}
+*/
+//(d)
+#define MALE 0
+#define FEMALE 1
+
+#define MINOR 0
+#define MAJOR 1
+
+#define MOTOR 0
+#define HEALTH 1
+#define TRAVEL 2
+
+#define OneYear 0
+#define TwoYear 1
+struct insurance {
+    unsigned gender:1;
+    unsigned holder:1;
+    unsigned policyName:2;
+    unsigned policyDuration:1;
+};
+
+int main(){
+    struct insurance holder[2];
+    
+    holder[0].gender= MALE;
+    holder[0].holder= MINOR;
+    holder[0].policyName= HEALTH;
+    holder[0].policyDuration= OneYear;
+    holder[1].gender= FEMALE;
+    holder[1].holder= MAJOR;
+    holder[1].policyName= TRAVEL;
+    holder[1].policyDuration= TwoYear;
+    
+    for (int i=0; i<2; i++) {
+        printf("Gender: %d\n",holder[i].gender);
+        printf("HolderType: %d\n",holder[i].holder);
+        printf("Policy Name: %d\n",holder[i].policyName);
+        printf("Duration: %d\n",holder[i].policyDuration);
+        printf("\n");
     }
 }
 
