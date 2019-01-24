@@ -560,7 +560,7 @@ int main(){
         printf("DoJ %d/%d/%d \n",dt[i].d,dt[i].m,dt[i].y);
     }
 }
-*/
+*//*
 //(d)
 #define MALE 0
 #define FEMALE 1
@@ -600,5 +600,6 @@ int main(){
         printf("Duration: %d\n",holder[i].policyDuration);
         printf("\n");
     }
-}
+}*/
 
+#include "fact.h"
