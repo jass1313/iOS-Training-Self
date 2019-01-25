@@ -601,5 +601,35 @@ int main(){
         printf("\n");
     }
 }*/
+/*
+//#include "fact.h"
+typedef struct {
+    char code[8];
+    char name[26];
+    int credits;
+    int lectures;
+    int labs;
+    int data;
+} course;
 
-#include "fact.h"
+struct node{
+    course data;
+    struct node *next;
+};
+
+struct node1{
+    int etype;
+    union{int ival;float fval;char *sval;};
+    struct node1 *next;
+};
+*/
+#define INTEL
+int main( )
+{
+#ifdef INTEL
+        printf("code suitable for a Intel PC\n");
+#else
+           printf("code suitable for a Motorola PC\n");
+#endif
+    printf("code common to both the computers\n");
+}
