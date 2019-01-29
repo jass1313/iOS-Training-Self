@@ -623,13 +623,3 @@ struct node1{
     struct node1 *next;
 };
 */
-#define INTEL
-int main( )
-{
-#ifdef INTEL
-        printf("code suitable for a Intel PC\n");
-#else
-           printf("code suitable for a Motorola PC\n");
-#endif
-    printf("code common to both the computers\n");
-}
