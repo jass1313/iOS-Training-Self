@@ -3,7 +3,7 @@ import UIKit
 var str = "Hello, playground"
 
 
-
+//The Basics
 //starting the swift with basics
 //Constants and Variables
 let maximumNumberOfLoginAttempts = 10
@@ -294,7 +294,7 @@ if index > 10 {
 }
 
 /*
-//Basic Operators
+//2. Basic Operators
 Assignment Operator
 let b = 10
 var a = 5
@@ -325,9 +325,9 @@ hello, " + "world"
 */
 
 //Unary Minus Operator
-let three1 = 3
+let three1 = -3
 let minusThree = -three1      // minusThree equals -3
-let plusThree = -minusThree   // plusThree equals 3, or "minus minus three"
+let plusThree = +minusThree   // plusThree equals 3, or "minus minus three"
 
 
 //Unary Plus Operator
@@ -379,3 +379,137 @@ if name == "world" {
 
 
 //Ternary Conditional Operator
+//Sortcut of if else statement
+let contentHeight = 40
+let hasHeader = true
+let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+// rowHeight is equal to 90
+
+/*
+//The example above is shorthand for the code below
+let contentHeight = 40
+let hasHeader = true
+let rowHeight: Int
+if hasHeader {
+    rowHeight = contentHeight + 50
+} else {
+    rowHeight = contentHeight + 20
+}
+// rowHeight is equal to 90
+*/
+
+
+//Nil-Coalescing Operator
+let defaultColorName = "red"
+var userDefinedColorName: String?  // defaults to nil
+
+userDefinedColorName != nil ? userDefinedColorName! : defaultColorName
+
+//sortcut of above code
+var colorNameToUse = userDefinedColorName ?? defaultColorName
+// userDefinedColorName is nil, so colorNameToUse is set to the default of "red"
+
+userDefinedColorName = "green"
+colorNameToUse = userDefinedColorName ?? defaultColorName
+// userDefinedColorName is not nil, so colorNameToUse is set to "green"
+
+
+//Range Operators
+//Range Operators (a...b)
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+// 1 times 5 is 5
+// 2 times 5 is 10
+// 3 times 5 is 15
+// 4 times 5 is 20
+// 5 times 5 is 25
+
+//Half-Open Range Operator (a..<b)
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..<count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+
+for name in names[2...] {
+    print(name)
+}
+// Brian
+// Jack
+
+for name in names[...2] {
+    print(name)
+}
+// Anna
+// Alex
+// Brian
+
+for name in names[..<2] {
+    print(name)
+}
+// Anna
+// Alex
+
+let range = 1...5
+range.contains(100)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+
+
+//Logical Opertores
+/*
+Logical NOT (!a)
+Logical AND (a && b)
+Logical OR (a || b)
+*/
+//Logical NOT Operator
+//true becomes false, and false becomes true
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED"
+
+//Logical AND Operator
+let enteredDoorCode = true
+let passedRetinaScan = true
+if enteredDoorCode && passedRetinaScan {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED
+
+//Logical OR Operator
+let hasDoorKey = false
+let knowsOverridePassword = false
+if hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+
+if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+
+
+//Explicit Parentheses
+if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+
+
+//3.Strings and Characters
