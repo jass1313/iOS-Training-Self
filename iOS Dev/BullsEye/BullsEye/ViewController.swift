@@ -69,10 +69,7 @@ class ViewController: UIViewController {
         score += points
         let message = "The value of the slider is now: \(currentValue)" + "\n The Target value is: \(targetValue)"+"\nThe difference is: \(sum)"+"\nYour scored \(points)"
         let alert = UIAlertController (title: title, message: message, preferredStyle: .alert )
-        let action = UIAlertAction(title: "Ok", style: .default, handler: {
-            action in
-            self.startNewRound()
-        }  )
+        let action = UIAlertAction(title: "Ok", style: .default, handler: { action in self.startNewRound() })
         alert.addAction(action)
         present(alert,animated: true,completion: nil )
         print("Your score is \(score)")
