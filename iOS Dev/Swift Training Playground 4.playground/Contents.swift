@@ -138,4 +138,85 @@ completionHandlers.first?()
 print(instance.x)
 // Prints "100"
 
+func A (x: Int) -> Bool { return x > 0 }
+let A: (Int) -> Bool = { x in return x > 0 } // or ...
+let A1 = { (x: Int) in return x > 0 } // ... because the compiler can infer the full closure type
+
+
+
 //Autoclosures
+var customersInLine = ["Chris", "Alex", "Ewa", "Barry", "Daniella"]
+print(customersInLine.count)
+// Prints "5"
+let customerProvider = { customersInLine.remove(at: 0) }
+print(customersInLine.count)
+// Prints "5"
+print("Now serving \(customerProvider())!")
+// Prints "Now serving Chris!"
+print(customersInLine.count)
+// Prints "4"
+
+
+
+// customersInLine is ["Alex", "Ewa", "Barry", "Daniella"]
+func serve(customer customerProvider: () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: { customersInLine.remove(at: 0) } )
+// Prints "Now serving Alex!"
+
+
+//passing string value convert to closure with @autoclosure
+// customersInLine is ["Ewa", "Barry", "Daniella"]
+func serve(customer customerProvider: @autoclosure () -> String) {
+    print("Now serving \(customerProvider())!")
+}
+serve(customer: customersInLine.remove(at: 0))
+// Prints "Now serving Ewa!"
+
+
+
+// customersInLine is ["Barry", "Daniella"]
+var customerProviders: [() -> String] = []
+func collectCustomerProviders(_ customerProvider: @autoclosure @escaping () -> String) {
+    customerProviders.append(customerProvider)
+}
+collectCustomerProviders(customersInLine.remove(at: 0))
+collectCustomerProviders(customersInLine.remove(at: 0))
+print("Collected \(customerProviders.count) closures.")
+// Prints "Collected 2 closures."
+for customerProvider in customerProviders {
+    print("Now serving \(customerProvider())!")
+}
+// Prints "Now serving Barry!"
+// Prints "Now serving Daniella!"
+
+
+
+
+//Excercise of Closures
+var numb = { (num: Int) -> Bool in return num > 10 }
+numb(10)
+numb(11)
+
+let array = [10,20,10,14]
+var numb1 = array.map{(num: Int) -> Int in return 0 }
+numb1 = array.sorted(by: { (s1, s2) -> Bool in return s1 > s2 })
+
+let array1 = ["ten","twenty","five","four"]
+numb1 = array1.map({ (s1) -> Int in return 10 })
+
+
+var closure = {(closure:Int) -> String in
+    if closure == 1 {
+        return "One"
+    } else if closure == 2 {
+        return "Two"
+    } else {
+        return ""
+    }
+}
+func ClosureToFunction(Clousre: @autoclosure () -> String) {
+    closure(1)
+}
+
