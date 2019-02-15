@@ -82,6 +82,24 @@ func String1 (_ number:Int) -> String {
 let strings1 = numbers.map(String1)
 
 
+func String1 (numbers: [Int]) -> String {
+    var output = ""
+    for num in numbers {
+        var number = num
+        output = ""
+        repeat {
+            output = digitNames[number % 10]! + output
+            number /= 10
+        } while number > 0
+        print(output,terminator:" ")
+    }
+    return output
+}
+String1(numbers:numbers)
+
+
+
+
 //Capturing Values
 func makeIncrementer(forIncrement amount: Int) -> () -> Int {
     var runningTotal = 0
@@ -206,6 +224,7 @@ numb1 = array.sorted(by: { (s1, s2) -> Bool in return s1 > s2 })
 let array1 = ["ten","twenty","five","four"]
 numb1 = array1.map({ (s1) -> Int in return 10 })
 
+/*
 
 var closure = {(closure:Int) -> String in
     if closure == 1 {
@@ -216,7 +235,122 @@ var closure = {(closure:Int) -> String in
         return ""
     }
 }
-func ClosureToFunction(Clousre: @autoclosure () -> String) {
-    closure(1)
+closure(1)*/
+
+
+func doSomething(number:Int,onSuccess closure:(Int)->Void) {
+    closure(number * number * number)
+}
+doSomething(number: 100) { (numberCube) in
+    print(numberCube) // prints  1000000
 }
 
+
+
+//Fuction take closure as its argument
+func closureInFunction(closure:(Int) -> String) {
+    let number = 1
+    if number == 1 {
+        closure(1)
+    }
+}
+closureInFunction { (closure:Int) -> String in
+    if closure == 1 {
+        return "One"
+    } else if closure == 2 {
+        return "Two"
+    } else {
+        return ""
+    }
+}
+
+
+
+//Fuction take closure as its argument
+func closureInFunction(number:Int ,closure:(Int) -> String) {
+    closure(number)
+}
+closureInFunction(number: 1) { (closure:Int) -> String in
+    if closure == 1 {
+        return "One"
+    } else if closure == 2 {
+        return "Two"
+    } else {
+        return ""
+    }
+}
+
+let arry = [2,3,4,5]
+for ar in arry {
+    print(ar)
+    }
+
+
+let triple: (Int) -> Int = { number in
+    3 * number
+}
+triple(1)
+
+// Or as the very short
+let triple2: (Int) -> Int = { 3 * $0 }
+triple2(1)
+
+let triple3 = { (number: Int) -> Int in
+    let result = 3 * number
+    number
+    return result
+}
+triple3(1)
+
+
+// or as a function
+func triple(number: Int) -> Int {
+    return 3 * number
+}
+triple(number:1)
+
+
+
+
+func returnFunc() -> (Int) -> () {
+    var counter = 0
+    func innerFunc(i: Int) {
+        counter += i   
+        print("running total is now \(counter)")
+    }
+    return innerFunc
+}
+
+let f = returnFunc()
+f(3)
+f(4)
+
+let g = returnFunc()
+g(2)
+g(2)
+
+f(2)
+
+func returnFunc1(number:Int) -> Int {
+    var counter = 0
+    counter += number
+    print("running total is now \(counter)")
+    return counter
+}
+returnFunc1(number: 9)
+returnFunc1(number: 10)
+
+
+
+var closeButtonPressed = true
+func codeinPlayground(completion:(String)->()) {
+    
+    print("Code, Take a Nap and Relax")
+    if closeButtonPressed {
+        completion("Close the playground")
+    }
+}
+
+codeinPlayground { (msg) in
+    print(msg)
+}
