@@ -454,6 +454,7 @@ class SomeSubclass: SomeClass {
 //    }()
 //}
 
+
 struct Chessboard {
     let boardColors: [Bool] = {
         var temporaryBoard = [Bool]()
@@ -467,12 +468,12 @@ struct Chessboard {
         }
         return temporaryBoard
     }()
-    func squareIsBlackAt(row: Int, column: Int) -> Bool {
-        return boardColors[(row * 8) + column]
-    }
+//    func squareIsBlackAt(row: Int, column: Int) -> Bool {
+//        return boardColors[(row * 8) + column]
+//    }
 }
 let board = Chessboard()
-print(board.squareIsBlackAt(row: 0, column: 1))
-// Prints "true"
-print(board.squareIsBlackAt(row: 7, column: 7))
-// Prints "false"
+//print(board.squareIsBlackAt(row: 0, column: 1))
+//// Prints "true"
+//print(board.squareIsBlackAt(row: 7, column: 7))
+//// Prints "false"
