@@ -12,6 +12,12 @@ class ShowVC: UIViewController {
     @IBOutlet weak var ShowLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
     
+    
+    @IBAction func logout(_ sender: Any) {
+        let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVc")
+        self.present(loginVc,animated: true,completion: nil)
+    }
+    
     var strText: String = ""
     var strLabel: String = ""
     
@@ -21,7 +27,7 @@ class ShowVC: UIViewController {
         if strText.count > 0 {
             loginLabel.text = strText
             ShowLabel.text = strLabel
-        }else {
+        } else {
             loginLabel.text = "No Value Foune"
         }
     
