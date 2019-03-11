@@ -14,23 +14,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var password: UITextField!
     
     @IBAction func login(_ sender: Any) {
-        let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "showVC") as! ShowVC
+        let showVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "showVC") as! ShowVC
                 if email.text == "" || password.text == "" {
-                    empty(title: "Missing INfo", messge: "No fields can be empty")
+                    empty(title: "Missing Info", messge: "Please fill in the required Fields")
                 } else if isValidEmail(testStr: email.text!) == false {
-                    empty(title: "Missing INfo", messge: "email is Invalid")
+                    empty(title: "Error", messge: "Email is Invalid")
                 } else if isPasswordValid(password.text!) == false  {
-                    empty(title: "Missing Info", messge: "password is Invalid")
+                    empty(title: "Error", messge: "Password is Invalid")
                 } else if email.text != "" || password.text != "" {
-                    loginVc.strText = email.text!
-                    loginVc.strLabel = "Your Sucessfully Login with:"
+                    showVc.strText = email.text!
+                    showVc.strLabel = "You have Sucessfully Logged In with:"
                 }
-        self.present(loginVc,animated: true,completion: nil)
+        self.present(showVc,animated: true,completion: nil)
     }
     
     @IBAction func sign(_ sender: Any) {
-        let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "registerVC")
-        self.present(loginVc,animated: true,completion: nil)
+        let registerVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "registerVC")
+        self.present(registerVc,animated: true,completion: nil)
     }
     
     override func viewDidLoad() {

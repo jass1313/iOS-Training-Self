@@ -16,26 +16,26 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var confirmPassword: UITextField!
     
     @IBAction func backToLogin(_ sender: Any) {
-        let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVc")
-        self.present(loginVc,animated: true,completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func SignUpToShow(_ sender: Any) {
         let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "showVC") as! ShowVC
         if email.text == "" || password.text == "" || confirmPassword.text == "" || FirstName.text == "" || LastName.text == "" {
-            empty(title: "Missing Info", messge: "No fields can be empty")
+            empty(title: "Missing Info", messge: "Please fill in the required Fields")
         } else if isValidEmail(testStr: email.text!) == false {
-            empty(title: "Missing Info", messge: "email is Invalid")
+            empty(title: "Error", messge: "Email is Invalid")
         } else if isPasswordValid(password.text!) == false || isPasswordValid(confirmPassword.text!) == false {
-            empty(title: "Missing Info", messge: "password is Invalid")
+            empty(title: "Error", messge: "Password is Invalid")
         } else if password.text! != confirmPassword.text! {
-            empty(title: "Missing Info", messge: "Password didn't Match")
+            empty(title: "Error", messge: "Passwords didn't match! Try again.")
         } else if email.text != "" || password.text != "" {
             loginVc.strText = email.text!
-            loginVc.strLabel = "Your Sucessfully SignUp with:"
+            loginVc.strLabel = "You have Sucessfully Signed Up with:"
         }
         self.present(loginVc,animated: true,completion: nil)
     }
+    
     
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")

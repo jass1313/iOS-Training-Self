@@ -13,6 +13,11 @@ class ViewController2: UIViewController,UITableViewDelegate,UITableViewDataSourc
     var array = ["jass","kiwitech","jasbeer"]
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textView: UITextField!
+    
+    @IBAction func addButton(_ sender: Any) {
+         array.append(textView.text!)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

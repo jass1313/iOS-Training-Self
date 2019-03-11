@@ -59,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8lg-Hj-Xp3">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="573"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                                 <connections>
@@ -67,19 +67,43 @@
                                     <outlet property="delegate" destination="cb8-79-MvN" id="xHK-7d-gCx"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add Records" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hWv-fB-Qxd">
+                                <rect key="frame" x="0.0" y="637" width="329" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L1f-mw-hMx">
+                                <rect key="frame" x="329" y="637" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="EOP-54-7Rv"/>
+                                    <constraint firstAttribute="height" constant="30" id="NRu-g0-Pgp"/>
+                                </constraints>
+                                <state key="normal" title="Add"/>
+                                <connections>
+                                    <action selector="addButton:" destination="cb8-79-MvN" eventType="touchUpInside" id="EuB-ls-Lf3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="8lg-Hj-Xp3" firstAttribute="trailing" secondItem="WiK-fD-zT1" secondAttribute="trailing" id="11L-2B-Y4X"/>
                             <constraint firstItem="8lg-Hj-Xp3" firstAttribute="leading" secondItem="WiK-fD-zT1" secondAttribute="leading" id="3cf-eh-YHc"/>
-                            <constraint firstItem="8lg-Hj-Xp3" firstAttribute="bottom" secondItem="WiK-fD-zT1" secondAttribute="bottom" id="AaB-Fd-Kqm"/>
+                            <constraint firstItem="hWv-fB-Qxd" firstAttribute="leading" secondItem="WiK-fD-zT1" secondAttribute="leading" id="EfV-Om-GeW"/>
+                            <constraint firstItem="hWv-fB-Qxd" firstAttribute="top" secondItem="8lg-Hj-Xp3" secondAttribute="bottom" id="HEl-9f-IDE"/>
+                            <constraint firstItem="L1f-mw-hMx" firstAttribute="leading" secondItem="hWv-fB-Qxd" secondAttribute="trailing" id="KSX-iV-GwI"/>
+                            <constraint firstItem="L1f-mw-hMx" firstAttribute="bottom" secondItem="WiK-fD-zT1" secondAttribute="bottom" id="b3r-4r-Hu2"/>
                             <constraint firstItem="8lg-Hj-Xp3" firstAttribute="top" secondItem="WiK-fD-zT1" secondAttribute="top" id="fMR-Pl-Ku3"/>
+                            <constraint firstItem="L1f-mw-hMx" firstAttribute="trailing" secondItem="WiK-fD-zT1" secondAttribute="trailing" id="o21-Ud-dEg"/>
+                            <constraint firstItem="L1f-mw-hMx" firstAttribute="top" secondItem="8lg-Hj-Xp3" secondAttribute="bottom" id="tOq-Tz-VGa"/>
+                            <constraint firstItem="hWv-fB-Qxd" firstAttribute="bottom" secondItem="WiK-fD-zT1" secondAttribute="bottom" id="xyh-RL-JX0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="WiK-fD-zT1"/>
                     </view>
                     <navigationItem key="navigationItem" id="qjO-nG-9gL"/>
                     <connections>
                         <outlet property="tableView" destination="8lg-Hj-Xp3" id="XRK-8h-o4W"/>
+                        <outlet property="textView" destination="hWv-fB-Qxd" id="XQj-DM-sSh"/>
                         <segue destination="SVY-cf-09T" kind="show" identifier="detailVC" id="LNt-H5-tlU"/>
                     </connections>
                 </viewController>
