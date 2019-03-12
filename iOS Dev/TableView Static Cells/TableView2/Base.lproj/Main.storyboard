@@ -179,7 +179,6 @@
                                                 <constraint firstItem="2FE-Fv-Lcd" firstAttribute="centerY" secondItem="eD6-0y-Q3h" secondAttribute="centerY" id="Q9e-wh-qLn"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.31413512861903442" green="0.85768146801417278" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="ZFC-n3-rCk">
                                         <rect key="frame" x="0.0" y="276" width="414" height="44"/>
@@ -215,7 +214,6 @@
                                                 <constraint firstItem="OZe-yn-kaX" firstAttribute="centerY" secondItem="vcK-zt-JBQ" secondAttribute="centerY" id="nPK-xz-JVy"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.97077251611058191" blue="0.61943387897473068" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="FCy-r9-lCa">
                                         <rect key="frame" x="0.0" y="320" width="414" height="44"/>
@@ -251,7 +249,6 @@
                                                 <constraint firstItem="iic-ps-DGt" firstAttribute="centerY" secondItem="eJj-jh-OLG" secondAttribute="centerY" id="kyn-hE-3IC"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.40260758576214256" green="0.95686274510000002" blue="0.40882780113493122" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>

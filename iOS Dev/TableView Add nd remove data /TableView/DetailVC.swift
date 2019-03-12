@@ -25,12 +25,15 @@ class DetailVC: UIViewController {
         case "jasbeer":
             self.view.backgroundColor = UIColor.red
         default:
-            self.view.backgroundColor = UIColor.black
+            self.view.backgroundColor = UIColor.purple
         }
      
     }
     
-
+    @IBAction func ExitButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     /*
     // MARK: - Navigation
 

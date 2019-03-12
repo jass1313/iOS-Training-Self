@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D62D4A052237997400243BAE /* EnterDetaillVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62D4A042237997400243BAE /* EnterDetaillVC.swift */; };
 		D69931002228EE1100BDA6B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69930FF2228EE1100BDA6B1 /* AppDelegate.swift */; };
 		D69931022228EE1100BDA6B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69931012228EE1100BDA6B1 /* ViewController.swift */; };
 		D69931052228EE1100BDA6B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D69931032228EE1100BDA6B1 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D62D4A042237997400243BAE /* EnterDetaillVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterDetaillVC.swift; sourceTree = "<group>"; };
 		D69930FC2228EE1100BDA6B1 /* TableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D69930FF2228EE1100BDA6B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D69931012228EE1100BDA6B1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,12 +108,13 @@
 			isa = PBXGroup;
 			children = (
 				D69930FF2228EE1100BDA6B1 /* AppDelegate.swift */,
-				D69931012228EE1100BDA6B1 /* ViewController.swift */,
+				D62D4A042237997400243BAE /* EnterDetaillVC.swift */,
 				D6993133222935FC00BDA6B1 /* ViewController2.swift */,
 				D699313522293F7300BDA6B1 /* DetailVC.swift */,
 				D699312D2229018100BDA6B1 /* view */,
 				D69931062228EE1600BDA6B1 /* Assets.xcassets */,
 				D699310B2228EE1600BDA6B1 /* Info.plist */,
+				D699312E2229019600BDA6B1 /* Custom cell */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -139,7 +142,6 @@
 			children = (
 				D69931032228EE1100BDA6B1 /* Main.storyboard */,
 				D69931082228EE1600BDA6B1 /* LaunchScreen.storyboard */,
-				D699312E2229019600BDA6B1 /* Custom cell */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -147,6 +149,7 @@
 		D699312E2229019600BDA6B1 /* Custom cell */ = {
 			isa = PBXGroup;
 			children = (
+				D69931012228EE1100BDA6B1 /* ViewController.swift */,
 				D699312F222901E200BDA6B1 /* CustomViewCell.swift */,
 				D6993130222901E200BDA6B1 /* CustomViewCell.xib */,
 			);
@@ -289,6 +292,7 @@
 				D69931022228EE1100BDA6B1 /* ViewController.swift in Sources */,
 				D6993134222935FC00BDA6B1 /* ViewController2.swift in Sources */,
 				D6993131222901E200BDA6B1 /* CustomViewCell.swift in Sources */,
+				D62D4A052237997400243BAE /* EnterDetaillVC.swift in Sources */,
 				D69931002228EE1100BDA6B1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
