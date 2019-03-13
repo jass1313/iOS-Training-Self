@@ -12,13 +12,12 @@ import UIKit
 class ViewController2: UIViewController, UITableViewDelegate, UITableViewDataSource, listUpdate {
 
     var array = ["jass","kiwitech","apple","dell","hp","microsoft"]
+    var text = ""
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // tableView.dataSource = self
-       // tableView.delegate = self
         }
     
     func oneRecord(type: String) {

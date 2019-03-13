@@ -84,6 +84,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D683BC3D2238E89300A69E4B /* Table View Add & Delete */ = {
+			isa = PBXGroup;
+			children = (
+				D62D4A042237997400243BAE /* EnterDetaillVC.swift */,
+				D6993133222935FC00BDA6B1 /* ViewController2.swift */,
+				D699313522293F7300BDA6B1 /* DetailVC.swift */,
+			);
+			path = "Table View Add & Delete";
+			sourceTree = "<group>";
+		};
 		D69930F32228EE1100BDA6B1 = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +118,11 @@
 			isa = PBXGroup;
 			children = (
 				D69930FF2228EE1100BDA6B1 /* AppDelegate.swift */,
-				D62D4A042237997400243BAE /* EnterDetaillVC.swift */,
-				D6993133222935FC00BDA6B1 /* ViewController2.swift */,
-				D699313522293F7300BDA6B1 /* DetailVC.swift */,
+				D683BC3D2238E89300A69E4B /* Table View Add & Delete */,
+				D699312E2229019600BDA6B1 /* Custom cell */,
 				D699312D2229018100BDA6B1 /* view */,
 				D69931062228EE1600BDA6B1 /* Assets.xcassets */,
 				D699310B2228EE1600BDA6B1 /* Info.plist */,
-				D699312E2229019600BDA6B1 /* Custom cell */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
