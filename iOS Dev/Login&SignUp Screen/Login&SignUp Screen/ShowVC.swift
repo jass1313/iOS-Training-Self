@@ -14,8 +14,7 @@ class ShowVC: UIViewController {
     
     
     @IBAction func logout(_ sender: Any) {
-        let loginVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginVc")
-        self.present(loginVc,animated: true,completion: nil)
+       self.dismiss(animated: true, completion: nil)
     }
     
     var strText: String = ""
@@ -28,8 +27,9 @@ class ShowVC: UIViewController {
             loginLabel.text = strText
             ShowLabel.text = strLabel
         } else {
-            loginLabel.text = "No Value Foune"
+            loginLabel.text = "Login Failed"
         }
     
     }
+
 }
