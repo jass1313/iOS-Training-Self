@@ -289,16 +289,6 @@
                                     <segue destination="jXR-wA-xaW" kind="show" id="pEp-7v-QL1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BhM-wp-0VL">
-                                <rect key="frame" x="93" y="404" width="190" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="Go to collapsible View">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="WeV-A4-yjy" kind="show" id="HvN-Bm-Yru"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -306,11 +296,8 @@
                             <constraint firstItem="LJ0-Ce-cI4" firstAttribute="top" secondItem="cOZ-p7-vu3" secondAttribute="bottom" constant="15" id="7Sf-kC-Keq"/>
                             <constraint firstItem="7f9-CG-fPt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="115" id="Ru7-tJ-BPO"/>
                             <constraint firstItem="cOZ-p7-vu3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="95" id="Run-lN-FtN"/>
-                            <constraint firstItem="BhM-wp-0VL" firstAttribute="top" secondItem="LJ0-Ce-cI4" secondAttribute="bottom" constant="8" id="UCz-Yf-WTU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7f9-CG-fPt" secondAttribute="trailing" constant="115" id="aRd-nQ-UXp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BhM-wp-0VL" secondAttribute="trailing" constant="92" id="gt1-KN-sTX"/>
                             <constraint firstItem="cOZ-p7-vu3" firstAttribute="top" secondItem="7f9-CG-fPt" secondAttribute="bottom" constant="15" id="hZ8-6Q-RWM"/>
-                            <constraint firstItem="BhM-wp-0VL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="93" id="kfD-rn-Mka"/>
                             <constraint firstItem="LJ0-Ce-cI4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="103" id="nap-np-Nd8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LJ0-Ce-cI4" secondAttribute="trailing" constant="103" id="qzG-cE-qbT"/>
                             <constraint firstItem="7f9-CG-fPt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="zTl-Dp-MJZ"/>
@@ -368,34 +355,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcV-xq-8QF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1889" y="134"/>
-        </scene>
-        <!--Collapsible View Controller-->
-        <scene sceneID="3Fp-Yf-dPm">
-            <objects>
-                <tableViewController id="WeV-A4-yjy" customClass="CollapsibleViewController" customModule="TableView3" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="taD-JS-fv6">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="RjY-T9-sTQ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RjY-T9-sTQ" id="62D-cz-k0P">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="WeV-A4-yjy" id="EnP-bU-qcc"/>
-                            <outlet property="delegate" destination="WeV-A4-yjy" id="1ja-5G-tj3"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BJe-HR-P5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="326" y="918"/>
         </scene>
         <!--Table View Controller Custom Cell-->
         <scene sceneID="J6K-Yg-dPG">
