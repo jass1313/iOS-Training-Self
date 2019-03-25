@@ -10,7 +10,8 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    let animalsPhotos = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg"]
+    var animalsPhotos = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg","jass.jpg","jasss.jpg"]
+    var count = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +22,27 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         editButtonItem.title = "Select"
         self.navigationItem.title = "Camera Roll"
+        trashButtonOutlet.isEnabled = false
         
+    }
+    
+    @IBOutlet weak var trashButtonOutlet: UIBarButtonItem!
+    
+    @IBAction func trashButton(_ sender: Any) {
+        if let selectedRows = collectionView.indexPathsForSelectedItems {
+            var items = [String]()
+            for indexPath in selectedRows  {
+                items.append(animalsPhotos[indexPath.row])
+            }
+            for item in items {
+                if let index = animalsPhotos.index(of: item) {
+                    animalsPhotos.remove(at: index)
+                }
+            }
+            collectionView.deleteItems(at: selectedRows)
+            collectionView.reloadData()
+        }
+        setEditing(false, animated: true)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -34,17 +55,11 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             self.collectionView.allowsMultipleSelection = false
             self.navigationItem.title = "Camera Roll"
             editButtonItem.title = "Select"
+            trashButtonOutlet.isEnabled = false
+            collectionView.reloadData()
+            count = 0
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -63,7 +78,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         let imageView = myCell.viewWithTag(1) as! UIImageView
         
         imageView.image = UIImage(named: animalsPhotos[indexPath.row])
-        
+        myCell.layer.borderColor = UIColor.clear.cgColor
+        myCell.layer.borderWidth = 0
         return myCell
         
     }
@@ -74,20 +90,40 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             if cell?.isSelected == true {
                 cell?.layer.borderColor = UIColor.blue.cgColor
                 cell?.layer.borderWidth = 4
-
+                count = count + 1
+                trashButtonOutlet.isEnabled = true
+                if count == 1 {
+                    self.navigationItem.title = "\(count) Photo Selected"
+                } else if count > 1 {
+                    self.navigationItem.title = "\(count) Photos Selected"
+                } else if count == 0 {
+                    self.navigationItem.title = "Select Items"
+                }
             }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if self.collectionView.allowsMultipleSelection == true {
             let cell = collectionView.cellForItem(at: indexPath as IndexPath)
+            if cell?.isSelected == false {
                 cell?.layer.borderColor = UIColor.clear.cgColor
                 cell?.layer.borderWidth = 0
+                count = count - 1
+                if count == 1 {
+                    self.navigationItem.title = "\(count) Photo Selected"
+                } else if count > 1 {
+                    self.navigationItem.title = "\(count) Photos Selected"
+                } else if count == 0 {
+                    self.navigationItem.title = "Select Items"
+                    trashButtonOutlet.isEnabled = false
+                }
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 4-1
-        
         return CGSize(width: width, height: width)
     }
     
@@ -98,8 +134,20 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1.0
     }
-    // MARK: UICollectionViewDelegate
     
+    // MARK: - Navigation
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let cell = sender as! UICollectionViewCell
+        if let indexPath = self.collectionView!.indexPath(for: cell) {
+        if segue.identifier == "showSegue" {
+            let showVC = segue.destination as! ShowVc
+            showVC.imagePic = UIImage(named: animalsPhotos[indexPath.row])
+            }
+        }
+    }
+    
+    // MARK: UICollectionViewDelegate
     /*
      // Uncomment this method to specify if the specified item should be highlighted during tracking
      override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {

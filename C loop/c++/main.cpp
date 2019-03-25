@@ -1037,7 +1037,7 @@ soso:
                     printf("even numbers %d", even);
                     return (even);
                     }*/
-
+/*
 int oddeven(int p);
 int main()
 {
@@ -1068,3 +1068,4 @@ int oddeven(int p)
         return (0);
 }
 
+*/
