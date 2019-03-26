@@ -12,6 +12,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     var animalsPhotos = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg","jass.jpg","jasss.jpg"]
     var count = 0
+    var cellIndexPath:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         // #warning Incomplete implementation, return the number of items
         return animalsPhotos.count
     }
-    
+   
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         let imageView = myCell.viewWithTag(1) as! UIImageView
@@ -85,11 +86,9 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath)
         if self.collectionView.allowsMultipleSelection == true {
-            let cell = collectionView.cellForItem(at: indexPath as IndexPath)
             if cell?.isSelected == true {
-                cell?.layer.borderColor = UIColor.blue.cgColor
-                cell?.layer.borderWidth = 4
                 count = count + 1
                 trashButtonOutlet.isEnabled = true
                 if count == 1 {
@@ -99,13 +98,28 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 } else if count == 0 {
                     self.navigationItem.title = "Select Items"
                 }
+                cell?.layer.borderColor = UIColor.black.cgColor
+                cell?.layer.borderWidth = 4
             }
+        } else {
+            let imageView = cell?.viewWithTag(1) as? UIImageView
+            imageView?.contentMode = .scaleAspectFit
+            cell?.superview?.bringSubviewToFront(cell!
+            )
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
+                cell?.frame = collectionView.bounds
+                cell?.frame.size.height = self.view.frame.height
+                cell?.backgroundColor = UIColor.white
+                collectionView.isScrollEnabled = false
+                
+            }, completion: nil)
+            self.collectionView.allowsMultipleSelection = true
         }
     }
-    
+
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        if self.collectionView.allowsMultipleSelection == true {
-            let cell = collectionView.cellForItem(at: indexPath as IndexPath)
+        let cell = collectionView.cellForItem(at: indexPath as IndexPath)
+        if self.collectionView.allowsMultipleSelection == true && trashButtonOutlet.isEnabled == true {
             if cell?.isSelected == false {
                 cell?.layer.borderColor = UIColor.clear.cgColor
                 cell?.layer.borderWidth = 0
@@ -119,8 +133,15 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                     trashButtonOutlet.isEnabled = false
                 }
             }
+        } else {
+            let imageView = cell?.viewWithTag(1) as? UIImageView
+            imageView?.contentMode = .scaleToFill
+            collectionView.isScrollEnabled = true
+            collectionView.reloadItems(at: [indexPath])
+            self.collectionView.allowsMultipleSelection = false
         }
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 4-1
@@ -135,17 +156,32 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         return 1.0
     }
     
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let cell = sender as! UICollectionViewCell
-        if let indexPath = self.collectionView!.indexPath(for: cell) {
-        if segue.identifier == "showSegue" {
-            let showVC = segue.destination as! ShowVc
-            showVC.imagePic = UIImage(named: animalsPhotos[indexPath.row])
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                cell.transform = .init(scaleX: 0.95, y: 0.95)
+                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
             }
         }
     }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.5) {
+            if let cell = collectionView.cellForItem(at: indexPath) {
+                cell.transform = .identity
+                cell.contentView.backgroundColor = .clear
+            }
+        }
+    }
+    
+    /*
+     // MARK: - Navigation
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     }
+     }
+     */
     
     // MARK: UICollectionViewDelegate
     /*
@@ -153,14 +189,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
      override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
      return true
      }
-     */
+    */
     
     /*
      // Uncomment this method to specify if the specified item should be selected
      override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
      return true
-     }
-     */
+     }*/
     
     /*
      // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
