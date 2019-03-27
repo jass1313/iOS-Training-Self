@@ -12,7 +12,7 @@
         <scene sceneID="7yi-Mc-TfM">
             <objects>
                 <collectionViewController id="GkC-Zl-VWP" customClass="CollectionViewController" customModule="CollectionView" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="FP8-3q-VdC">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" id="FP8-3q-VdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,6 +32,7 @@
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uyg-VA-Y6T">
                                             <rect key="frame" x="0.0" y="0.0" width="93" height="87"/>
+                                            <gestureRecognizers/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -49,8 +50,15 @@
                         </connections>
                     </collectionView>
                     <toolbarItems>
+                        <barButtonItem systemItem="edit" id="L4p-hh-PWs">
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="editButtonAction:" destination="GkC-Zl-VWP" id="dyO-JK-XZU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="RZh-1n-gAZ"/>
                         <barButtonItem systemItem="trash" id="dis-Dl-Ama">
+                            <color key="tintColor" red="0.28843352861404981" green="0.40970250112900469" blue="0.80050364847715738" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="trashButton:" destination="GkC-Zl-VWP" id="Q1P-8C-3dy"/>
                             </connections>
@@ -59,6 +67,9 @@
                     <navigationItem key="navigationItem" id="Zek-bD-0SN"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="collectionPhotos" destination="FP8-3q-VdC" id="TrM-xu-g7R"/>
+                        <outlet property="collectionView" destination="FP8-3q-VdC" id="DL5-IG-mNP"/>
+                        <outlet property="editButtonOutlet" destination="L4p-hh-PWs" id="NqX-sY-Tis"/>
                         <outlet property="trashButtonOutlet" destination="dis-Dl-Ama" id="2BM-Yq-DSy"/>
                     </connections>
                 </collectionViewController>

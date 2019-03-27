@@ -12,22 +12,47 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     var animalsPhotos = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg","jass.jpg","jasss.jpg"]
     var count = 0
-    var cellIndexPath:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         editButtonItem.title = "Select"
         self.navigationItem.title = "Camera Roll"
         trashButtonOutlet.isEnabled = false
+        editButtonOutlet.isEnabled = false
         
+        
+        let directions: [UISwipeGestureRecognizer.Direction] = [.up, .down, .right, .left]
+        for direction in directions {
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(CollectionViewController.handleSwipe(gesture:)))
+            gesture.direction = direction
+            self.view?.addGestureRecognizer(gesture)
+        }
     }
     
+    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
+        print(gesture.direction)
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.down:
+            print("down swipe")
+        case UISwipeGestureRecognizer.Direction.up:
+            print("up swipe")
+        case UISwipeGestureRecognizer.Direction.left:
+            print("left swipe")
+        case UISwipeGestureRecognizer.Direction.right:
+            print("right swipe")
+        default:
+            print("other swipe")
+        }
+    }
+    
+    @IBOutlet var collectionPhotos: UICollectionView!
     @IBOutlet weak var trashButtonOutlet: UIBarButtonItem!
+    @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
+    
+    @IBAction func editButtonAction(_ sender: Any) {
+        //still not in use
+    }
     
     @IBAction func trashButton(_ sender: Any) {
         if let selectedRows = collectionView.indexPathsForSelectedItems {
@@ -61,13 +86,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             count = 0
         }
     }
-    
+
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
@@ -104,22 +128,26 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         } else {
             let imageView = cell?.viewWithTag(1) as? UIImageView
             imageView?.contentMode = .scaleAspectFit
-            cell?.superview?.bringSubviewToFront(cell!
-            )
+            cell?.superview?.bringSubviewToFront(cell!)
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
                 cell?.frame = collectionView.bounds
-                cell?.frame.size.height = self.view.frame.height
                 cell?.backgroundColor = UIColor.white
                 collectionView.isScrollEnabled = false
-                
             }, completion: nil)
+            self.navigationItem.rightBarButtonItem = editButtonOutlet
+            editButtonOutlet.isEnabled = true
+            editButtonOutlet.tintColor = UIColor(red: 0.170, green: 0.459, blue: 0.700, alpha: 1.00)
+            trashButtonOutlet.isEnabled = true
+            self.navigationItem.title = "Image"
             self.collectionView.allowsMultipleSelection = true
+           
+            
         }
     }
 
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath as IndexPath)
-        if self.collectionView.allowsMultipleSelection == true && trashButtonOutlet.isEnabled == true {
+        if editButtonOutlet.isEnabled == false {
             if cell?.isSelected == false {
                 cell?.layer.borderColor = UIColor.clear.cgColor
                 cell?.layer.borderWidth = 0
@@ -139,6 +167,11 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             collectionView.isScrollEnabled = true
             collectionView.reloadItems(at: [indexPath])
             self.collectionView.allowsMultipleSelection = false
+            self.navigationItem.rightBarButtonItem = editButtonItem
+            self.navigationItem.title = "Camera Roll"
+            trashButtonOutlet.isEnabled = false
+            editButtonOutlet.isEnabled = false
+            editButtonOutlet.tintColor = UIColor.clear
         }
     }
     
@@ -160,12 +193,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         UIView.animate(withDuration: 0.5) {
             if let cell = collectionView.cellForItem(at: indexPath) {
                 cell.transform = .init(scaleX: 0.95, y: 0.95)
-                cell.contentView.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1)
             }
         }
     }
-    
-    
+
     override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.5) {
             if let cell = collectionView.cellForItem(at: indexPath) {
