@@ -10,6 +10,7 @@ import UIKit
 
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var index:IndexPath = []
     var animalsPhotos = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg","jass.jpg","jasss.jpg"]
     var count = 0
     
@@ -20,7 +21,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         self.navigationItem.title = "Camera Roll"
         trashButtonOutlet.isEnabled = false
         editButtonOutlet.isEnabled = false
-        
         
         let directions: [UISwipeGestureRecognizer.Direction] = [.up, .down, .right, .left]
         for direction in directions {
@@ -46,10 +46,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         }
     }
     
+   
     @IBOutlet var collectionPhotos: UICollectionView!
     @IBOutlet weak var trashButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
-    
     @IBAction func editButtonAction(_ sender: Any) {
         //still not in use
     }
@@ -90,7 +90,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 4
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -105,8 +105,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         imageView.image = UIImage(named: animalsPhotos[indexPath.row])
         myCell.layer.borderColor = UIColor.clear.cgColor
         myCell.layer.borderWidth = 0
+    
         return myCell
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -132,7 +132,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
                 cell?.frame = collectionView.bounds
                 cell?.backgroundColor = UIColor.white
-                collectionView.isScrollEnabled = false
+//                collectionView.isScrollEnabled = true
             }, completion: nil)
             self.navigationItem.rightBarButtonItem = editButtonOutlet
             editButtonOutlet.isEnabled = true
@@ -140,11 +140,10 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             trashButtonOutlet.isEnabled = true
             self.navigationItem.title = "Image"
             self.collectionView.allowsMultipleSelection = true
-           
-            
         }
+            index = indexPath
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath as IndexPath)
         if editButtonOutlet.isEnabled == false {
@@ -164,7 +163,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         } else {
             let imageView = cell?.viewWithTag(1) as? UIImageView
             imageView?.contentMode = .scaleToFill
-            collectionView.isScrollEnabled = true
+//            collectionView.isScrollEnabled = true
             collectionView.reloadItems(at: [indexPath])
             self.collectionView.allowsMultipleSelection = false
             self.navigationItem.rightBarButtonItem = editButtonItem
