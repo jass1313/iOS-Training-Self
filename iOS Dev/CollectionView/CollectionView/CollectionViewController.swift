@@ -7,15 +7,48 @@
 //
 
 import UIKit
+import Photos
 
 class CollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var index:IndexPath = []
-    var animalsPhotos = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg","jass.jpg","jasss.jpg"]
+    var animalsPhotos = [UIImage]()
+    //var imageArray = ["horse.jpg", "cow.jpg", "camel.jpg", "sheap.jpg", "goat.jpg","jass.jpg","jasss.jpg"]
     var count = 0
+    var i:Int = 0
+    var cell:UICollectionViewCell!
+    var imageView:UIImageView!
+    
+    func grabPhotos() {
+        DispatchQueue.global(qos: .background).async {
+        let imgManager = PHImageManager.default()
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.isSynchronous = true
+        requestOptions.deliveryMode = .highQualityFormat
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        
+            let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+            if fetchResult.count > 0 {
+                for i in 0..<fetchResult.count {
+                    imgManager.requestImage(for: fetchResult.object(at: i) as PHAsset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: requestOptions, resultHandler: { (image, error) in
+                        self.animalsPhotos.append(image!)
+                    })
+                }
+            } else {
+                print("no photos")
+            }
+         print("imageArray count: \(self.animalsPhotos.count)")
+        DispatchQueue.main.async {
+            print("This is run on the main queue, after the previous code in outer block")
+            self.collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        grabPhotos()
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         editButtonItem.title = "Select"
         self.navigationItem.title = "Camera Roll"
@@ -32,21 +65,31 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
         print(gesture.direction)
+        cell = collectionView.cellForItem(at: index as IndexPath)
+        imageView = cell?.viewWithTag(1) as? UIImageView
         switch gesture.direction {
         case UISwipeGestureRecognizer.Direction.down:
+            diselectItem()
             print("down swipe")
         case UISwipeGestureRecognizer.Direction.up:
             print("up swipe")
         case UISwipeGestureRecognizer.Direction.left:
-            print("left swipe")
+            if i < animalsPhotos.count - 1 {
+                i = i + 1
+                imageView.image = animalsPhotos[i]
+                print("left swipe")
+            }
         case UISwipeGestureRecognizer.Direction.right:
-            print("right swipe")
+            if i > 0  {
+                i = i - 1
+                imageView.image = animalsPhotos[i]
+                print("right swipe")
+            }
         default:
             print("other swipe")
         }
     }
     
-   
     @IBOutlet var collectionPhotos: UICollectionView!
     @IBOutlet weak var trashButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
@@ -56,7 +99,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     @IBAction func trashButton(_ sender: Any) {
         if let selectedRows = collectionView.indexPathsForSelectedItems {
-            var items = [String]()
+            var items = [UIImage]()
             for indexPath in selectedRows  {
                 items.append(animalsPhotos[indexPath.row])
             }
@@ -69,6 +112,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             collectionView.reloadData()
         }
         setEditing(false, animated: true)
+        diselectItem()
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -86,36 +130,38 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             count = 0
         }
     }
-
+    
     // MARK: UICollectionViewDataSource
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         return animalsPhotos.count
     }
-   
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         let imageView = myCell.viewWithTag(1) as! UIImageView
         
-        imageView.image = UIImage(named: animalsPhotos[indexPath.row])
+        imageView.image = animalsPhotos[indexPath.row]
         myCell.layer.borderColor = UIColor.clear.cgColor
         myCell.layer.borderWidth = 0
-    
+        
         return myCell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath)
-        if self.collectionView.allowsMultipleSelection == true {
+        cell = collectionView.cellForItem(at: indexPath as IndexPath)
+        if editButtonOutlet.isEnabled == true {
+            self.cell?.backgroundColor = UIColor.white
+        } else if self.collectionView.allowsMultipleSelection == true {
             if cell?.isSelected == true {
                 count = count + 1
                 trashButtonOutlet.isEnabled = true
-                if count == 1 {
+                if count == 1 { 
                     self.navigationItem.title = "\(count) Photo Selected"
                 } else if count > 1 {
                     self.navigationItem.title = "\(count) Photos Selected"
@@ -126,13 +172,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 cell?.layer.borderWidth = 4
             }
         } else {
-            let imageView = cell?.viewWithTag(1) as? UIImageView
+            imageView = cell?.viewWithTag(1) as? UIImageView
             imageView?.contentMode = .scaleAspectFit
             cell?.superview?.bringSubviewToFront(cell!)
-            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
-                cell?.frame = collectionView.bounds
-                cell?.backgroundColor = UIColor.white
-//                collectionView.isScrollEnabled = true
+            UIView.animate(withDuration: 0.8, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
+                self.cell?.frame = collectionView.bounds
+                self.cell?.backgroundColor = UIColor.white
+                collectionView.isScrollEnabled = false
             }, completion: nil)
             self.navigationItem.rightBarButtonItem = editButtonOutlet
             editButtonOutlet.isEnabled = true
@@ -140,12 +186,14 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             trashButtonOutlet.isEnabled = true
             self.navigationItem.title = "Image"
             self.collectionView.allowsMultipleSelection = true
+            navigationController?.hidesBarsOnTap = true
         }
-            index = indexPath
+        index = indexPath
+        i = index.row
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath as IndexPath)
+        cell = collectionView.cellForItem(at: indexPath as IndexPath)
         if editButtonOutlet.isEnabled == false {
             if cell?.isSelected == false {
                 cell?.layer.borderColor = UIColor.clear.cgColor
@@ -161,17 +209,22 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
                 }
             }
         } else {
-            let imageView = cell?.viewWithTag(1) as? UIImageView
-            imageView?.contentMode = .scaleToFill
-//            collectionView.isScrollEnabled = true
-            collectionView.reloadItems(at: [indexPath])
-            self.collectionView.allowsMultipleSelection = false
-            self.navigationItem.rightBarButtonItem = editButtonItem
-            self.navigationItem.title = "Camera Roll"
-            trashButtonOutlet.isEnabled = false
-            editButtonOutlet.isEnabled = false
-            editButtonOutlet.tintColor = UIColor.clear
+            self.cell?.backgroundColor = UIColor.black
         }
+    }
+    
+    func diselectItem() {
+        imageView = cell?.viewWithTag(1) as? UIImageView
+        imageView?.contentMode = .scaleToFill
+        collectionView.isScrollEnabled = true
+        collectionView.reloadItems(at: [index])
+        self.collectionView.allowsMultipleSelection = false
+        self.navigationItem.rightBarButtonItem = editButtonItem
+        self.navigationItem.title = "Camera Roll"
+        trashButtonOutlet.isEnabled = false
+        editButtonOutlet.isEnabled = false
+        editButtonOutlet.tintColor = UIColor.clear
+        navigationController?.hidesBarsOnTap = false
     }
     
     
@@ -195,7 +248,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             }
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.5) {
             if let cell = collectionView.cellForItem(at: indexPath) {
@@ -204,6 +257,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             }
         }
     }
+    
     
     /*
      // MARK: - Navigation
@@ -219,7 +273,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
      override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
      return true
      }
-    */
+     */
     
     /*
      // Uncomment this method to specify if the specified item should be selected
