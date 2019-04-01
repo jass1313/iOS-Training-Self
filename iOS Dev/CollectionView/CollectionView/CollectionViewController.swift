@@ -19,33 +19,6 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     var cell:UICollectionViewCell!
     var imageView:UIImageView!
     
-    func grabPhotos() {
-        DispatchQueue.global(qos: .background).async {
-        let imgManager = PHImageManager.default()
-        let requestOptions = PHImageRequestOptions()
-        requestOptions.isSynchronous = true
-        requestOptions.deliveryMode = .highQualityFormat
-        let fetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
-            let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-            if fetchResult.count > 0 {
-                for i in 0..<fetchResult.count {
-                    imgManager.requestImage(for: fetchResult.object(at: i) as PHAsset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: requestOptions, resultHandler: { (image, error) in
-                        self.animalsPhotos.append(image!)
-                    })
-                }
-            } else {
-                print("no photos")
-            }
-         print("imageArray count: \(self.animalsPhotos.count)")
-        DispatchQueue.main.async {
-            print("This is run on the main queue, after the previous code in outer block")
-            self.collectionView.reloadData()
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         grabPhotos()
@@ -54,12 +27,65 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         self.navigationItem.title = "Camera Roll"
         trashButtonOutlet.isEnabled = false
         editButtonOutlet.isEnabled = false
+        self.collectionView.maximumZoomScale = 2
+        self.collectionView.minimumZoomScale = 0.50
         
         let directions: [UISwipeGestureRecognizer.Direction] = [.up, .down, .right, .left]
         for direction in directions {
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(CollectionViewController.handleSwipe(gesture:)))
             gesture.direction = direction
             self.view?.addGestureRecognizer(gesture)
+        }
+        
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinchAction(sender:)))
+        collectionView.addGestureRecognizer(pinchGesture)
+        self.view.sendSubviewToBack(collectionView)
+        
+        let roatationGesture = UIRotationGestureRecognizer(target: self, action: #selector(roataionAction(sender:)))
+        collectionView.addGestureRecognizer(roatationGesture)
+        self.view.sendSubviewToBack(collectionView)
+    }
+    
+    @objc func roataionAction(sender:UIRotationGestureRecognizer) {
+        var scaleValue: CGFloat!
+        if sender.state == .began || sender.state == .changed {
+            if scaleValue == nil {
+                print("rotate start")
+                imageView.transform = CGAffineTransform.init(rotationAngle: sender.rotation)
+                scaleValue = sender.rotation
+                print(scaleValue)
+            } else {
+                imageView.transform = CGAffineTransform.init(rotationAngle: scaleValue)
+            }
+        } else {
+            print("rotate stop")
+            self.imageView.transform = CGAffineTransform.identity
+            }
+        }
+    
+    @objc func pinchAction(sender:UIPinchGestureRecognizer) {
+        var scaleValue: CGFloat!
+        if sender.state == .changed {
+            if scaleValue == nil {
+                print("pinch in")
+                imageView.transform = CGAffineTransform.init(scaleX: sender.scale, y: sender.scale)
+                scaleValue = sender.scale
+                print(scaleValue)
+            } else {
+                imageView.transform = CGAffineTransform.init(scaleX: scaleValue, y: scaleValue)
+            }
+        } else {
+            print("pinch out")
+            scaleValue = sender.scale
+            if scaleValue < 1.0 && scaleValue > 0.75 {
+            scaleValue = 1.0
+            imageView.transform = CGAffineTransform.init(scaleX: scaleValue, y: scaleValue)
+            } else if scaleValue < 0.75 {
+                scaleValue = 1.0
+                imageView.transform = CGAffineTransform.init(scaleX: scaleValue, y: scaleValue)
+                diselectItem()
+                
+            }
         }
     }
     
@@ -69,8 +95,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         imageView = cell?.viewWithTag(1) as? UIImageView
         switch gesture.direction {
         case UISwipeGestureRecognizer.Direction.down:
-            diselectItem()
             print("down swipe")
+            diselectItem()
         case UISwipeGestureRecognizer.Direction.up:
             print("up swipe")
         case UISwipeGestureRecognizer.Direction.left:
@@ -93,6 +119,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     @IBOutlet var collectionPhotos: UICollectionView!
     @IBOutlet weak var trashButtonOutlet: UIBarButtonItem!
     @IBOutlet weak var editButtonOutlet: UIBarButtonItem!
+    
     @IBAction func editButtonAction(_ sender: Any) {
         //still not in use
     }
@@ -154,9 +181,12 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("select")
         cell = collectionView.cellForItem(at: indexPath as IndexPath)
         if editButtonOutlet.isEnabled == true {
             self.cell?.backgroundColor = UIColor.white
+            navigationController?.navigationBar.isHidden = false
+            navigationController?.toolbar.isHidden = false
         } else if self.collectionView.allowsMultipleSelection == true {
             if cell?.isSelected == true {
                 count = count + 1
@@ -186,13 +216,13 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             trashButtonOutlet.isEnabled = true
             self.navigationItem.title = "Image"
             self.collectionView.allowsMultipleSelection = true
-            navigationController?.hidesBarsOnTap = true
         }
         index = indexPath
         i = index.row
     }
     
     override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+         print("deselect")
         cell = collectionView.cellForItem(at: indexPath as IndexPath)
         if editButtonOutlet.isEnabled == false {
             if cell?.isSelected == false {
@@ -210,6 +240,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
             }
         } else {
             self.cell?.backgroundColor = UIColor.black
+            navigationController?.navigationBar.isHidden = true
+            navigationController?.toolbar.isHidden = true
         }
     }
     
@@ -224,9 +256,30 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         trashButtonOutlet.isEnabled = false
         editButtonOutlet.isEnabled = false
         editButtonOutlet.tintColor = UIColor.clear
-        navigationController?.hidesBarsOnTap = false
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.toolbar.isHidden = false
     }
     
+    func grabPhotos() {
+        let imgManager = PHImageManager.default()
+        let requestOptions = PHImageRequestOptions()
+        requestOptions.isSynchronous = true
+        requestOptions.deliveryMode = .highQualityFormat
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: true)]
+        
+        let fetchResult : PHFetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        if fetchResult.count > 0 {
+            for i in 0..<fetchResult.count {
+                imgManager.requestImage(for: fetchResult.object(at: i) as PHAsset, targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: requestOptions, resultHandler: { (image, error) in
+                    self.animalsPhotos.append(image!)
+                })
+            }
+        } else {
+            print("no photos")
+        }
+        print("imageArray count: \(self.animalsPhotos.count)")
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = collectionView.frame.width / 4-1
@@ -243,17 +296,21 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
     
     override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.5) {
+            if self.editButtonOutlet.isEnabled == false {
             if let cell = collectionView.cellForItem(at: indexPath) {
                 cell.transform = .init(scaleX: 0.95, y: 0.95)
             }
+        }
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         UIView.animate(withDuration: 0.5) {
+            if self.editButtonOutlet.isEnabled == false {
             if let cell = collectionView.cellForItem(at: indexPath) {
                 cell.transform = .identity
                 cell.contentView.backgroundColor = .clear
+            }
             }
         }
     }
