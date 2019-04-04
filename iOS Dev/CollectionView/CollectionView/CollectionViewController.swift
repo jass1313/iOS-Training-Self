@@ -249,7 +249,8 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         imageView = cell?.viewWithTag(1) as? UIImageView
         imageView?.contentMode = .scaleToFill
         collectionView.isScrollEnabled = true
-        collectionView.reloadItems(at: [index])
+        collectionView.reloadData()
+//        collectionView.reloadItems(at: [index])
         self.collectionView.allowsMultipleSelection = false
         self.navigationItem.rightBarButtonItem = editButtonItem
         self.navigationItem.title = "Camera Roll"
@@ -278,6 +279,7 @@ class CollectionViewController: UICollectionViewController, UICollectionViewDele
         } else {
             print("no photos")
         }
+        collectionView.reloadData()
         print("imageArray count: \(self.animalsPhotos.count)")
     }
     
