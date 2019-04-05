@@ -8,32 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
     
-   
     @IBOutlet weak var uiViewBack: UIView!
-    var leftConstraint: NSLayoutConstraint?
-    var trailingConstraint: NSLayoutConstraint?
-    var topConstraint: NSLayoutConstraint?
-    var bottomConstraint: NSLayoutConstraint?
-    let myView = UIView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.barStyle = .black
-        view.backgroundColor = UIColor.black
-        tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        setupCollectionView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
-        customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
-        self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
-      
-    }
-    
+    var horizontalBarView = UIView()
     var label:UILabel!
     var cell:UICollectionViewCell!
     var text = [String]()
@@ -44,6 +22,33 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var customCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.toolbar.tintColor = .gray
+        view.backgroundColor = UIColor.black
+        let logo = UIImage(named: "logo3")
+        let imageView = UIImageView(image:logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+        
+        //Collection View
+        customCollectionView.isScrollEnabled = true
+        bar()
+        
+        //table View
+        tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //Collection View
+        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
+        customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
+        self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -56,62 +61,49 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         label = cell.viewWithTag(1) as? UILabel
-        
         label.text = arrayText[indexPath.row]
         cell.backgroundColor = UIColor.black
 
         return cell
     }
    
-    var horizontalBarLeftAnchorConstraint: NSLayoutConstraint?
-
-    func bar(x:Int) {
-       
+    func bar() {
+        horizontalBarView = UIView(frame: CGRect(x: 0, y: 0, width: uiViewBack.frame.width/3, height: 5))
+        horizontalBarView.backgroundColor = UIColor.red
+        horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
+        uiViewBack.addSubview(horizontalBarView)
 
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        cell = customCollectionView.cellForItem(at: indexPath)
+        label = cell.viewWithTag(1) as? UILabel
+        label.textColor = UIColor.red
+        
+        UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
+            if (indexPath.item == 0) {
+                self.horizontalBarView.frame = CGRect(x:0 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
+            } else if (indexPath.item == 1) {
+                self.horizontalBarView.frame = CGRect(x:self.uiViewBack.bounds.width/3 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
+            } else if (indexPath.item == 2) {
+                self.horizontalBarView.frame = CGRect(x:self.uiViewBack.bounds.width/1.5 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
+            }
+        })
+     
         if indexPath.row == 0 {
-            bar(x: 120)
             text = arrayText1
         } else if indexPath.row == 1 {
-              bar(x: 120)
             text = arrayText2
         } else if indexPath.row == 2 {
-             bar(x: 240)
             text = arrayText3
         }
         tableView.reloadData()
-        scrollToMenuIndex(menuIndex: indexPath.item)
-        setupCollectionView()
     }
-    
-    func setupCollectionView() {
-        if let flowLayout = self.customCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-                flowLayout.scrollDirection = .horizontal
-                flowLayout.minimumLineSpacing = 0
-        }
-    }
-
-    func scrollToMenuIndex(menuIndex: Int) {
-        let indexPath = IndexPath(item: menuIndex, section: 0)
-        let scrollView = UIScrollView(frame: CGRect(x: 0, y: 23, width: 120, height: 5))
-        scrollView.backgroundColor = UIColor.red
-        customCollectionView.addSubview(scrollView)
-        
-        scrollView.isScrollEnabled = true
-        scrollView.bounces = true
-        
-        scrollView.setNeedsLayout()
-        customCollectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 3
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        cell = customCollectionView.cellForItem(at: indexPath)
+        label = cell.viewWithTag(1) as? UILabel
+        label.textColor = UIColor.white
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     
@@ -138,15 +130,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let myCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! customCell
-        print(indexPath.row)
         if text.count > 0 {
             myCell.labelName.text = text[indexPath.row]
         }
-        
         return myCell
     }
-    
-
 }
 
 

@@ -19,7 +19,6 @@ class customCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         imageVw.layer.borderWidth = 1.0
