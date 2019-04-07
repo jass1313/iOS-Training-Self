@@ -8,9 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout,UIScrollViewDelegate {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    @IBOutlet weak var uiViewBack: UIView!
     var horizontalBarView = UIView()
     var label:UILabel!
     var cell:UICollectionViewCell!
@@ -19,7 +18,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var arrayText1 = ["1","2","3","4","5","6","7","8","9","10"]
     var arrayText2 = ["11","12","13","14","15","16","17","18","19","20"]
     var arrayText3 = ["21","23","23","24","25","26","27","28","29","30"]
+    var indexPathForFirstRow:IndexPath = []
+    var index = 0
+    var selectedIndexPath:IndexPath = []
+    var deSelectIndex: IndexPath = []
     
+    @IBOutlet weak var uiViewBack: UIView!
     @IBOutlet weak var customCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
@@ -35,19 +39,57 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.navigationItem.titleView = imageView
         
         //Collection View
-        customCollectionView.isScrollEnabled = true
-        bar()
+        uiViewBack.backgroundColor = UIColor.black
+        customizeHorizontalBarView()
         
         //table View
         tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        
+        //gesture
+        let directions: [UISwipeGestureRecognizer.Direction] = [.right, .left]
+        for direction in directions {
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.handleSwipe(gesture:)))
+            gesture.direction = direction
+            tableView.addGestureRecognizer(gesture)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         //Collection View
-        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
+        indexPathForFirstRow = IndexPath(row: 0, section: 0)
         customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
+    }
+    
+    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
+        print(gesture.direction)
+        index = indexPathForFirstRow.row
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.left:
+            index += 1
+            print(index)
+            if index < 3 {
+            selectedIndexPath = IndexPath(row: index, section: 0)
+            self.collectionView(customCollectionView, didSelectItemAt: selectedIndexPath)
+            deSelectIndex = IndexPath(row: index-1, section: 0)
+            self.collectionView(customCollectionView, didDeselectItemAt: deSelectIndex)
+            }
+            print("left swipe")
+        case UISwipeGestureRecognizer.Direction.right:
+            index -= 1
+            print(index)
+            if index >= 0 {
+            selectedIndexPath = IndexPath(row: index, section: 0)
+            self.collectionView(customCollectionView, didSelectItemAt: selectedIndexPath)
+            deSelectIndex = IndexPath(row: index+1, section: 0)
+            self.collectionView(customCollectionView, didDeselectItemAt: deSelectIndex)
+            }
+            print("right swipe")
+        default:
+            print("other swipe")
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -62,17 +104,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         label = cell.viewWithTag(1) as? UILabel
         label.text = arrayText[indexPath.row]
+        label.backgroundColor = UIColor.black
+        label.textColor = UIColor.white
         cell.backgroundColor = UIColor.black
-
         return cell
     }
    
-    func bar() {
+    func customizeHorizontalBarView() {
         horizontalBarView = UIView(frame: CGRect(x: 0, y: 0, width: uiViewBack.frame.width/3, height: 5))
         horizontalBarView.backgroundColor = UIColor.red
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         uiViewBack.addSubview(horizontalBarView)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -98,6 +140,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             text = arrayText3
         }
         tableView.reloadData()
+        indexPathForFirstRow = indexPath
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
@@ -116,7 +159,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
-    
+   
     
     
     //Table View
