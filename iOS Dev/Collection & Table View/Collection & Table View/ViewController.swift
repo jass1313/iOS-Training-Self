@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout,UITabBarDelegate {
     
     var horizontalBarView = UIView()
     var label:UILabel!
@@ -22,6 +22,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var index = 0
     var selectedIndexPath:IndexPath = []
     var deSelectIndex: IndexPath = []
+    
+    var viewController: UIViewController?
+    var viewController1: UIViewController?
     
     @IBOutlet weak var uiViewBack: UIView!
     @IBOutlet weak var customCollectionView: UICollectionView!
@@ -51,18 +54,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.handleSwipe(gesture:)))
             gesture.direction = direction
             tableView.addGestureRecognizer(gesture)
+            
+        //Tab Bar
+        self.tabBarController?.tabBar.tintColor = UIColor.orange
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         //Collection View
         indexPathForFirstRow = IndexPath(row: 0, section: 0)
         customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
     }
     
+    //Handle the swipe
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
         print(gesture.direction)
         index = indexPathForFirstRow.row
@@ -70,7 +76,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         case UISwipeGestureRecognizer.Direction.left:
             index += 1
             print(index)
-            if index < 3 {
+            if index < arrayText.count {
             selectedIndexPath = IndexPath(row: index, section: 0)
             self.collectionView(customCollectionView, didSelectItemAt: selectedIndexPath)
             deSelectIndex = IndexPath(row: index-1, section: 0)
@@ -79,7 +85,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             print("left swipe")
         case UISwipeGestureRecognizer.Direction.right:
             index -= 1
-            print(index)
             if index >= 0 {
             selectedIndexPath = IndexPath(row: index, section: 0)
             self.collectionView(customCollectionView, didSelectItemAt: selectedIndexPath)
@@ -92,6 +97,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    
+    //CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -144,6 +151,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
         cell = customCollectionView.cellForItem(at: indexPath)
         label = cell.viewWithTag(1) as? UILabel
         label.textColor = UIColor.white
@@ -178,6 +186,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return myCell
     }
+    
 }
 
 
