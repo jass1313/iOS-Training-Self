@@ -13,20 +13,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var horizontalBarView = UIView()
     var label:UILabel!
     var cell:UICollectionViewCell!
-    var text:Array<Any>!
+    var text = [String]()
     
     var arrayText = ["Community","Following","Popular"]
-    var arrayText1 = [
-        ["1","2","3","4","5","6","7","8","9","10"],
-        ["11","12","13","14","15","16","17","18","19","20"],
-        ["21","23","23","24","25","26","27","28","29","30"]
-    ]
+    var arrayText1 = ["1","2","3","4","5","6","7","8","9","10"]
+    var arrayText2 = ["11","12","13","14","15","16","17","18","19","20"]
+    var arrayText3 = ["21","23","23","24","25","26","27","28","29","30"]
    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var uiViewBack: UIView!
     @IBOutlet weak var customCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var uiView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +38,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //Collection View
         uiViewBack.backgroundColor = UIColor.black
+        customCollectionView.isScrollEnabled = true
+        customCollectionView.isPagingEnabled = true
         customizeHorizontalBarView()
         
         //table View
@@ -54,12 +53,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.scrollView.delegate = self
         scrollView.isPagingEnabled = true
         scrollView.isScrollEnabled = true
-        scrollView.frame = CGRect(x: 0, y: 0, width: uiView.frame.width * 3, height: uiView.frame.height * 3)
-        scrollView.addSubview(uiView)
-        uiView.addSubview(tableView)
+        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        scrollView.panGestureRecognizer.isEnabled = false
+        scrollView.addSubview(tableView)
+        scrollView.addSubview(uiViewBack)
+        scrollView.addSubview(customCollectionView)
     }
 
-    
+    var index:Int = 0
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Collection View
@@ -69,19 +70,18 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let indexPathForFirstRow = IndexPath(row: 0, section: 0)
-//        customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
-//        self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
+        customCollectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
     }
+
     
-    
+
     //CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return arrayText.count
+        return arrayText.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -109,12 +109,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
             if (indexPath.item == 0) {
                 self.horizontalBarView.frame = CGRect(x:0 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
+                self.text = self.arrayText1
             } else if (indexPath.item == 1) {
                 self.horizontalBarView.frame = CGRect(x:self.uiViewBack.bounds.width/3 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
+                self.text = self.arrayText2
             } else if (indexPath.item == 2) {
                 self.horizontalBarView.frame = CGRect(x:self.uiViewBack.bounds.width/1.5 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
+                self.text = self.arrayText3
             }
         })
+        index = indexPath.row
         tableView.reloadData()
     }
     
@@ -137,28 +141,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
    
     //Table View
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrayText[section]
+        return arrayText[index]
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return arrayText.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayText1[section].count
+        return arrayText1.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         print("\(indexPath.row),km")
         let myCell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! customCell
-        if arrayText1.count > 0 {
-            myCell.labelName.text = arrayText1[indexPath.section][indexPath.row]
+        if text.count > 0 {
+            myCell.labelName.text = text[indexPath.row]
         }
         return myCell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          print("\(indexPath),km")
     }
 }
 
