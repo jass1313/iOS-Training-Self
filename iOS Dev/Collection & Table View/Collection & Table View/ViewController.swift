@@ -19,8 +19,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var arrayText1 = ["1","2","3","4","5","6","7","8","9","10"]
     var arrayText2 = ["11","12","13","14","15","16","17","18","19","20"]
     var arrayText3 = ["21","23","23","24","25","26","27","28","29","30"]
-   
-    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var uiViewBack: UIView!
     @IBOutlet weak var customCollectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
@@ -38,8 +37,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //Collection View
         uiViewBack.backgroundColor = UIColor.black
-        customCollectionView.isScrollEnabled = true
-        customCollectionView.isPagingEnabled = true
         customizeHorizontalBarView()
         
         //table View
@@ -49,17 +46,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.tabBarController?.tabBar.tintColor = UIColor.orange
         self.tabBarController?.tabBar.barTintColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
         
-        //scrollView
-        self.scrollView.delegate = self
-        scrollView.isPagingEnabled = true
-        scrollView.isScrollEnabled = true
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.panGestureRecognizer.isEnabled = false
-        scrollView.addSubview(tableView)
-        scrollView.addSubview(uiViewBack)
-        scrollView.addSubview(customCollectionView)
     }
-
+    
     var index:Int = 0
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -68,13 +56,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
     }
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        customCollectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
-    }
-
     
-
     //CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -93,7 +75,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.backgroundColor = UIColor.black
         return cell
     }
-   
+    
     func customizeHorizontalBarView() {
         horizontalBarView = UIView(frame: CGRect(x: 0, y: 0, width: uiViewBack.frame.width/3, height: 5))
         horizontalBarView.backgroundColor = UIColor.red
@@ -138,7 +120,21 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0.0
     }
-   
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.2) {
+            let cell = self.customCollectionView.cellForItem(at: indexPath)
+            cell?.transform = .init(scaleX: 1.10, y: 1.10)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.2) {
+            let cell = self.customCollectionView.cellForItem(at: indexPath)
+            cell?.transform = .identity
+        }
+    }
+    
     //Table View
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return arrayText[index]
@@ -161,7 +157,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return myCell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  
+    
+    func scrollViewWillEndDragging(_ scrollView1: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        var index = Int(horizontalBarView.frame.origin.x / 100)
+        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+        if index < 2 && velocity.x > 0 {
+            index += 1
+            let indexPath = IndexPath(row: index, section: 0)
+            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
+            self.customCollectionView.deselectItem(at: IndexPath(row: index-1, section: 0), animated: true)
+            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index-1, section: 0))
+        } else if index > 0 && velocity.x < 0 {
+            index -= 1
+            let indexPath = IndexPath(row: index, section: 0)
+            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
+            self.customCollectionView.deselectItem(at: IndexPath(row: index+1, section: 0), animated: true)
+            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index+1, section: 0))
+        }
+    })
     }
 }
 
