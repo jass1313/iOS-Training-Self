@@ -17,7 +17,7 @@ class ViewController1: UIViewController {
         navigationItem.title = "Favorites"
     }
     
-    @IBOutlet weak var View1: UIView!
+    
     
     /*
     // MARK: - Navigation

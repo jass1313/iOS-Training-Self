@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var label:UILabel!
     var cell:UICollectionViewCell!
     var text = [String]()
-    
+    var index:Int = 0
     var arrayText = ["Community","Following","Popular"]
     var arrayText1 = ["1","2","3","4","5","6","7","8","9","10"]
     var arrayText2 = ["11","12","13","14","15","16","17","18","19","20"]
@@ -45,10 +45,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         //Tab Bar
         self.tabBarController?.tabBar.tintColor = UIColor.orange
         self.tabBarController?.tabBar.barTintColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
-        
+    
     }
     
-    var index:Int = 0
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Collection View
@@ -56,8 +56,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
     }
+
     
-    //CollectionView
+    
+//CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -156,7 +158,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return myCell
     }
-    
   
     
     func scrollViewWillEndDragging(_ scrollView1: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
