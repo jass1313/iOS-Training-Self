@@ -10,9 +10,9 @@
 		D60BA994225473F8007A6016 /* customCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60BA992225473F8007A6016 /* customCell.swift */; };
 		D60BA995225473F8007A6016 /* customCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D60BA993225473F8007A6016 /* customCell.xib */; };
 		D622D400226462D8005CC97D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D622D3FF226462D8005CC97D /* HomeViewController.swift */; };
-		D68BCF41225B75050013DAE5 /* ViewController1.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68BCF40225B75050013DAE5 /* ViewController1.swift */; };
+		D68BCF41225B75050013DAE5 /* FavoritesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D68BCF40225B75050013DAE5 /* FavoritesVC.swift */; };
 		D695D7F122532D8200C900CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D695D7F022532D8200C900CA /* AppDelegate.swift */; };
-		D695D7F322532D8200C900CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D695D7F222532D8200C900CA /* ViewController.swift */; };
+		D695D7F322532D8200C900CA /* ForumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D695D7F222532D8200C900CA /* ForumVC.swift */; };
 		D695D7F622532D8200C900CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D695D7F422532D8200C900CA /* Main.storyboard */; };
 		D695D7F822532D9000C900CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D695D7F722532D9000C900CA /* Assets.xcassets */; };
 		D695D7FB22532D9000C900CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D695D7F922532D9000C900CA /* LaunchScreen.storyboard */; };
@@ -22,10 +22,10 @@
 		D60BA992225473F8007A6016 /* customCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customCell.swift; sourceTree = "<group>"; };
 		D60BA993225473F8007A6016 /* customCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customCell.xib; sourceTree = "<group>"; };
 		D622D3FF226462D8005CC97D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		D68BCF40225B75050013DAE5 /* ViewController1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController1.swift; sourceTree = "<group>"; };
+		D68BCF40225B75050013DAE5 /* FavoritesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesVC.swift; sourceTree = "<group>"; };
 		D695D7ED22532D8100C900CA /* Collection & Table View.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Collection & Table View.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D695D7F022532D8200C900CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D695D7F222532D8200C900CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D695D7F222532D8200C900CA /* ForumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForumVC.swift; sourceTree = "<group>"; };
 		D695D7F522532D8200C900CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D695D7F722532D9000C900CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D695D7FA22532D9000C900CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,9 +63,9 @@
 			isa = PBXGroup;
 			children = (
 				D695D7F022532D8200C900CA /* AppDelegate.swift */,
-				D695D7F222532D8200C900CA /* ViewController.swift */,
-				D68BCF40225B75050013DAE5 /* ViewController1.swift */,
 				D622D3FF226462D8005CC97D /* HomeViewController.swift */,
+				D695D7F222532D8200C900CA /* ForumVC.swift */,
+				D68BCF40225B75050013DAE5 /* FavoritesVC.swift */,
 				D60BA992225473F8007A6016 /* customCell.swift */,
 				D60BA993225473F8007A6016 /* customCell.xib */,
 				D695D7F422532D8200C900CA /* Main.storyboard */,
@@ -149,8 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D622D400226462D8005CC97D /* HomeViewController.swift in Sources */,
-				D68BCF41225B75050013DAE5 /* ViewController1.swift in Sources */,
-				D695D7F322532D8200C900CA /* ViewController.swift in Sources */,
+				D68BCF41225B75050013DAE5 /* FavoritesVC.swift in Sources */,
+				D695D7F322532D8200C900CA /* ForumVC.swift in Sources */,
 				D695D7F122532D8200C900CA /* AppDelegate.swift in Sources */,
 				D60BA994225473F8007A6016 /* customCell.swift in Sources */,
 			);

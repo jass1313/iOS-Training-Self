@@ -21,13 +21,9 @@ class customCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageVw.layer.borderWidth = 1.0
-        imageVw.layer.masksToBounds = false
-        imageVw.layer.borderColor = UIColor.white.cgColor
+        
         imageVw.layer.cornerRadius = imageVw.frame.size.width / 2
         imageVw.clipsToBounds = true
-    
-        layoutMargins = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
     }
     
     @IBAction func likeButton(_ sender: Any) {
