@@ -7,17 +7,18 @@
 //
 
 import UIKit
+import WebKit
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
    
     var imageView:UIImageView!
-    
+
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var messageBoardBut: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var pic: UIImageView!
     @IBOutlet weak var userInfoView: UIView!
     
     override func viewDidLoad() {
@@ -39,17 +40,19 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         //images
         imageView = view.viewWithTag(5) as? UIImageView
         imageView.image = UIImage(named: "5.jpg")
-        imageView = view.viewWithTag(6) as? UIImageView
-        imageView.image = UIImage(named: "cowherd.jpg")
         userNameLabel.minimumScaleFactor = 0.5
         userNameLabel.adjustsFontSizeToFitWidth = true
+        messageBoardBut.setImage(UIImage(named: "6.png"), for: UIControl.State.normal)
         
+        //Background View Image
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "7.png")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        backView.insertSubview(backgroundImage, at: 0)
        
         //Views Border
         messageBoardBut.layer.borderColor = UIColor.white.cgColor
         messageBoardBut.layer.borderWidth = 2
-        pic.layer.borderColor = UIColor.white.cgColor
-        pic.layer.borderWidth = 2
         userInfoView.layer.borderColor = UIColor.white.cgColor
         userInfoView.layer.borderWidth = 2
         
@@ -58,9 +61,15 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         imgView.layer.cornerRadius = imgView.frame.size.width / 2
         imgView.clipsToBounds = true
         
+        //web view
+        let url = URL(string: "https://www.countrylife.co.za/wp-content/uploads/2016/11/Digital-Dogs-Part-of-the-Herd-Sue-Adams-1.jpg")
+        let requestObj = URLRequest(url: url! as URL)
+        webView.load(requestObj)
+//        webView.loadHTMLString("<iframe width=\"\(webView.frame.width)\" height=\"\(webView.frame.height)\" src=\"https://www.countrylife.co.za/wp-content/uploads/2016/11/Digital-Dogs-Part-of-the-Herd-Sue-Adams-1.jpg\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
+
         //Tab Bar
         self.tabBarController?.tabBar.tintColor = UIColor.red
-        self.tabBarController?.tabBar.barTintColor = UIColor(red: 38/255, green: 196/255, blue: 133/255, alpha: 1)
+        self.tabBarController?.tabBar.barTintColor = UIColor.white
     }
     
     //Collection View
@@ -94,5 +103,19 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.2) {
+            let cell = self.collectionView.cellForItem(at: indexPath)
+            cell?.transform = .init(scaleX: 1.02, y: 1.02)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        UIView.animate(withDuration: 0.2) {
+            let cell = self.collectionView.cellForItem(at: indexPath)
+            cell?.transform = .identity
+        }
     }
 }

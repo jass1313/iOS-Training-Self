@@ -43,7 +43,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
     }
     
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         //Collection View
@@ -52,8 +51,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
     }
 
-    
-    
 //CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
