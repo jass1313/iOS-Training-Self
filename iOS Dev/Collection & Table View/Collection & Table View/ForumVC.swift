@@ -36,7 +36,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.navigationItem.titleView = imageView
         
         //Collection View
-        uiViewBack.backgroundColor = UIColor.black
         customizeHorizontalBarView()
         
         //table View
@@ -64,9 +63,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         label = cell.viewWithTag(1) as? UILabel
         label.text = arrayText[indexPath.row]
-        label.backgroundColor = UIColor.black
         label.textColor = UIColor.white
-        cell.backgroundColor = UIColor.black
         return cell
     }
     
@@ -130,10 +127,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     //Table View
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrayText[index]
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -151,27 +144,27 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return myCell
     }
   
-    
-    func scrollViewWillEndDragging(_ scrollView1: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        var index = Int(horizontalBarView.frame.origin.x / 100)
-        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-        if index < 2 && velocity.x > 0 {
-            index += 1
-            let indexPath = IndexPath(row: index, section: 0)
-            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
-            self.customCollectionView.deselectItem(at: IndexPath(row: index-1, section: 0), animated: true)
-            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index-1, section: 0))
-        } else if index > 0 && velocity.x < 0 {
-            index -= 1
-            let indexPath = IndexPath(row: index, section: 0)
-            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
-            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
-            self.customCollectionView.deselectItem(at: IndexPath(row: index+1, section: 0), animated: true)
-            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index+1, section: 0))
-        }
-    })
-    }
+//
+//    func scrollViewWillEndDragging(_ scrollView1: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        var index = Int(horizontalBarView.frame.origin.x / 100)
+//        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
+//        if index < 2 && velocity.x > 0 {
+//            index += 1
+//            let indexPath = IndexPath(row: index, section: 0)
+//            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
+//            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
+//            self.customCollectionView.deselectItem(at: IndexPath(row: index-1, section: 0), animated: true)
+//            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index-1, section: 0))
+//        } else if index > 0 && velocity.x < 0 {
+//            index -= 1
+//            let indexPath = IndexPath(row: index, section: 0)
+//            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
+//            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
+//            self.customCollectionView.deselectItem(at: IndexPath(row: index+1, section: 0), animated: true)
+//            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index+1, section: 0))
+//        }
+//    })
+//    }
 }
 
 

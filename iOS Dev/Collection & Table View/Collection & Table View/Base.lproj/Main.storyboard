@@ -19,7 +19,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6qD-cI-aU7">
                                 <rect key="frame" x="0.0" y="64" width="375" height="26"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14599239525753424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="LgH-iA-8WE"/>
                                 </constraints>
@@ -39,12 +39,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJB-ej-2Eh">
                                                     <rect key="frame" x="0.0" y="0.0" width="130" height="24"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14599239525753424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14599239525753424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="RJB-ej-2Eh" secondAttribute="trailing" id="Gd5-BA-3OD"/>
                                             <constraint firstAttribute="bottom" secondItem="RJB-ej-2Eh" secondAttribute="bottom" id="emF-OE-4KI"/>
@@ -59,7 +61,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" separatorInsetReference="fromAutomaticInsets" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="x6M-bQ-W6g">
-                                <rect key="frame" x="0.0" y="95" width="375" height="523"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="526"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -68,10 +70,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0c-HL-XcY">
-                                <rect key="frame" x="0.0" y="90" width="375" height="5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="2"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14599239525753424" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="5" id="FBZ-hB-pRJ"/>
+                                    <constraint firstAttribute="height" constant="2" id="FBZ-hB-pRJ"/>
                                     <constraint firstAttribute="width" constant="375" id="bTC-a9-UXo"/>
                                 </constraints>
                             </view>
@@ -91,7 +93,22 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IBB-Hb-3ke"/>
+                    <navigationItem key="navigationItem" id="IBB-Hb-3ke">
+                        <leftBarButtonItems>
+                            <barButtonItem title="Item" image="profile" id="6ak-qp-dHG">
+                                <inset key="imageInsets" minX="-7" minY="0.0" maxX="-8" maxY="-9"/>
+                                <inset key="largeContentSizeImageInsets" minX="0.0" minY="-1" maxX="0.0" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="Search" id="OQw-h3-5kp">
+                                <inset key="imageInsets" minX="-60" minY="-1" maxX="10" maxY="0.0"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MOL-4W-ic1">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="customCollectionView" destination="6qD-cI-aU7" id="x7e-DG-5m4"/>
                         <outlet property="tableView" destination="x6M-bQ-W6g" id="C5M-4t-WeZ"/>
@@ -171,13 +188,13 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFd-6H-GHt">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rej-qe-KgP">
-                                                <rect key="frame" x="8" y="6" width="36" height="33"/>
+                                                <rect key="frame" x="8" y="6" width="36" height="44.5"/>
                                             </imageView>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="UGZ-Kj-16J">
-                                                <rect key="frame" x="58" y="20.5" width="212" height="5"/>
+                                                <rect key="frame" x="58" y="26" width="212" height="5"/>
                                                 <color key="tintColor" red="0.95686274510000002" green="0.44615807489999998" blue="0.39952276809999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="4" id="3xp-Z4-SRo"/>
@@ -185,7 +202,7 @@
                                                 <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </slider>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JASS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3Ob-Td-4rG">
-                                                <rect key="frame" x="60" y="6" width="30" height="13.5"/>
+                                                <rect key="frame" x="60" y="11.5" width="30" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -194,7 +211,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19512 BUCKS TO STARTER" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Lls-q3-9pc">
-                                                <rect key="frame" x="132" y="25.5" width="137" height="12"/>
+                                                <rect key="frame" x="132" y="31" width="137" height="12"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -203,7 +220,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STARTER" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="PLU-oY-RjW">
-                                                <rect key="frame" x="216" y="6" width="52" height="13.5"/>
+                                                <rect key="frame" x="216" y="11.5" width="52" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -212,7 +229,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5.49K" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="biP-o7-brA">
-                                                <rect key="frame" x="296" y="2.5" width="50" height="20"/>
+                                                <rect key="frame" x="296" y="8" width="50" height="20"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -221,7 +238,7 @@
                                                 </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LIFETIME BUCKS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Tgn-la-UoS">
-                                                <rect key="frame" x="277" y="22.5" width="93" height="12"/>
+                                                <rect key="frame" x="277" y="28" width="93" height="12"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -230,7 +247,7 @@
                                                 </variation>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.089076804290000006" green="0.084012396640000001" blue="0.33503533390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.038626421242952347" green="0.1253923773765564" blue="0.23718762397766113" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="UGZ-Kj-16J" firstAttribute="top" secondItem="PLU-oY-RjW" secondAttribute="bottom" constant="1" id="2qO-8G-eoN"/>
                                             <constraint firstAttribute="width" secondItem="rej-qe-KgP" secondAttribute="width" multiplier="367:35" id="36p-Zb-JhV"/>
@@ -253,7 +270,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="j8g-0o-z6q">
-                                        <rect key="frame" x="0.0" y="205" width="375" height="244"/>
+                                        <rect key="frame" x="0.0" y="216.5" width="375" height="243.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0oC-gd-E1N">
                                             <size key="itemSize" width="124" height="129"/>
@@ -284,17 +301,17 @@
                                         </cells>
                                     </collectionView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBT-eb-qJk">
-                                        <rect key="frame" x="0.0" y="449" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="460" width="375" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
                                     <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IxP-Br-sUf">
-                                        <rect key="frame" x="0.0" y="494" width="375" height="40"/>
+                                        <rect key="frame" x="0.0" y="505" width="375" height="40"/>
                                     </imageView>
                                     <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bvf-FO-fdG">
-                                        <rect key="frame" x="0.0" y="45" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="56.5" width="375" height="160"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <wkWebViewConfiguration key="configuration">
                                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -321,7 +338,7 @@
                                     <constraint firstItem="j8g-0o-z6q" firstAttribute="leading" secondItem="3nE-3C-rvH" secondAttribute="leading" id="cQk-7U-xWt"/>
                                     <constraint firstAttribute="trailing" secondItem="IxP-Br-sUf" secondAttribute="trailing" id="faL-rw-xlv"/>
                                     <constraint firstItem="IxP-Br-sUf" firstAttribute="height" secondItem="3nE-3C-rvH" secondAttribute="height" multiplier="40:554" id="nel-a0-aJt"/>
-                                    <constraint firstItem="qFd-6H-GHt" firstAttribute="height" secondItem="3nE-3C-rvH" secondAttribute="width" multiplier="12/100" id="qXA-Kr-rPO"/>
+                                    <constraint firstItem="qFd-6H-GHt" firstAttribute="height" secondItem="3nE-3C-rvH" secondAttribute="width" multiplier="15/100" id="qXA-Kr-rPO"/>
                                     <constraint firstItem="Bvf-FO-fdG" firstAttribute="top" secondItem="qFd-6H-GHt" secondAttribute="bottom" id="srh-fu-BXZ"/>
                                     <constraint firstItem="qFd-6H-GHt" firstAttribute="top" secondItem="3nE-3C-rvH" secondAttribute="top" id="vGc-4r-g6P"/>
                                     <constraint firstItem="j8g-0o-z6q" firstAttribute="top" secondItem="Bvf-FO-fdG" secondAttribute="bottom" id="xBy-PH-LSs"/>
@@ -398,7 +415,7 @@
                     <tabBarItem key="tabBarItem" title="Home" image="home" id="V8z-W6-ioT"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FFn-Ya-kQ1">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -412,7 +429,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Search" width="64" height="64"/>
         <image name="home" width="30" height="30"/>
         <image name="note-write-7" width="30" height="30"/>
+        <image name="profile" width="64" height="64"/>
     </resources>
 </document>
