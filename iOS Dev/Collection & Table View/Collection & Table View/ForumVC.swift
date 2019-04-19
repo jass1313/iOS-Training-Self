@@ -14,7 +14,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var label:UILabel!
     var cell:UICollectionViewCell!
     var text = [String]()
-    var index:Int = 0
+   // var index:Int = 0
     var arrayText = ["Community","Following","Popular"]
     var arrayText1 = ["1","2","3","4","5","6","7","8","9","10"]
     var arrayText2 = ["11","12","13","14","15","16","17","18","19","20"]
@@ -36,6 +36,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         self.navigationItem.titleView = imageView
         
         //Collection View
+        customCollectionView.backgroundColor = UIColor.init(red: 31/255.0, green: 33/255.0, blue: 37/255.0, alpha: 1.0)
         customizeHorizontalBarView()
         
         //table View
@@ -64,12 +65,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         label = cell.viewWithTag(1) as? UILabel
         label.text = arrayText[indexPath.row]
         label.textColor = UIColor.white
+        cell.backgroundColor = UIColor.init(red: 31/255.0, green: 33/255.0, blue: 37/255.0, alpha: 1.0)
         return cell
     }
     
     func customizeHorizontalBarView() {
         horizontalBarView = UIView(frame: CGRect(x: 0, y: 0, width: uiViewBack.frame.width/3, height: 5))
-        horizontalBarView.backgroundColor = UIColor.red
+        horizontalBarView.backgroundColor = UIColor.init(red: 230/255.0, green: 67/255.0, blue: 2/255.0, alpha: 1.0)
         horizontalBarView.translatesAutoresizingMaskIntoConstraints = false
         uiViewBack.addSubview(horizontalBarView)
     }
@@ -77,8 +79,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         cell = customCollectionView.cellForItem(at: indexPath)
         label = cell.viewWithTag(1) as? UILabel
-        label.textColor = UIColor.red
-        
+        label.highlightedTextColor = UIColor.init(red: 230/255.0, green: 67/255.0, blue: 2/255.0, alpha: 1.0)
+       
         UIView.animate(withDuration: 1.0, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
             if (indexPath.item == 0) {
                 self.horizontalBarView.frame = CGRect(x:0 ,y: 0,width: self.uiViewBack.bounds.width/3,height: self.uiViewBack.frame.height )
@@ -91,14 +93,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.text = self.arrayText3
             }
         })
-        index = indexPath.row
+      //  index = indexPath.row
         tableView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        cell = customCollectionView.cellForItem(at: indexPath)
-        label = cell.viewWithTag(1) as? UILabel
-        label.textColor = UIColor.white
         collectionView.deselectItem(at: indexPath, animated: true)
     }
     

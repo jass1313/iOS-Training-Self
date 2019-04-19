@@ -13,9 +13,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
    
     var imageView:UIImageView!
 
+    @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var userNameLabel: UILabel!
-    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var messageBoardBut: UIButton!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var imgView: UIImageView!
@@ -38,8 +38,6 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         self.navigationItem.titleView = imageVw
         
         //images
-        imageView = view.viewWithTag(5) as? UIImageView
-        imageView.image = UIImage(named: "5.jpg")
         userNameLabel.minimumScaleFactor = 0.5
         userNameLabel.adjustsFontSizeToFitWidth = true
         messageBoardBut.setImage(UIImage(named: "6.png"), for: UIControl.State.normal)
@@ -48,13 +46,16 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
         backgroundImage.image = UIImage(named: "7.png")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
-        backView.insertSubview(backgroundImage, at: 0)
+        ScrollView.insertSubview(backgroundImage, at: 0)
+        ScrollView.backgroundColor = UIColor(patternImage: UIImage(named:"7.png")!)
        
         //Views Border
         messageBoardBut.layer.borderColor = UIColor.white.cgColor
         messageBoardBut.layer.borderWidth = 2
         userInfoView.layer.borderColor = UIColor.white.cgColor
         userInfoView.layer.borderWidth = 2
+        webView.layer.borderColor = UIColor.white.cgColor
+        webView.layer.borderWidth = 1
         
         //UserStatusView
         imgView.image = UIImage(named: "jass")
@@ -65,10 +66,9 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         let url = URL(string: "https://www.countrylife.co.za/wp-content/uploads/2016/11/Digital-Dogs-Part-of-the-Herd-Sue-Adams-1.jpg")
         let requestObj = URLRequest(url: url! as URL)
         webView.load(requestObj)
-//        webView.loadHTMLString("<iframe width=\"\(webView.frame.width)\" height=\"\(webView.frame.height)\" src=\"https://www.countrylife.co.za/wp-content/uploads/2016/11/Digital-Dogs-Part-of-the-Herd-Sue-Adams-1.jpg\" frameborder=\"0\" allowfullscreen></iframe>", baseURL: nil)
 
         //Tab Bar
-        self.tabBarController?.tabBar.tintColor = UIColor.red
+        self.tabBarController?.tabBar.tintColor = UIColor.init(red: 230/255.0, green: 67/255.0, blue: 2/255.0, alpha: 1.0)
         self.tabBarController?.tabBar.barTintColor = UIColor.white
     }
     
@@ -85,7 +85,6 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         imageView = cell.viewWithTag(1) as? UIImageView
         imageView?.image = UIImage(named: "1.jpg")
-        cell.backgroundColor = UIColor.orange
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 2
         return cell

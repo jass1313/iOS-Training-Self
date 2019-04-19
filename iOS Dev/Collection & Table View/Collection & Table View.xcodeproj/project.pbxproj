@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D601D68F226884CA0067953B /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601D68E226884CA0067953B /* Roboto-Light.ttf */; };
-		D601D691226885200067953B /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601D690226885200067953B /* Roboto-Thin.ttf */; };
-		D601D693226885310067953B /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601D692226885310067953B /* RobotoCondensed-Light.ttf */; };
 		D601D6A6226887420067953B /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601D6952268873A0067953B /* RobotoCondensed-Light.ttf */; };
 		D601D6A7226887420067953B /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601D6962268873F0067953B /* RobotoCondensed-LightItalic.ttf */; };
 		D601D6A8226887420067953B /* RobotoCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D601D6972268873F0067953B /* RobotoCondensed-Italic.ttf */; };
@@ -40,9 +37,6 @@
 
 /* Begin PBXFileReference section */
 		D601D68B226883E90067953B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		D601D68E226884CA0067953B /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
-		D601D690226885200067953B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		D601D692226885310067953B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		D601D6952268873A0067953B /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "RobotoCondensed-Light.ttf"; path = "../../../../../../Downloads/roboto/RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		D601D6962268873F0067953B /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		D601D6972268873F0067953B /* RobotoCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Italic.ttf"; sourceTree = "<group>"; };
@@ -105,9 +99,6 @@
 				D601D6952268873A0067953B /* RobotoCondensed-Light.ttf */,
 				D601D6962268873F0067953B /* RobotoCondensed-LightItalic.ttf */,
 				D601D6A0226887410067953B /* RobotoCondensed-Regular.ttf */,
-				D601D692226885310067953B /* RobotoCondensed-Light.ttf */,
-				D601D690226885200067953B /* Roboto-Thin.ttf */,
-				D601D68E226884CA0067953B /* Roboto-Light.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -212,14 +203,11 @@
 				D601D6B4226887420067953B /* Roboto-Bold.ttf in Resources */,
 				D695D7F822532D9000C900CA /* Assets.xcassets in Resources */,
 				D601D6A6226887420067953B /* RobotoCondensed-Light.ttf in Resources */,
-				D601D691226885200067953B /* Roboto-Thin.ttf in Resources */,
 				D601D6AF226887420067953B /* Roboto-Italic.ttf in Resources */,
-				D601D68F226884CA0067953B /* Roboto-Light.ttf in Resources */,
 				D601D6AA226887420067953B /* RobotoCondensed-Bold.ttf in Resources */,
 				D601D6B1226887420067953B /* RobotoCondensed-Regular.ttf in Resources */,
 				D601D6B3226887420067953B /* Roboto-Light.ttf in Resources */,
 				D601D6AD226887420067953B /* Roboto-Thin.ttf in Resources */,
-				D601D693226885310067953B /* RobotoCondensed-Light.ttf in Resources */,
 				D601D6AE226887420067953B /* Roboto-BoldItalic.ttf in Resources */,
 				D60BA995225473F8007A6016 /* customCell.xib in Resources */,
 				D601D6B0226887420067953B /* Roboto-BlackItalic.ttf in Resources */,
