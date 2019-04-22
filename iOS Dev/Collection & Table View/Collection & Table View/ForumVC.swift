@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout,UITabBarDelegate,UIScrollViewDelegate {
     
+    var indexPathForFirstRow:IndexPath = []
     var horizontalBarView = UIView()
     var label:UILabel!
     var cell:UICollectionViewCell!
     var text = [String]()
-   // var index:Int = 0
+
     var arrayText = ["Community","Following","Popular"]
     var arrayText1 = ["1","2","3","4","5","6","7","8","9","10"]
     var arrayText2 = ["11","12","13","14","15","16","17","18","19","20"]
@@ -28,8 +29,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.barTintColor = .black
+        view.backgroundColor = .darkGray
         navigationController?.toolbar.tintColor = .gray
-        view.backgroundColor = UIColor.black
         let logo = UIImage(named: "logo3")
         let imageView = UIImageView(image:logo)
         imageView.contentMode = .scaleAspectFit
@@ -41,6 +43,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         //table View
         tableView.register(UINib(nibName: "customCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        
+        //gesture
+        let directions: [UISwipeGestureRecognizer.Direction] = [.right, .left]
+        for direction in directions {
+            let gesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.handleSwipe(gesture:)))
+            gesture.direction = direction
+            tableView.addGestureRecognizer(gesture)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +60,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
     }
-
+    
+   
 //CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -93,7 +104,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.text = self.arrayText3
             }
         })
-      //  index = indexPath.row
+        indexPathForFirstRow = indexPath
         tableView.reloadData()
     }
     
@@ -142,28 +153,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
         return myCell
     }
-  
-//
-//    func scrollViewWillEndDragging(_ scrollView1: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        var index = Int(horizontalBarView.frame.origin.x / 100)
-//        UIView.animate(withDuration: 0.5, delay: 0, options: UIView.AnimationOptions.curveEaseIn, animations: {
-//        if index < 2 && velocity.x > 0 {
-//            index += 1
-//            let indexPath = IndexPath(row: index, section: 0)
-//            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .left)
-//            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
-//            self.customCollectionView.deselectItem(at: IndexPath(row: index-1, section: 0), animated: true)
-//            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index-1, section: 0))
-//        } else if index > 0 && velocity.x < 0 {
-//            index -= 1
-//            let indexPath = IndexPath(row: index, section: 0)
-//            self.customCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .right)
-//            self.collectionView(self.customCollectionView, didSelectItemAt: indexPath)
-//            self.customCollectionView.deselectItem(at: IndexPath(row: index+1, section: 0), animated: true)
-//            self.collectionView(self.customCollectionView, didDeselectItemAt: IndexPath(row: index+1, section: 0))
-//        }
-//    })
-//    }
+    
+    //Handle the swipe
+    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
+        print(gesture.direction)
+        var index = indexPathForFirstRow.row
+        switch gesture.direction {
+        case UISwipeGestureRecognizer.Direction.left:
+            index += 1
+            print(index)
+            if index < arrayText.count {
+                customCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
+                self.collectionView(customCollectionView, didSelectItemAt: IndexPath(row: index, section: 0))
+            }
+            print("left swipe")
+        case UISwipeGestureRecognizer.Direction.right:
+            index -= 1
+            if index >= 0 {
+                customCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
+                self.collectionView(customCollectionView, didSelectItemAt: IndexPath(row: index, section: 0))
+            }
+            print("right swipe")
+        default:
+            print("other swipe")
+        }
+    }
+    
+    // hide NavigationBar with scroll 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print(scrollView.panGestureRecognizer.translation(in: scrollView).y)
+        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
+            navigationController?.setNavigationBarHidden(true, animated: true)
+            customCollectionView.isHidden = true
+            horizontalBarView.isHidden = true
+        } else {
+            navigationController?.setNavigationBarHidden(false, animated: true)
+            customCollectionView.isHidden = false
+            horizontalBarView.isHidden = false
+        }
+    }
 }
 
 

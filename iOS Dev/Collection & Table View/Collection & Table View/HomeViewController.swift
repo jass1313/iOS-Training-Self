@@ -31,7 +31,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = .white
         navigationController?.toolbar.tintColor = .gray
-        view.backgroundColor = UIColor.black
+        navigationController?.navigationBar.isTranslucent = false
         let logo = UIImage(named: "logo3")
         let imageVw = UIImageView(image:logo)
         imageVw.contentMode = .scaleAspectFit
