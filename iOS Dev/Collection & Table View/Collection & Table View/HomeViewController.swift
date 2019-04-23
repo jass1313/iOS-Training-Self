@@ -10,8 +10,6 @@ import UIKit
 import WebKit
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-   
-    var imageView:UIImageView!
 
     @IBOutlet weak var ScrollView: UIScrollView!
     @IBOutlet weak var webView: WKWebView!
@@ -83,7 +81,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        imageView = cell.viewWithTag(1) as? UIImageView
+        let imageView = cell.viewWithTag(1) as? UIImageView
         imageView?.image = UIImage(named: "1.jpg")
         cell.layer.borderColor = UIColor.white.cgColor
         cell.layer.borderWidth = 2
