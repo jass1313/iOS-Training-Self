@@ -25,15 +25,20 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        //Naviagation Controller
+        //Naviagation Controller Style
         navigationController?.navigationBar.barStyle = .black
         navigationController?.navigationBar.tintColor = .white
         navigationController?.toolbar.tintColor = .gray
         navigationController?.navigationBar.isTranslucent = false
+        
+        //set logo in navigation title
         let logo = UIImage(named: "logo3")
         let imageVw = UIImageView(image:logo)
         imageVw.contentMode = .scaleAspectFit
         self.navigationItem.titleView = imageVw
+        
+        //Back Button title empty
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         
         //images
         userNameLabel.minimumScaleFactor = 0.5

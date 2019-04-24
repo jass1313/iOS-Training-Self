@@ -405,29 +405,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" id="ona-yw-wHa">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableCell" rowHeight="160" id="ona-yw-wHa">
+                                <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ona-yw-wHa" id="oRq-GV-lgu">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="2" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ona-yw-wHa" id="oRq-GV-lgu">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YTh-Rg-vts">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="157.5"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Broncos Connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9H-NQ-UFB">
-                                            <rect key="frame" x="10.5" y="113" width="354" height="19.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Broncos Connected" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.25" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w9H-NQ-UFB">
+                                            <rect key="frame" x="10.5" y="135.5" width="354" height="20"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
+                                            <color key="shadowColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="w9H-NQ-UFB" secondAttribute="trailing" constant="10.5" id="043-5U-Egc"/>
-                                        <constraint firstItem="w9H-NQ-UFB" firstAttribute="centerY" secondItem="oRq-GV-lgu" secondAttribute="centerY" constant="52" id="46b-uD-Mdf"/>
                                         <constraint firstItem="YTh-Rg-vts" firstAttribute="leading" secondItem="oRq-GV-lgu" secondAttribute="leading" id="Erq-Ek-YeP"/>
                                         <constraint firstAttribute="trailing" secondItem="YTh-Rg-vts" secondAttribute="trailing" id="Ph2-j4-DHU"/>
-                                        <constraint firstAttribute="bottom" secondItem="w9H-NQ-UFB" secondAttribute="bottom" constant="9" id="TEB-81-YZl"/>
+                                        <constraint firstAttribute="bottom" secondItem="w9H-NQ-UFB" secondAttribute="bottom" constant="10" id="Vdi-Xk-Fhe"/>
+                                        <constraint firstAttribute="width" secondItem="w9H-NQ-UFB" secondAttribute="height" multiplier="375:19" id="Vdx-QW-uHu"/>
                                         <constraint firstItem="YTh-Rg-vts" firstAttribute="height" secondItem="oRq-GV-lgu" secondAttribute="width" multiplier="42/100" id="Yfu-So-Tyv"/>
                                         <constraint firstItem="w9H-NQ-UFB" firstAttribute="leading" secondItem="oRq-GV-lgu" secondAttribute="leading" constant="10.5" id="hWX-pP-Bz5"/>
                                         <constraint firstItem="YTh-Rg-vts" firstAttribute="top" secondItem="oRq-GV-lgu" secondAttribute="top" id="ucN-9D-iSZ"/>

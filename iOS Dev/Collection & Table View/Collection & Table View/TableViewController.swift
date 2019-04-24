@@ -12,9 +12,11 @@ class TableViewController: UITableViewController {
  
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addBackgroundGradient()
+        //navigation title change
+        self.navigationItem.title = "Series"
     }
 
+    //Table View
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -48,8 +50,8 @@ class TableViewController: UITableViewController {
         return cell
     }
     
-  //  private func addBackgroundGradient() {
-       
+    //Table View Background modify with gradient
+//  private func addBackgroundGradient() {
 //        let collectionViewBackgroundView = UIView()
 //        let gradientLayer = CAGradientLayer()
 //        gradientLayer.frame.size = view.frame.size
