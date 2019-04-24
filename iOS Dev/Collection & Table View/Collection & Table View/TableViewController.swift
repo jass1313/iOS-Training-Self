@@ -35,7 +35,7 @@ class TableViewController: UITableViewController {
         //Add gradient in the bottom of image view
         if imageView.subviews.count == 0 {
         let uiView = UIView()
-        uiView.frame = CGRect(x: 0, y: imageView.frame.height/3, width: imageView.frame.width, height: imageView.frame.height/3.0)
+        uiView.frame = CGRect(x: 0, y: imageView.frame.height/3, width: imageView.frame.width, height: imageView.frame.height/3)
         let gradient = CAGradientLayer()
         gradient.frame = uiView.frame
         gradient.locations = [0.0, 1.0]
