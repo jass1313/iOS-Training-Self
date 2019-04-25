@@ -53,14 +53,22 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //Collection View
+        //Collection View Selection of First Cell
         let indexPathForFirstRow = IndexPath(row: 0, section: 0)
         customCollectionView.selectItem(at: indexPathForFirstRow, animated:false, scrollPosition: UICollectionView.ScrollPosition(rawValue: 0))
         self.collectionView(customCollectionView, didSelectItemAt: indexPathForFirstRow)
+        
+        //Navigation View Unhide
+        tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        customCollectionView.isHidden = false
+        horizontalBarView.isHidden = false
+        let frame = self.view.safeAreaLayoutGuide.layoutFrame
+        tableView.frame = CGRect(x: 0, y: frame.origin.y + customCollectionView.frame.height + horizontalBarView.frame.height, width: frame.width, height: frame.height)
     }
-    
    
 //CollectionView
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -156,7 +164,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     //Handle the swipe
     @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
-        print(gesture.direction)
         var index = indexPathForFirstRow.row
         switch gesture.direction {
         case UISwipeGestureRecognizer.Direction.left:
@@ -179,11 +186,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    // hide NavigationBar with scroll 
+    
+    // hide NavigationBar with scroll
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print(scrollView.panGestureRecognizer.translation(in: scrollView).y)
+    print(scrollView.panGestureRecognizer.translation(in: scrollView).y)
+        print(scrollView)
         if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
             navigationController?.setNavigationBarHidden(true, animated: true)
+            let frame = self.view.safeAreaLayoutGuide.layoutFrame
+            tableView.frame = CGRect(x: 0, y: frame.origin.y, width: frame.width, height: frame.height)
             customCollectionView.isHidden = true
             horizontalBarView.isHidden = true
         } else {

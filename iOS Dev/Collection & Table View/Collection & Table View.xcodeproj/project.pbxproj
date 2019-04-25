@@ -110,6 +110,7 @@
 			children = (
 				D695D7EF22532D8100C900CA /* Collection & Table View */,
 				D695D7EE22532D8100C900CA /* Products */,
+				D6AE536B2271A63900EECF88 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +139,13 @@
 				D695D7FC22532D9000C900CA /* Info.plist */,
 			);
 			path = "Collection & Table View";
+			sourceTree = "<group>";
+		};
+		D6AE536B2271A63900EECF88 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +180,11 @@
 				TargetAttributes = {
 					D695D7EC22532D8100C900CA = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
